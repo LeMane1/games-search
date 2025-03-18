@@ -25,4 +25,4 @@ export const gamesApi = createApi({
   }),
 })
 
-export const { useGetGamesByNameQuery } = gamesApi
+export const { useLazyGetGamesByNameQuery } = gamesApi

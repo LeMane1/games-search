@@ -17,9 +17,16 @@ export const GameCard = (
       <CardActionArea>
         <CardMedia
           component="img"
-          height="200"
           image={background_image}
-          alt="green iguana"
+          alt={name}
+          sx={{ height: {
+              xs: 180,
+              sm: 220,
+              md: 260,
+              lg: 300,
+              xl: 340,
+            },
+            objectFit: 'cover',}}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
@@ -31,6 +38,7 @@ export const GameCard = (
             ))}
           </Stack>
         </CardContent>
+        {id}
       </CardActionArea>
     </Card>
   )

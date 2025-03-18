@@ -1,9 +1,7 @@
-'use client'
-
-import {TextField, Stack, Box} from '@mui/material';
-import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import {Stack, Box} from '@mui/material';
 import Header from "src/components/header";
 import {GamesList} from "@/components/games-list";
+import {SearchInput} from "@/components/search";
 
 export default function Home() {
   return (
@@ -17,18 +15,7 @@ export default function Home() {
                 <Header/>
                 <Box sx={{ height: 16 }} />
 
-                <TextField
-                    id="search-input"
-                    variant="outlined"
-                    placeholder='Search...'
-                    sx={{width: '100%'}}
-                    slotProps={{
-                    input: {
-                        startAdornment: (
-                            <SearchSharpIcon sx={{mr: '.5rem'}}/>
-                        ),
-                    },
-                }}/>
+                <SearchInput/>
                 <Box sx={{ height: 24 }} />
               
                 <GamesList/>

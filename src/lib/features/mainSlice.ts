@@ -1,0 +1,25 @@
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+
+export interface MainState {
+  searchValue: string
+}
+
+const initialState: MainState = {
+  searchValue: '',
+}
+
+export const mainSlice = createSlice({
+  name: 'main',
+  initialState,
+  reducers: {
+    changeSearchValue: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload
+    },
+  },
+})
+
+// Action creators are generated for each case reducer function
+export const { changeSearchValue } = mainSlice.actions
+
+export default mainSlice.reducer
