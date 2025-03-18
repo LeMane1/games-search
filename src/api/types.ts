@@ -1,4 +1,4 @@
-interface IPlatform {
+export interface IPlatform {
   "platform": {
     "id": number,
     "slug": string,
@@ -8,7 +8,7 @@ interface IPlatform {
   "requirements": unknown,
 }
 
-interface IGame{
+export interface IGame{
   "id": number,
   "slug": string,
   "name": string,
@@ -31,7 +31,8 @@ interface IGame{
       "slug": string,
       "name": string
     },
-  "platforms": IPlatform[]
+  "platforms": IPlatform[],
+  "parent_platforms": IPlatform[],
 }
 
 export interface IGamesResponse{

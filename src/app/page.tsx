@@ -29,6 +29,7 @@ export default function Home() {
                         ),
                     },
                 }}/>
+                <Box sx={{ height: 24 }} />
               
                 <GamesList/>
             </Stack>

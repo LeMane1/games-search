@@ -8,7 +8,6 @@ export const gamesApi = createApi({
     baseUrl: 'https://api.rawg.io/api',
     prepareHeaders: (headers: Headers): Headers => {
       headers.set('accept', 'application/json')
-      headers.set('X-API-KEY', 'c717a6d152e74669a6066ea4cfe239b1')
       return headers
     },
   }),
@@ -18,7 +17,8 @@ export const gamesApi = createApi({
         url: `/games`,
         method: 'GET',
         params: {
-          search
+          search,
+          key: 'c717a6d152e74669a6066ea4cfe239b1'
         }
       }),
     }),
