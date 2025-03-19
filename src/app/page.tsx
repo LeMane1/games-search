@@ -9,7 +9,7 @@ export default function Home() {
         <Box sx={{
             width: '100%',
             backgroundColor: '#252525',
-            padding: 2,
+            padding: 2
         }}>
             <Stack>
                 <Header/>

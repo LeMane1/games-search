@@ -13,9 +13,9 @@ export default function Header(){
           Game Searcher
         </Typography>
         
-        <Button variant='contained' color='primary'>
-          Enter
-        </Button>
+        {/*<Button variant='contained' color='primary'>*/}
+        {/*  Enter*/}
+        {/*</Button>*/}
       </Box>
     </header>
   )

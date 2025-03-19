@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{minHeight: '100vh'}}>
                 {children}
             </Container>
         </Providers>
