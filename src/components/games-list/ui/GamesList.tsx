@@ -49,6 +49,8 @@ export const GamesList = () => {
                 background_image={game.background_image}
                 platforms={game.parent_platforms}
                 metacritic={game.metacritic}
+                genres={game.genres}
+                released={game.released}
               />
             </Grid>
           ))

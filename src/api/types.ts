@@ -8,6 +8,12 @@ export interface IPlatform {
   "requirements": unknown,
 }
 
+export interface IGenre{
+  "id": number,
+  "slug": string,
+  "name": string,
+}
+
 export interface IGame{
   "id": number,
   "slug": string,
@@ -33,6 +39,7 @@ export interface IGame{
     },
   "platforms": IPlatform[],
   "parent_platforms": IPlatform[],
+  "genres": IGenre[],
 }
 
 export interface IGamesResponse{
