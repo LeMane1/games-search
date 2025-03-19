@@ -23,7 +23,12 @@ export const GamesList = () => {
       
       <Box
         my={2}
-        sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+      }}
       >
         <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
           {games?.results?.length} items for <b>{searchValue}</b>
@@ -39,7 +44,7 @@ export const GamesList = () => {
           <CircularProgress />
       </Box>}
       
-      {games && isSuccess && !(isLoading || isFetching) &&
+      {isSuccess && !(isLoading || isFetching) && games?.results?.length > 0 &&
         <Grid container spacing={2}>
           {games && games?.results && games?.results.map((game) => (
             <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
@@ -54,7 +59,11 @@ export const GamesList = () => {
           ))
           }
         </Grid>
-        }
+      }
+      
+      {
+      
+      }
     </>
   )
 }

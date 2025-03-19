@@ -20,7 +20,7 @@ export const GameCard = (
       <CardActionArea >
         <CardMedia
           component="img"
-          image={background_image}
+          image={background_image ?? 'images/image_placeholder.png'}
           alt={name}
           sx={{ height: {
               xs: 180,
