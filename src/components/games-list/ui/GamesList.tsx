@@ -8,19 +8,22 @@ import {RootState} from "@/lib/store";
 import {useEffect} from "react";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import {SortSelect} from "@/components/sort-select";
+import {Pagination} from "@/components/pagination";
 
 export const GamesList = () => {
   const [refetch, { data: games, isLoading, isFetching, isSuccess }] = useLazyGetGamesByNameQuery()
   const searchValue: string = useSelector((state: RootState) => state.mainReducer.searchValue)
   const orderingValue: string = useSelector((state: RootState) => state.mainReducer.orderingValue)
+  const pageValue: number = useSelector((state: RootState) => state.mainReducer.pageValue)
   
   useEffect(() => {
-    if (searchValue) refetch({search: searchValue, ordering: orderingValue})
-  }, [searchValue, orderingValue])
+    if (searchValue){
+      refetch({search: searchValue, ordering: orderingValue, page: pageValue})
+    }
+  }, [searchValue, orderingValue, pageValue])
   
   return (
     <>
-      
       <Box
         my={2}
         sx={{
@@ -31,22 +34,14 @@ export const GamesList = () => {
       }}
       >
         <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
-          {games?.results?.length} items for <b>{searchValue}</b>
+          {games?.count} items for <b>{searchValue}</b>
         </Typography>
         <SortSelect/>
       </Box>
       
-      {(isLoading || isFetching) && <Box sx={{
-          display: 'flex',
-          justifyContent: 'center'
-        }}
-        >
-          <CircularProgress />
-      </Box>}
-      
-      {isSuccess && !(isLoading || isFetching) && games?.results?.length > 0 &&
-        <Grid container spacing={2}>
-          {games && games?.results && games?.results.map((game) => (
+      {isSuccess && !(isLoading || isFetching) && games && games?.results?.length > 0 &&
+        <Grid container spacing={2} my={3}>
+          {games && games.results.map((game) => (
             <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
               <GameCard
                 id={game.id}
@@ -61,9 +56,16 @@ export const GamesList = () => {
         </Grid>
       }
       
-      {
-      
+      {(isLoading || isFetching) &&
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+          <CircularProgress />
+        </Box>
       }
+      
+      {games?.count && <Pagination itemsCount={games?.count}/>}
     </>
   )
 }

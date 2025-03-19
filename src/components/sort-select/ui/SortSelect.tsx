@@ -14,7 +14,9 @@ export const SortSelect = () => {
   };
   
   useEffect(() => {
-    if (debouncedSortValue) dispatch(changeOrderingValue(debouncedSortValue))
+    if (debouncedSortValue){
+      dispatch(changeOrderingValue(debouncedSortValue))
+    }
   }, [debouncedSortValue])
   
   return (

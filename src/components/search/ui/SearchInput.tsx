@@ -18,7 +18,9 @@ export const SearchInput = () => {
   }
   
   useEffect(() => {
-    if (debouncedSearchValue) dispatch(changeSearchValue(debouncedSearchValue))
+    if (debouncedSearchValue) {
+      dispatch(changeSearchValue(debouncedSearchValue))
+    }
   }, [debouncedSearchValue])
   
   return (

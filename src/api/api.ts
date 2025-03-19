@@ -4,6 +4,7 @@ import {IGamesResponse} from "@/api/types";
 interface IGameRequestParams {
   search?: string;
   ordering?: string;
+  page?: number;
 }
 
 // Define a service using a base URL and expected endpoints
@@ -18,12 +19,13 @@ export const gamesApi = createApi({
   }),
   endpoints: (builder) => ({
     getGamesByName: builder.query<IGamesResponse, IGameRequestParams>({
-      query: ({search, ordering}) => ({
+      query: ({search, ordering, page}) => ({
         url: `/games`,
         method: 'GET',
         params: {
           search,
           ordering,
+          page,
           key: 'c717a6d152e74669a6066ea4cfe239b1'
         }
       }),
