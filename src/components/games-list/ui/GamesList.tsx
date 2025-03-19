@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import {RootState} from "@/lib/store";
 import {useEffect} from "react";
 import {useDebounce} from "use-debounce";
-import {CircularProgress} from "@mui/material";
+import {Box, CircularProgress} from "@mui/material";
 
 export const GamesList = () => {
   const [refetch, { data: games, isLoading, isFetching, isSuccess }] = useLazyGetGamesByNameQuery()
@@ -20,6 +20,10 @@ export const GamesList = () => {
   
   return (
     <>
+      {(isLoading || isFetching) && <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <CircularProgress />
+      </Box>}
+      
       {isSuccess && <Grid container spacing={2}>
         {games && games?.results && games?.results.map((game) => (
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
@@ -28,13 +32,12 @@ export const GamesList = () => {
               name={game.name}
               background_image={game.background_image}
               platforms={game.parent_platforms}
+              metacritic={game.metacritic}
             />
           </Grid>
         ))
         }
       </Grid>}
-      
-      {(isLoading || isFetching) && <CircularProgress />}
     </>
   )
 }

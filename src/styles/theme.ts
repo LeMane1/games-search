@@ -8,22 +8,38 @@ const roboto = Roboto({
 });
 
 const theme = createTheme({
-    colorSchemes: { light: true, dark: true },
-    cssVariables: {
-        colorSchemeSelector: 'class',
-    },
-    palette: {
-        primary: {
-            light: '#757ce8',
-            main: '#31d50e',
-            dark: '#002884',
-            contrastText: '#fff',
+    colorSchemes: {
+        light: {
+            palette: {
+                primary: {
+                    light: '#757ce8',
+                    main: '#31d50e',
+                    dark: '#002884',
+                    contrastText: '#fff',
+                },
+                secondary: {
+                    light: '#ff7961',
+                    main: '#f44336',
+                    dark: '#ba000d',
+                    contrastText: '#000',
+                },
+            },
         },
-        secondary: {
-            light: '#ff7961',
-            main: '#f44336',
-            dark: '#ba000d',
-            contrastText: '#000',
+        dark: {
+            palette: {
+                primary: {
+                    light: '#757ce8',
+                    main: '#31d50e',
+                    dark: '#27980d',
+                    contrastText: '#fff',
+                },
+                secondary: {
+                    light: '#676767',
+                    main: '#e6e6e6',
+                    dark: '#ba000d',
+                    contrastText: '#000',
+                },
+            },
         },
     },
     typography: {

@@ -3,18 +3,21 @@
 import {IGame, IPlatform} from "@/api/types";
 import {Card, CardActionArea, CardContent, CardMedia, Stack, Typography} from "@mui/material";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
+import {RatingBadge} from "@/components/rating-badge";
 
-type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms'>
+type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic'>
 
 export const GameCard = (
   {id,
     name,
     background_image,
     platforms,
+    metacritic,
   }:IGameCardProps) => {
   return (
-    <Card sx={{ width: '100%' }}>
-      <CardActionArea>
+    <Card sx={{ width: '100%', position: 'relative' }}>
+      <RatingBadge ratingValue={metacritic} />
+      <CardActionArea >
         <CardMedia
           component="img"
           image={background_image}
@@ -38,7 +41,7 @@ export const GameCard = (
             ))}
           </Stack>
         </CardContent>
-        {id}
+        {/*{id}*/}
       </CardActionArea>
     </Card>
   )
