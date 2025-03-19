@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Providers from "@/lib/Providers";
-import {Container} from "@mui/material";
+import {Box, Container, Stack} from "@mui/material";
+import Header from "@/components/header";
 
 
 export const metadata: Metadata = {
@@ -18,8 +19,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-            <Container maxWidth="lg" sx={{minHeight: '100vh'}}>
+            <Container
+              maxWidth="lg"
+              sx={{
+                minHeight: '100vh',
+                padding: 2,
+              }}>
+              <Stack>
+                <Header/>
+                <Box sx={{ height: 24 }} />
                 {children}
+              </Stack>
             </Container>
         </Providers>
       </body>

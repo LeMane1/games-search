@@ -1,6 +1,6 @@
 'use client'
 
-import {useLazyGetGamesByNameQuery} from "@/api/api"
+import {useLazyGetGamesQuery} from "@/api/api"
 import {GameCard} from "@/components/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
 import { useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ import {SortSelect} from "@/components/sort-select";
 import {Pagination} from "@/components/pagination";
 
 export const GamesList = () => {
-  const [refetch, { data: games, isLoading, isFetching, isSuccess }] = useLazyGetGamesByNameQuery()
+  const [refetch, { data: games, isLoading, isFetching, isSuccess }] = useLazyGetGamesQuery()
   const searchValue: string = useSelector((state: RootState) => state.mainReducer.searchValue)
   const orderingValue: string = useSelector((state: RootState) => state.mainReducer.orderingValue)
   const pageValue: number = useSelector((state: RootState) => state.mainReducer.pageValue)

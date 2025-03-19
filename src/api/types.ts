@@ -5,7 +5,10 @@ export interface IPlatform {
     "name": string
   },
   "released_at": string,
-  "requirements": unknown,
+  "requirements": {
+    "minimum": "string",
+    "recommended": "string"
+  },
 }
 
 export interface IGenre{
@@ -47,4 +50,31 @@ export interface IGamesResponse{
   "next": string,
   "previous": string,
   "results": IGame[]
+}
+
+export interface IGameResponse extends IGame{
+  "name_original": string,
+  "description": string,
+  "description_raw": string,
+  "metacritic_platforms": unknown,
+  "background_image_additional": string,
+  "website": string,
+  "reactions": unknown,
+  "screenshots_count": number,
+  "movies_count": number,
+  "creators_count": number,
+  "achievements_count": number,
+  "parent_achievements_count": string,
+  "reddit_url": string,
+  "reddit_name": string,
+  "reddit_description": string,
+  "reddit_logo": string,
+  "reddit_count": number,
+  "twitch_count": string,
+  "youtube_count": string,
+  "alternative_names": string[],
+  "metacritic_url": string,
+  "parents_count": number,
+  "additions_count": number,
+  "game_series_count": number,
 }

@@ -1,4 +1,4 @@
-import {Box, Typography, Button} from '@mui/material'
+import {Box, Typography} from '@mui/material'
 
 export default function Header(){
   return (
@@ -9,7 +9,7 @@ export default function Header(){
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
-        <Typography variant='h2'>
+        <Typography variant='h4'>
           Game Searcher
         </Typography>
         

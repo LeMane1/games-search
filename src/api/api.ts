@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {IGamesResponse} from "@/api/types";
+import {IGameResponse, IGamesResponse} from "@/api/types";
 
 interface IGameRequestParams {
   search?: string;
@@ -7,7 +7,6 @@ interface IGameRequestParams {
   page?: number;
 }
 
-// Define a service using a base URL and expected endpoints
 export const gamesApi = createApi({
   reducerPath: 'gamesApi',
   baseQuery: fetchBaseQuery({
@@ -18,7 +17,7 @@ export const gamesApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getGamesByName: builder.query<IGamesResponse, IGameRequestParams>({
+    getGames: builder.query<IGamesResponse, IGameRequestParams>({
       query: ({search, ordering, page}) => ({
         url: `/games`,
         method: 'GET',
@@ -30,7 +29,16 @@ export const gamesApi = createApi({
         }
       }),
     }),
+    getGameById: builder.query<IGameResponse, number>({
+      query: (id: number) => ({
+        url: `/games/${id}`,
+        method: 'GET',
+        params: {
+          key: 'c717a6d152e74669a6066ea4cfe239b1'
+        }
+      })
+    })
   }),
 })
 
-export const { useLazyGetGamesByNameQuery } = gamesApi
+export const { useLazyGetGamesQuery, useGetGameByIdQuery } = gamesApi
