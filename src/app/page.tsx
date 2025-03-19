@@ -13,10 +13,10 @@ export default function Home() {
         }}>
             <Stack>
                 <Header/>
-                <Box sx={{ height: 16 }} />
+                <Box sx={{ height: 24 }} />
 
                 <SearchInput/>
-                <Box sx={{ height: 24 }} />
+                <Box sx={{ height: 16 }} />
               
                 <GamesList/>
             </Stack>

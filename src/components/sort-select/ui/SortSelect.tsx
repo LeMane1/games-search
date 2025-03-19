@@ -28,9 +28,9 @@ export const SortSelect = () => {
         defaultValue='name'
         displayEmpty={false}
       >
-        <MenuItem value='name'>Name</MenuItem>
-        <MenuItem value='released'>Release Date</MenuItem>
-        <MenuItem value='metacritic'>Metacritic Rating</MenuItem>
+        <MenuItem value='-name'>Name</MenuItem>
+        <MenuItem value='-released'>Release Date</MenuItem>
+        <MenuItem value='-metacritic'>Metacritic Rating</MenuItem>
       </Select>
     </FormControl>
   )

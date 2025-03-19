@@ -16,7 +16,7 @@ export const GameCard = (
   }:IGameCardProps) => {
   return (
     <Card sx={{ width: '100%', position: 'relative' }}>
-      <RatingBadge ratingValue={metacritic} />
+      {metacritic && <RatingBadge ratingValue={metacritic} />}
       <CardActionArea >
         <CardMedia
           component="img"

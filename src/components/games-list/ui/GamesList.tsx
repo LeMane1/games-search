@@ -20,17 +20,24 @@ export const GamesList = () => {
   
   return (
     <>
-      {(isLoading || isFetching) && <Box sx={{display: 'flex', justifyContent: 'center'}}>
-        <CircularProgress />
-      </Box>}
       
       <Box
         my={2}
         sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}
       >
-        <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>All games</Typography>
+        <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
+          {games?.results?.length} items for <b>{searchValue}</b>
+        </Typography>
         <SortSelect/>
       </Box>
+      
+      {(isLoading || isFetching) && <Box sx={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+        >
+          <CircularProgress />
+      </Box>}
       
       {games && isSuccess && !(isLoading || isFetching) &&
         <Grid container spacing={2}>
