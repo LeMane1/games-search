@@ -4,9 +4,11 @@ import {Box} from "@mui/material";
 
 interface IGamePreviewScreenshotProps {
   image: string;
+  onClick: (id: number) => void;
+  id: number;
 }
 
-export const GamePreviewScreenshot = ({image}: IGamePreviewScreenshotProps) => {
+export const GamePreviewScreenshot = ({image, onClick, id}: IGamePreviewScreenshotProps) => {
   return (
     <>
       <Box
@@ -15,6 +17,7 @@ export const GamePreviewScreenshot = ({image}: IGamePreviewScreenshotProps) => {
         width={340}
         height={200}
         borderRadius={2}
+        onClick={() => onClick(id)}
         sx={{
           objectFit: 'cover',
           ":hover":{
