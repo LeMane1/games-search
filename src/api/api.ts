@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {IGameResponse, IGamesResponse} from "@/api/types";
+import {IGameResponse, IGameScreenShotResponse, IGamesResponse} from "@/api/types";
 
 interface IGameRequestParams {
   search?: string;
@@ -37,8 +37,21 @@ export const gamesApi = createApi({
           key: 'c717a6d152e74669a6066ea4cfe239b1'
         }
       })
+    }),
+    getGameScreenShotsById: builder.query<IGameScreenShotResponse, number>({
+      query: (id: number) => ({
+        url: `/games/${id}/screenshots`,
+        method: 'GET',
+        params: {
+          key: 'c717a6d152e74669a6066ea4cfe239b1'
+        }
+      })
     })
   }),
 })
 
-export const { useLazyGetGamesQuery, useGetGameByIdQuery } = gamesApi
+export const {
+  useLazyGetGamesQuery,
+  useGetGameByIdQuery,
+  useGetGameScreenShotsByIdQuery
+} = gamesApi

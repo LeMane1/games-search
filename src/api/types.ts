@@ -110,3 +110,19 @@ export interface IGameResponse extends IGame{
   "developers": IDeveloper[],
   "publishers": IPublisher[],
 }
+
+export interface IGameScreenshot{
+  "image": string,
+  "hidden": boolean,
+  "id": number,
+  "is_deleted": boolean,
+  height: number,
+  width: number,
+}
+
+export interface IGameScreenShotResponse {
+  "count": number,
+  "next": string,
+  "previous": string,
+  "results": IGameScreenshot[]
+}

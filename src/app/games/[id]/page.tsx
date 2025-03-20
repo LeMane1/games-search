@@ -41,6 +41,7 @@ export default function GamePage() {
         />
         
         <GameInfo
+          id={data?.id}
           name={data?.name}
           platforms={data?.parent_platforms}
           description={data?.description_raw}

@@ -1,14 +1,16 @@
 'use client'
 
-import {Chip, Stack, Typography} from "@mui/material";
+import {Box, Chip, Stack, Typography} from "@mui/material";
 import {IDeveloper, IGenre, IPlatform, IPublisher, IStore} from "@/api/types";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
 import {BuyPlatformLink} from "@/components/buy-platform-link";
 import RatingBadge from "@/components/rating-badge";
 import GameParameters from "@/app/games/[id]/game-parameters";
 import {getParameters} from "@/app/games/[id]/lib/getParameters";
+import {GameScreenshots} from "@/app/games/[id]/game-screenshots";
 
 interface IGameInfoProps {
+  id: number;
   name?: string;
   platforms?: IPlatform[];
   description?: string;
@@ -25,7 +27,8 @@ interface IGameInfoProps {
 }
 
 export const GameInfo = (
-  { name,
+  { id,
+    name,
     platforms,
     description,
     genres,
@@ -37,7 +40,15 @@ export const GameInfo = (
     esrb
   }: IGameInfoProps) => {
   return (
-    <Stack>
+    <Stack
+      width="100%"
+      direction="column"
+      sx={{
+        flexBasis: 0,
+        flexGrow: 1,
+        minWidth: 0
+      }}
+    >
       <Typography
         variant='h2'
         component="h2"
@@ -109,6 +120,13 @@ export const GameInfo = (
         release,
         esrb
       })}/>
+      
+      <Typography variant="h5" component="h5" mb={1}>
+        Screenshots
+      </Typography>
+      
+      <GameScreenshots gameId={id}/>
+      <Box mb={3}/>
       
       <Typography variant="h5" component="h5" mb={1}>
         Where to buy
