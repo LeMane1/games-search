@@ -1,10 +1,10 @@
 'use client'
 
-import {Button, Chip, Stack, Typography} from "@mui/material";
+import {Chip, Stack, Typography} from "@mui/material";
 import {IGenre, IPlatform, IStore} from "@/api/types";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
-import Image from 'next/image'
 import {BuyPlatformLink} from "@/components/buy-platform-link";
+import RatingBadge from "@/components/rating-badge";
 
 interface IGameInfoProps {
   name?: string;
@@ -12,6 +12,10 @@ interface IGameInfoProps {
   description?: string;
   genres?: IGenre[];
   stores?: IStore[];
+  rating:{
+    metacritic?: number;
+    rawg?: number;
+  }
 }
 
 export const GameInfo = (
@@ -19,17 +23,27 @@ export const GameInfo = (
     platforms,
     description,
     genres,
-    stores
+    stores,
+    rating
   }: IGameInfoProps) => {
   return (
     <>
       <Stack>
         <Typography
-          variant="h2"
+          variant='h2'
           component="h2"
           fontWeight={'bold'}
           mb={1}
           lineHeight={1}
+          sx={{
+            fontSize: {
+              xs: '2rem',
+              sm: '2.5rem',
+              md: '3rem',
+              lg: '3rem',
+              xl: '3.5rem'
+            }
+          }}
         >
           {name}
         </Typography>
@@ -46,6 +60,28 @@ export const GameInfo = (
           ))}
         </Stack>
         
+        <Stack mb={3} direction="row" sx={{ flexGrow: 1, gap: 2, flexWrap: "wrap" }}>
+          {
+            rating?.metacritic && <RatingBadge
+              icon={'/icons/icon_metacritic_logo.svg'}
+              alt="Metacritic Logo"
+              width={80}
+              height={20}
+              ratingValue={rating?.metacritic}
+            />
+          }
+          
+          {
+            rating?.rawg && <RatingBadge
+              icon={'/icons/icon_rawg_logo.webp'}
+              alt="Rawg Logo"
+              width={50}
+              height={20}
+              ratingValue={rating?.rawg}
+            />
+          }
+        </Stack>
+        
         <Typography variant="h5" component="h5" mb={1}>
           About
         </Typography>
@@ -55,10 +91,14 @@ export const GameInfo = (
         </Typography>
         
         <Typography variant="h5" component="h5" mb={1}>
+          Info
+        </Typography>
+        
+        <Typography variant="h5" component="h5" mb={1}>
           Where to buy
         </Typography>
         
-        <Stack spacing={1} direction="row" sx={{ flexGrow: 1 }}>
+        <Stack direction="row" sx={{ flexGrow: 1, flexWrap: 'wrap', gap: 1 }}>
           {stores && stores.length > 0 && stores.map((store: IStore) => (
             <BuyPlatformLink
               key={store.id}

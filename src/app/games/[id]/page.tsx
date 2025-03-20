@@ -3,18 +3,18 @@
 import {useParams} from 'next/navigation'
 import {useGetGameByIdQuery} from "@/api/api";
 import {GameInfo} from "@/components/game-info";
-import {Box, Stack} from "@mui/material";
+import {Box, CircularProgress, Stack} from "@mui/material";
 import BgOverlay from "@/components/bg-overlay";
 
 export default function GamePage() {
   const params = useParams();
-  const {data} = useGetGameByIdQuery(Number(params.id))
+  const {data, isLoading, isSuccess} = useGetGameByIdQuery(Number(params.id))
   
   return (
     <>
       <BgOverlay imageName={data?.background_image}/>
       
-      <Stack spacing={5} direction={{
+      {data && isSuccess && <Stack spacing={5} direction={{
         xs: 'column',
         sm: 'column',
         md: 'row',
@@ -24,7 +24,8 @@ export default function GamePage() {
         <Box
           component="img"
           src={data?.background_image}
-          alt="Description"
+          alt="Game Image"
+          boxShadow={5}
           sx={{
             width: {
               xs: '100%',
@@ -45,8 +46,22 @@ export default function GamePage() {
           description={data?.description_raw}
           genres={data?.genres}
           stores={data?.stores}
+          rating={{
+            metacritic: data?.metacritic,
+            rawg: data?.rating
+        }}
         />
-      </Stack>
+      </Stack>}
+      
+      {isLoading && <Box sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%'
+      }}>
+        <CircularProgress />
+      </Box>}
     </>
   )
 }

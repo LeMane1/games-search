@@ -3,7 +3,7 @@
 import {IGame, IPlatform, IGenre} from "@/api/types";
 import {Card, CardActionArea, CardContent, CardMedia, Chip, Stack, Typography} from "@mui/material";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
-import {RatingBadge} from "@/components/rating-badge";
+import {RatingBadge} from "./RatingBadge";
 import Link from "next/link";
 
 type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic' | 'genres' | 'released'>

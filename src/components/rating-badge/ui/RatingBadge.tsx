@@ -1,32 +1,42 @@
-'use client'
-
-import {Box, Typography} from '@mui/material'
-import Image from 'next/image'
+import Image from "next/image";
+import {Box, Typography} from "@mui/material";
 
 interface IRatingBadgeProps {
+  width: number;
+  height: number;
+  icon: string;
+  alt: string;
   ratingValue: number;
 }
 
-export const RatingBadge = ({ratingValue}: IRatingBadgeProps) => {
+export default function RatingBadge(
+  {
+    width,
+    height,
+    icon,
+    alt,
+    ratingValue,
+  }:IRatingBadgeProps){
   return (
     <Box
-      padding={1}
-      borderRadius={2}
-      boxShadow={3}
+      borderRadius={5}
+      px={2}
+      py={0.5}
       sx={{
-      position: 'absolute',
-      right: '10px',
-      top: '10px',
-      zIndex: 1000,
-      backgroundColor: 'rgba(234,234,234,0.7)',
-      display: 'flex',
-      alignItems: 'center',
-      backdropFilter: 'blur(4px)',
-      }}
-    >
-      <Image src={'/icons/icon_metacritic_logo.svg'} alt='Metacritic Logo' width='100' height='20'/>
-      <Box width={4}/>
-      <Typography variant='h5' sx={{fontWeight: 'bold'}} color={'black'}>{ratingValue}</Typography>
+        backgroundColor: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+      }}>
+      <Image src={icon} alt={alt} width={width} height={height}/>
+      <Typography
+        variant='h5'
+        component={'h5'}
+        color={'black'}
+        fontWeight={'bolder'}
+      >
+        {ratingValue}
+      </Typography>
     </Box>
   )
 }
