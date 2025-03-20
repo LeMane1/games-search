@@ -17,7 +17,7 @@ export const SortSelect = () => {
     if (debouncedSortValue){
       dispatch(changeOrderingValue(debouncedSortValue))
     }
-  }, [debouncedSortValue])
+  }, [debouncedSortValue, dispatch])
   
   return (
     <FormControl variant="filled" sx={{ minWidth: 200 }}>

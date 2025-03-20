@@ -20,7 +20,7 @@ export const GamesList = () => {
     if (searchValue){
       refetch({search: searchValue, ordering: orderingValue, page: pageValue})
     }
-  }, [searchValue, orderingValue, pageValue])
+  }, [searchValue, orderingValue, pageValue, refetch])
   
   return (
     <>

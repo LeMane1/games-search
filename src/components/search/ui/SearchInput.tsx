@@ -21,7 +21,7 @@ export const SearchInput = () => {
     if (debouncedSearchValue) {
       dispatch(changeSearchValue(debouncedSearchValue))
     }
-  }, [debouncedSearchValue])
+  }, [debouncedSearchValue, dispatch])
   
   return (
     <TextField

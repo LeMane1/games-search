@@ -11,7 +11,6 @@ export const BuyPlatformLink = (
   {
     name,
     slug,
-    domain,
   }: IBuyPlatformLinkProps) => {
   return (
     <>
