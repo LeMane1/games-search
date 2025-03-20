@@ -52,6 +52,19 @@ export interface IGamesResponse{
   "results": IGame[]
 }
 
+export interface IStore{
+  id: number,
+  url: string,
+  store:{
+    domain: string,
+    games_count: number,
+    id: number,
+    image_background: string,
+    name: string,
+    slug: string,
+  }
+}
+
 export interface IGameResponse extends IGame{
   "name_original": string,
   "description": string,
@@ -77,4 +90,5 @@ export interface IGameResponse extends IGame{
   "parents_count": number,
   "additions_count": number,
   "game_series_count": number,
+  "stores": IStore[],
 }

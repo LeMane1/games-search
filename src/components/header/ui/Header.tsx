@@ -1,4 +1,5 @@
-import {Box, Typography} from '@mui/material'
+import {Box} from '@mui/material'
+import Image from 'next/image'
 
 export default function Header(){
   return (
@@ -9,13 +10,7 @@ export default function Header(){
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
-        <Typography variant='h4'>
-          Game Searcher
-        </Typography>
-        
-        {/*<Button variant='contained' color='primary'>*/}
-        {/*  Enter*/}
-        {/*</Button>*/}
+        <Image src={'/icons/icon_logo.svg'} alt='Logo' width={200} height={50} />
       </Box>
     </header>
   )

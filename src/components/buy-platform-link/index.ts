@@ -1,0 +1,1 @@
+export {BuyPlatformLink} from './ui/BuyPlatformLink'

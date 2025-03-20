@@ -46,17 +46,11 @@ const theme = createTheme({
         fontFamily: roboto.style.fontFamily,
     },
     components: {
-        MuiAlert: {
+        MuiCard: {
             styleOverrides: {
                 root: {
-                    variants: [
-                        {
-                            props: { severity: 'info' },
-                            style: {
-                                backgroundColor: '#60a5fa',
-                            },
-                        },
-                    ],
+                    backgroundColor: 'rgba(37, 37, 37, 0.5)',
+                    backdropFilter: 'blur(10px)',
                 },
             },
         },
