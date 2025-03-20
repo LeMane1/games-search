@@ -79,6 +79,9 @@ export const GameScreenshots = ({gameId}: IGameScreenshotsProps) => {
         open={open}
         onClose={handleClose}
         maxWidth="xl"
+        sx={{
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        }}
       >
         {selectedImage && (
           <Stack
@@ -92,7 +95,6 @@ export const GameScreenshots = ({gameId}: IGameScreenshotsProps) => {
               component='img'
               src={screenshots?.results.find(result => result.id === selectedImage)?.image || ''}
               sx={{
-                // overflow: 'hidden',
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover'
@@ -101,22 +103,29 @@ export const GameScreenshots = ({gameId}: IGameScreenshotsProps) => {
             </Box>
             
             <Stack
-              direction='row'
-              spacing={2}
-              justifyContent='center'
+              alignItems='center'
               sx={{
                 position: 'absolute',
                 bottom: 12,
                 left: 0,
-                width: '100%'
+                width: '100%',
               }}
             >
-              <IconButton aria-label="left" onClick={() => changeCurrentImage('left')}>
-                <KeyboardArrowLeftIcon/>
-              </IconButton>
-              <IconButton aria-label="right" onClick={() => changeCurrentImage('left')}>
-                <KeyboardArrowRightIcon/>
-              </IconButton>
+              <Stack
+                direction='row'
+                spacing={2}
+                width='fit-content'
+                borderRadius={5}
+                sx={{
+                backgroundColor: '#252525',
+              }}>
+                <IconButton aria-label="left" onClick={() => changeCurrentImage('left')}>
+                  <KeyboardArrowLeftIcon/>
+                </IconButton>
+                <IconButton aria-label="right" onClick={() => changeCurrentImage('left')}>
+                  <KeyboardArrowRightIcon/>
+                </IconButton>
+              </Stack>
             </Stack>
           </Stack>
         )}

@@ -45,7 +45,7 @@ export const GameCard = (
               {name}
             </Typography>
             
-            <Stack direction="row" spacing={1} mb={2} sx={{flexWrap: 'wrap'}}>
+            <Stack direction="row" mb={2} sx={{flexWrap: 'wrap', gap: 1}}>
               {genres && genres.length > 0 && genres.map((genre: IGenre) => (
                 <Chip label={genre.name} key={genre.id}/>
               ))}

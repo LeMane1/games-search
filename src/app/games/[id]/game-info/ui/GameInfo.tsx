@@ -74,7 +74,7 @@ export const GameInfo = (
         ))}
       </Stack>
       
-      <Stack spacing={1} direction="row" sx={{ flexGrow: 1 }} mb={3}>
+      <Stack direction="row" sx={{ flexGrow: 1, flexWrap: 'wrap', gap: 1 }} mb={3}>
         {genres && genres.length > 0 && genres.map((genre: IGenre) => (
           <Chip label={genre.name} key={genre.id}/>
         ))}
