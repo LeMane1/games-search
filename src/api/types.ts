@@ -65,6 +65,22 @@ export interface IStore{
   }
 }
 
+export interface IDeveloper{
+  games_count: number,
+  id: number,
+  image_background: string,
+  name: string,
+  slug: string
+}
+
+export interface IPublisher{
+  games_count: number,
+  id: number,
+  image_background: string,
+  name: string,
+  slug: string
+}
+
 export interface IGameResponse extends IGame{
   "name_original": string,
   "description": string,
@@ -91,4 +107,6 @@ export interface IGameResponse extends IGame{
   "additions_count": number,
   "game_series_count": number,
   "stores": IStore[],
+  "developers": IDeveloper[],
+  "publishers": IPublisher[],
 }

@@ -2,7 +2,7 @@
 
 import {useParams} from 'next/navigation'
 import {useGetGameByIdQuery} from "@/api/api";
-import {GameInfo} from "@/components/game-info";
+import {GameInfo} from "src/app/games/[id]/game-info";
 import {Box, CircularProgress, Stack} from "@mui/material";
 import BgOverlay from "@/components/bg-overlay";
 
@@ -49,7 +49,11 @@ export default function GamePage() {
           rating={{
             metacritic: data?.metacritic,
             rawg: data?.rating
-        }}
+          }}
+          developers={data?.developers}
+          publishers={data?.publishers}
+          release={data?.released}
+          esrb={data?.esrb_rating?.name}
         />
       </Stack>}
       
