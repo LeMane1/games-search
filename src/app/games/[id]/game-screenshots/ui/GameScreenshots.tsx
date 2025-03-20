@@ -1,12 +1,14 @@
 'use client'
 
 import {useGetGameScreenShotsByIdQuery} from "@/api/api";
-import {GamePreviewScreenshot} from "@/app/games/[id]/game-screenshots/ui/GamePreviewScreenshot";
 import {IGameScreenshot} from "@/api/types";
-import {Box, Dialog, IconButton, Stack} from "@mui/material";
-import {useState} from "react";
+import {Box, Dialog, IconButton, Skeleton, Stack} from "@mui/material";
+import {Suspense, useState} from "react";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { lazy } from 'react';
+
+const GamePreviewScreenshot = lazy(() => import('./GamePreviewScreenshot'));
 
 interface IGameScreenshotsProps {
   gameId: number;
@@ -65,12 +67,13 @@ export const GameScreenshots = ({gameId}: IGameScreenshotsProps) => {
       >
         {
           screenshots && screenshots?.results.length > 0 && screenshots.results.map((screenshot: IGameScreenshot) => (
-            <GamePreviewScreenshot
-              key={screenshot.id}
-              image={screenshot.image}
-              id={screenshot.id}
-              onClick={handleOpen}
-            />
+            <Suspense fallback={<Skeleton variant="rectangular" width={340} height={200} />} key={screenshot.id}>
+              <GamePreviewScreenshot
+                image={screenshot.image}
+                id={screenshot.id}
+                onClick={handleOpen}
+              />
+            </Suspense>
           ))
         }
       </Box>

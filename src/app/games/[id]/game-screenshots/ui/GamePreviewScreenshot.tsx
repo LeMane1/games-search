@@ -8,7 +8,7 @@ interface IGamePreviewScreenshotProps {
   id: number;
 }
 
-export const GamePreviewScreenshot = ({image, onClick, id}: IGamePreviewScreenshotProps) => {
+export default function GamePreviewScreenshot ({image, onClick, id}: IGamePreviewScreenshotProps){
   return (
     <>
       <Box

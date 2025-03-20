@@ -24,20 +24,22 @@ export const GamesList = () => {
   
   return (
     <>
-      <Box
-        my={2}
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-      }}
-      >
-        <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
-          {games?.count} items for <b>{searchValue}</b>
-        </Typography>
-        <SortSelect/>
-      </Box>
+      {games && !(isLoading || isFetching) &&
+        <Box
+          my={2}
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
+            {games?.count} items for <b>{searchValue}</b>
+          </Typography>
+          <SortSelect/>
+        </Box>
+      }
       
       {isSuccess && !(isLoading || isFetching) && games && games?.results?.length > 0 &&
         <Grid container spacing={2} my={3}>
@@ -67,7 +69,7 @@ export const GamesList = () => {
         </Box>
       }
       
-      {games?.count && <Pagination itemsCount={games?.count}/>}
+      {games?.count && !(isLoading || isFetching) && <Pagination itemsCount={games?.count}/>}
     </>
   )
 }
