@@ -30,8 +30,8 @@ export const getParameters = (
   const date = new Date(release);
   
   const releaseParameter: IGameParameter = {
-    parameterType: 'Publishers',
-    parameterValue: `${date.getDay()} ${Months[date.getMonth() + 1]} ${date.getFullYear()}`
+    parameterType: 'Release Date',
+    parameterValue: `${date.getDate()} ${Months[date.getMonth()]} ${date.getFullYear()}`
   }
   
   const esrbParameter: IGameParameter = {

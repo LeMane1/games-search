@@ -10,12 +10,12 @@ export default function GameParameter(
     parameterValue,
   }: IGameParameterProps){
   return (
-    <Stack direction="row" sx={{ flexGrow: 1, justifyContent: 'space-between' }}>
+    <Stack direction="row" sx={{ flexGrow: 1, justifyContent: 'space-between', gap: 1 }}>
       <Typography variant="subtitle1" component="h5" color={'textSecondary'}>
         {parameterType}
       </Typography>
       
-      <Typography variant="subtitle1" component="h5">
+      <Typography variant="subtitle1" component="h5" sx={{ textAlign: 'right' }}>
         {parameterValue}
       </Typography>
     </Stack>
