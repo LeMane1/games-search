@@ -36,7 +36,7 @@ export const getParameters = (
   
   const esrbParameter: IGameParameter = {
     parameterType: 'ESRB',
-    parameterValue: ''+esrb
+    parameterValue: esrb ? ''+esrb : '-'
   }
   
   return [releaseParameter, developersParameter, publishersParameter, esrbParameter];

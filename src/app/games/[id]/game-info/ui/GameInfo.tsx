@@ -70,7 +70,7 @@ export const GameInfo = (
       
       <Stack spacing={2} direction="row" sx={{ flexGrow: 1 }} mb={2}>
         {platforms && platforms.length > 0 && platforms.map((platform) => (
-          <PlatformBadge platformName={platform.platform.name} key={platform.platform.id}/>
+          <PlatformBadge platformName={platform.platform.slug} key={platform.platform.id}/>
         ))}
       </Stack>
       
