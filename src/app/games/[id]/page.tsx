@@ -4,6 +4,39 @@ import BgOverlay from "@/components/bg-overlay";
 import {IGameResponse} from "@/api/types";
 import {getData} from "@/api/getData";
 
+import type { Metadata } from "next";
+
+interface GamePageProps {
+  params: {
+    id: string;
+  };
+}
+
+export async function generateMetadata({ params }: GamePageProps): Promise<Metadata> {
+  const gameId = params.id;
+  
+  const game: IGameResponse = await getData<IGameResponse>({
+    url: `games/${gameId}`
+  })
+  
+  return {
+    title: game?.name || "Game Search",
+    description: game?.description || "Find your favorite games",
+    openGraph: {
+      title: game?.name,
+      description: game?.description,
+      images: [
+        {
+          url: game?.background_image,
+          width: 1200,
+          height: 630,
+          alt: game?.name,
+        },
+      ],
+    },
+  };
+}
+
 export default async function GamePage(props: {
   params?: Promise<{
     id?: string;

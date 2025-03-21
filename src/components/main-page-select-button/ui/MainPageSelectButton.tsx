@@ -19,7 +19,7 @@ export default function MainPageSelectButton(){
           padding: 3
       }}>
           <Typography variant="h4" component="h4" fontWeight={'bolder'} letterSpacing={1.2}>
-            Games search
+            GAMES
           </Typography>
       </Box>
     </Link>
