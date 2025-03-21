@@ -1,30 +1,32 @@
-'use client'
-
-import {useLazyGetGamesQuery} from "@/api/api"
 import {GameCard} from "@/components/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
-import { useSelector } from 'react-redux'
-import {RootState} from "@/lib/store";
-import {useEffect} from "react";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import {SortSelect} from "@/components/sort-select";
 import {Pagination} from "@/components/pagination";
+import {IGamesResponse} from "@/api/types";
+import {Suspense} from "react";
 
-export const GamesList = () => {
-  const [refetch, { data: games, isLoading, isFetching, isSuccess }] = useLazyGetGamesQuery()
-  const searchValue: string = useSelector((state: RootState) => state.mainReducer.searchValue)
-  const orderingValue: string = useSelector((state: RootState) => state.mainReducer.orderingValue)
-  const pageValue: number = useSelector((state: RootState) => state.mainReducer.pageValue)
-  
-  useEffect(() => {
-    if (searchValue){
-      refetch({search: searchValue, ordering: orderingValue, page: pageValue})
-    }
-  }, [searchValue, orderingValue, pageValue, refetch])
+interface IGamesListProps {
+  search: string;
+  ordering: string;
+  page: number;
+}
+
+export default async function GamesList(
+  {
+    search,
+    ordering,
+    page
+  }: IGamesListProps){
+  const gamesResponse = await fetch(`https://api.rawg.io/api/games?search=${search}&ordering=${ordering}&key=c717a6d152e74669a6066ea4cfe239b1`, {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'},
+  })
+  const games: IGamesResponse = await gamesResponse.json();
   
   return (
     <>
-      {games && !(isLoading || isFetching) &&
+      {games &&
         <Box
           my={2}
           sx={{
@@ -35,13 +37,14 @@ export const GamesList = () => {
           }}
         >
           <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
-            {games?.count} items for <b>{searchValue}</b>
+            {games?.count} items for <b>{search}</b>
           </Typography>
+          
           <SortSelect/>
         </Box>
       }
       
-      {isSuccess && !(isLoading || isFetching) && games && games?.results?.length > 0 &&
+      <Suspense key={search} fallback={<CircularProgress />}>
         <Grid container spacing={2} my={3}>
           {games && games.results.map((game) => (
             <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
@@ -58,18 +61,9 @@ export const GamesList = () => {
           ))
           }
         </Grid>
-      }
+      </Suspense>
       
-      {(isLoading || isFetching) &&
-        <Box sx={{
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
-          <CircularProgress />
-        </Box>
-      }
-      
-      {games?.count && !(isLoading || isFetching) && <Pagination itemsCount={games?.count}/>}
+      <Pagination itemsCount={games?.count} defaultPage={page} />
     </>
   )
 }

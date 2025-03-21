@@ -1,1 +1,1 @@
-export {GamesList} from './ui/GamesList'
+export {default} from './ui/GamesList'

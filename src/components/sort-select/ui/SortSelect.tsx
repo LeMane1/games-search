@@ -1,33 +1,35 @@
+'use client'
+
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
-import {useState, useEffect} from 'react'
-import {useDebounce} from "use-debounce";
-import {useAppDispatch} from "@/lib/hooks";
-import {changeOrderingValue} from "@/lib/features/mainSlice";
+import {useDebouncedCallback} from "use-debounce";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 
 export const SortSelect = () => {
-  const [sortValue, setSortValue] = useState('');
-  const [debouncedSortValue] = useDebounce(sortValue, 1000)
-  const dispatch = useAppDispatch()
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
   
-  const handleChange = (event: SelectChangeEvent) => {
-    setSortValue(event.target.value);
-  };
-  
-  useEffect(() => {
-    if (debouncedSortValue){
-      dispatch(changeOrderingValue(debouncedSortValue))
+  const handleChange = useDebouncedCallback((event: SelectChangeEvent) => {
+    const sortValue:string = event.target.value
+    const params = new URLSearchParams(searchParams);
+    
+    if (sortValue) {
+      params.set('ordering', sortValue);
+    } else {
+      params.delete('ordering');
     }
-  }, [debouncedSortValue, dispatch])
+    
+    replace(`${pathname}?${params.toString()}`);
+  }, 1000)
   
   return (
     <FormControl variant="filled" sx={{ minWidth: 200 }}>
-      <InputLabel id="demo-simple-select-filled-label">Sort by</InputLabel>
+      <InputLabel id="sort-select">Sort by</InputLabel>
       <Select
-        labelId="demo-simple-select-filled-label"
-        id="demo-simple-select-filled"
-        value={sortValue}
+        labelId="sort-select"
+        id="sort-select"
         onChange={handleChange}
-        defaultValue='name'
+        value={searchParams.get('ordering')?.toString()}
         displayEmpty={false}
       >
         <MenuItem value='-name'>Name</MenuItem>
