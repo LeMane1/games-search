@@ -140,3 +140,20 @@ export interface IGameStore {
   "store_id": number,
   "url": string
 }
+
+export interface IGameMoviesResponse {
+  "count": number,
+  "next": string,
+  "previous": string,
+  "results": IGameMovie[]
+}
+
+export interface IGameMovie {
+  "id": number,
+  "name": string,
+  "preview": string,
+  "data": {
+    "480": string,
+    "max": string
+  }
+}

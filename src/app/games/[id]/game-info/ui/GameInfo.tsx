@@ -6,6 +6,7 @@ import GameParameters from "@/app/games/[id]/game-parameters";
 import {getParameters} from "@/app/games/[id]/lib/getParameters";
 import GameScreenshots from "@/app/games/[id]/game-screenshots";
 import GameStores from "@/app/games/[id]/game-info/ui/GameStores";
+import GameMovies from "@/app/games/[id]/game-movies";
 
 interface IGameInfoProps {
   id: number;
@@ -125,6 +126,13 @@ export default function GameInfo(
       </Typography>
       
       <GameScreenshots gameId={id}/>
+      <Box mb={3}/>
+      
+      <Typography variant="h5" component="h5" mb={1}>
+        Trailers
+      </Typography>
+      
+      <GameMovies gameId={id}/>
       <Box mb={3}/>
       
       <Typography variant="h5" component="h5" mb={1}>
