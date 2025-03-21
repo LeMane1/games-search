@@ -1,15 +1,35 @@
-import {Box, CircularProgress} from "@mui/material";
+import {Box, Skeleton, Stack} from "@mui/material";
+import {Grid} from "@mui/system";
 
 export default function Loading() {
   return (
-    <Box sx={{
-      width: '100vw',
-      height: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-      <CircularProgress />
-    </Box>
+    <Stack sx={{width: '100%'}}>
+      <Skeleton variant="rounded" width={'100%'} height={60} />
+      <Box mb={4}/>
+      
+      <Skeleton variant="rounded" width={'100%'} height={50} />
+      <Box mb={4}/>
+      
+      <Grid container spacing={2}>
+        <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }}>
+          <Skeleton variant="rounded" width={'100%'} height={400}/>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }}>
+          <Skeleton variant="rounded" width={'100%'} height={400}/>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }}>
+          <Skeleton variant="rounded" width={'100%'} height={400}/>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }}>
+          <Skeleton variant="rounded" width={'100%'} height={400}/>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }}>
+          <Skeleton variant="rounded" width={'100%'} height={400}/>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }}>
+          <Skeleton variant="rounded" width={'100%'} height={400}/>
+        </Grid>
+      </Grid>
+    </Stack>
   )
 }
