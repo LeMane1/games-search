@@ -1,1 +1,1 @@
-export {GameInfo} from './ui/GameInfo'
+export {default} from './ui/GameInfo'

@@ -1,5 +1,3 @@
-'use client'
-
 import {Box, Chip, Stack, Typography} from "@mui/material";
 import {IDeveloper, IGenre, IPlatform, IPublisher, IStore} from "@/api/types";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
@@ -7,7 +5,7 @@ import {BuyPlatformLink} from "@/components/buy-platform-link";
 import RatingBadge from "@/components/rating-badge";
 import GameParameters from "@/app/games/[id]/game-parameters";
 import {getParameters} from "@/app/games/[id]/lib/getParameters";
-import {GameScreenshots} from "@/app/games/[id]/game-screenshots";
+import GameScreenshots from "@/app/games/[id]/game-screenshots";
 
 interface IGameInfoProps {
   id: number;
@@ -26,7 +24,7 @@ interface IGameInfoProps {
   esrb?: string;
 }
 
-export const GameInfo = (
+export default function GameInfo(
   { id,
     name,
     platforms,
@@ -38,7 +36,7 @@ export const GameInfo = (
     publishers,
     release,
     esrb
-  }: IGameInfoProps) => {
+  }: IGameInfoProps){
   return (
     <Stack
       width="100%"
@@ -82,7 +80,8 @@ export const GameInfo = (
       
       <Stack mb={3} direction="row" sx={{ flexGrow: 1, gap: 2, flexWrap: "wrap" }}>
         {
-          rating?.metacritic && <RatingBadge
+          rating?.metacritic &&
+          <RatingBadge
             icon={'/icons/icon_metacritic_logo.svg'}
             alt="Metacritic Logo"
             width={80}

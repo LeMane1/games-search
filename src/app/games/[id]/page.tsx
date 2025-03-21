@@ -1,4 +1,4 @@
-import {GameInfo} from "src/app/games/[id]/game-info";
+import GameInfo from "src/app/games/[id]/game-info";
 import {Box, Stack} from "@mui/material";
 import BgOverlay from "@/components/bg-overlay";
 import {IGameResponse} from "@/api/types";

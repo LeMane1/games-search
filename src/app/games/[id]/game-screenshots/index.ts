@@ -1,1 +1,1 @@
-export {GameScreenshots} from './ui/GameScreenshots'
+export {default} from './ui/GameScreenshots'

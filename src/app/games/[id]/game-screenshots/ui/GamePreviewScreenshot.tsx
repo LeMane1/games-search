@@ -1,14 +1,22 @@
 'use client'
 
 import {Box} from "@mui/material";
+import {useAppDispatch} from "@/lib/hooks";
+import {changeCurrentScreenshotId, changeModalState} from "@/lib/features/mainSlice";
 
 interface IGamePreviewScreenshotProps {
   image: string;
-  onClick: (id: number) => void;
-  id: number;
+  screenShotId: number;
 }
 
-export default function GamePreviewScreenshot ({image, onClick, id}: IGamePreviewScreenshotProps){
+export default function GamePreviewScreenshot ({image,  screenShotId}: IGamePreviewScreenshotProps){
+  const dispatch = useAppDispatch();
+  
+  const handleOnClick = () => {
+    dispatch(changeCurrentScreenshotId(screenShotId));
+    dispatch(changeModalState())
+  }
+  
   return (
     <>
       <Box
@@ -17,7 +25,7 @@ export default function GamePreviewScreenshot ({image, onClick, id}: IGamePrevie
         width={340}
         height={200}
         borderRadius={2}
-        onClick={() => onClick(id)}
+        onClick={() => handleOnClick()}
         sx={{
           objectFit: 'cover',
           ":hover":{
