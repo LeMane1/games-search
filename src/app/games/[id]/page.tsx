@@ -4,16 +4,16 @@ import BgOverlay from "@/components/bg-overlay";
 import {IGameResponse} from "@/api/types";
 import {getData} from "@/api/getData";
 
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 
 interface GamePageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>
 }
 
-export async function generateMetadata({ params }: GamePageProps): Promise<Metadata> {
-  const gameId = params.id;
+export async function generateMetadata(
+  { params}: GamePageProps
+): Promise<Metadata> {
+  const { id: gameId } = await params
   
   const game: IGameResponse = await getData<IGameResponse>({
     url: `games/${gameId}`
