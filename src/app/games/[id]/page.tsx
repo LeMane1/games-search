@@ -21,10 +21,10 @@ export async function generateMetadata(
   
   return {
     title: game?.name || "Game Search",
-    description: game?.description || "Find your favorite games",
+    description: game?.description_raw || "Find your favorite games",
     openGraph: {
       title: game?.name,
-      description: game?.description,
+      description: game?.description_raw,
       images: [
         {
           url: game?.background_image,
