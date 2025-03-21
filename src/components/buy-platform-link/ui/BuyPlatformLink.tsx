@@ -4,17 +4,19 @@ import {Button} from "@mui/material";
 interface IBuyPlatformLinkProps {
   name: string;
   slug?: string;
-  domain?: string;
+  url?: string;
 }
 
 export const BuyPlatformLink = (
   {
     name,
     slug,
+    url
   }: IBuyPlatformLinkProps) => {
   return (
     <>
       <Button
+        href={url}
         target="_blank"
         variant="outlined"
         color='secondary'

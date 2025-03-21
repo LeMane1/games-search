@@ -1,11 +1,11 @@
 import {Box, Chip, Stack, Typography} from "@mui/material";
 import {IDeveloper, IGenre, IPlatform, IPublisher, IStore} from "@/api/types";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
-import {BuyPlatformLink} from "@/components/buy-platform-link";
 import RatingBadge from "@/components/rating-badge";
 import GameParameters from "@/app/games/[id]/game-parameters";
 import {getParameters} from "@/app/games/[id]/lib/getParameters";
 import GameScreenshots from "@/app/games/[id]/game-screenshots";
+import GameStores from "@/app/games/[id]/game-info/ui/GameStores";
 
 interface IGameInfoProps {
   id: number;
@@ -131,16 +131,7 @@ export default function GameInfo(
         Where to buy
       </Typography>
       
-      <Stack direction="row" sx={{ flexGrow: 1, flexWrap: 'wrap', gap: 1 }}>
-        {stores && stores.length > 0 && stores.map((store: IStore) => (
-          <BuyPlatformLink
-            key={store.id}
-            name={store.store.name}
-            slug={store.store.slug}
-            domain={store.store.domain}
-          />
-        ))}
-      </Stack>
+      <GameStores gameId={id} stores={stores}/>
     </Stack>
   )
 }

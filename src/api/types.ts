@@ -126,3 +126,17 @@ export interface IGameScreenShotResponse {
   "previous": string,
   "results": IGameScreenshot[]
 }
+
+export interface IGameStoresResponse {
+  "count": number,
+  "next": string,
+  "previous": string,
+  "results": IGameStore[]
+}
+
+export interface IGameStore {
+  "id": number,
+  "game_id": string,
+  "store_id": number,
+  "url": string
+}
