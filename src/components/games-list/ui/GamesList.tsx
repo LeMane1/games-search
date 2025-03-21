@@ -5,6 +5,7 @@ import {SortSelect} from "@/components/sort-select";
 import {Pagination} from "@/components/pagination";
 import {IGamesResponse} from "@/api/types";
 import {Suspense} from "react";
+import {getData} from "@/api/getData";
 
 interface IGamesListProps {
   search: string;
@@ -18,11 +19,15 @@ export default async function GamesList(
     ordering,
     page
   }: IGamesListProps){
-  const gamesResponse = await fetch(`https://api.rawg.io/api/games?search=${search}&ordering=${ordering}&key=c717a6d152e74669a6066ea4cfe239b1`, {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'},
+  
+  const games: IGamesResponse = await getData<IGamesResponse>({
+    url: 'games',
+    searchParams: {
+      search,
+      ordering,
+      page: page.toString(),
+    },
   })
-  const games: IGamesResponse = await gamesResponse.json();
   
   return (
     <>

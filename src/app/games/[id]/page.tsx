@@ -1,20 +1,26 @@
-'use client'
-
-import {useParams} from 'next/navigation'
-import {useGetGameByIdQuery} from "@/api/api";
 import {GameInfo} from "src/app/games/[id]/game-info";
-import {Box, CircularProgress, Stack} from "@mui/material";
+import {Box, Stack} from "@mui/material";
 import BgOverlay from "@/components/bg-overlay";
+import {IGameResponse} from "@/api/types";
+import {getData} from "@/api/getData";
 
-export default function GamePage() {
-  const params = useParams();
-  const {data, isLoading, isSuccess} = useGetGameByIdQuery(Number(params.id))
+export default async function GamePage(props: {
+  params?: Promise<{
+    id?: string;
+  }>;
+}) {
+  const params = await props.params;
+  const gameId:string = params?.id || '';
+  
+  const game: IGameResponse = await getData<IGameResponse>({
+    url: `games/${gameId}`
+  })
   
   return (
     <>
-      <BgOverlay imageName={data?.background_image}/>
+      <BgOverlay imageName={game?.background_image}/>
       
-      {data && isSuccess && <Stack spacing={5} direction={{
+      <Stack spacing={5} direction={{
         xs: 'column',
         sm: 'column',
         md: 'row',
@@ -23,7 +29,7 @@ export default function GamePage() {
       }}>
         <Box
           component="img"
-          src={data?.background_image}
+          src={game?.background_image}
           alt="Game Image"
           boxShadow={5}
           sx={{
@@ -41,32 +47,22 @@ export default function GamePage() {
         />
         
         <GameInfo
-          id={data?.id}
-          name={data?.name}
-          platforms={data?.parent_platforms}
-          description={data?.description_raw}
-          genres={data?.genres}
-          stores={data?.stores}
+          id={game?.id}
+          name={game?.name}
+          platforms={game?.parent_platforms}
+          description={game?.description_raw}
+          genres={game?.genres}
+          stores={game?.stores}
           rating={{
-            metacritic: data?.metacritic,
-            rawg: data?.rating
+            metacritic: game?.metacritic,
+            rawg: game?.rating
           }}
-          developers={data?.developers}
-          publishers={data?.publishers}
-          release={data?.released}
-          esrb={data?.esrb_rating?.name}
+          developers={game?.developers}
+          publishers={game?.publishers}
+          release={game?.released}
+          esrb={game?.esrb_rating?.name}
         />
-      </Stack>}
-      
-      {isLoading && <Box sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '100%'
-      }}>
-        <CircularProgress />
-      </Box>}
+      </Stack>
     </>
   )
 }

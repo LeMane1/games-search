@@ -1,11 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {IGameResponse, IGameScreenShotResponse, IGamesResponse} from "@/api/types";
-
-interface IGameRequestParams {
-  search?: string;
-  ordering?: string;
-  page?: number;
-}
+import {IGameScreenShotResponse} from "@/api/types";
 
 export const gamesApi = createApi({
   reducerPath: 'gamesApi',
@@ -17,27 +11,6 @@ export const gamesApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getGames: builder.query<IGamesResponse, IGameRequestParams>({
-      query: ({search, ordering, page}) => ({
-        url: `/games`,
-        method: 'GET',
-        params: {
-          search,
-          ordering,
-          page,
-          key: 'c717a6d152e74669a6066ea4cfe239b1'
-        }
-      }),
-    }),
-    getGameById: builder.query<IGameResponse, number>({
-      query: (id: number) => ({
-        url: `/games/${id}`,
-        method: 'GET',
-        params: {
-          key: 'c717a6d152e74669a6066ea4cfe239b1'
-        }
-      })
-    }),
     getGameScreenShotsById: builder.query<IGameScreenShotResponse, number>({
       query: (id: number) => ({
         url: `/games/${id}/screenshots`,
@@ -50,8 +23,4 @@ export const gamesApi = createApi({
   }),
 })
 
-export const {
-  useLazyGetGamesQuery,
-  useGetGameByIdQuery,
-  useGetGameScreenShotsByIdQuery
-} = gamesApi
+export const {useGetGameScreenShotsByIdQuery} = gamesApi
