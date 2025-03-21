@@ -19,6 +19,10 @@ export const SortSelect = () => {
       params.delete('ordering');
     }
     
+    if (params.get('page')){
+      params.set('page', '1');
+    }
+    
     replace(`${pathname}?${params.toString()}`);
   }, 1000)
   
@@ -30,6 +34,7 @@ export const SortSelect = () => {
         id="sort-select"
         onChange={handleChange}
         value={searchParams.get('ordering')?.toString()}
+        defaultValue={searchParams.get('ordering')?.toString()}
         displayEmpty={false}
       >
         <MenuItem value='-name'>Name</MenuItem>

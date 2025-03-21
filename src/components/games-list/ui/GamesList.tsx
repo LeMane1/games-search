@@ -42,7 +42,7 @@ export default async function GamesList(
           }}
         >
           <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
-            {games?.count} items for <b>{search}</b>
+            {games?.count} items for {search ? <b>{search}</b> : 'all games'}
           </Typography>
           
           <SortSelect/>

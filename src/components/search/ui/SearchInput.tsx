@@ -21,6 +21,10 @@ export const SearchInput = () => {
       params.delete('search');
     }
     
+    if (params.get('page')){
+      params.set('page', '1');
+    }
+    
     replace(`${pathname}?${params.toString()}`);
   }, 1000)
   
