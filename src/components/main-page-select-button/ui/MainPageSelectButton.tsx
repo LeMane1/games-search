@@ -1,11 +1,19 @@
 import Link from "next/link";
 import {Box, Typography} from "@mui/material";
 
-export default function MainPageSelectButton(){
+interface IMainPageSelectButtonProps {
+  buttonText: string;
+  image: string;
+  link: string;
+}
+
+export default function MainPageSelectButton({buttonText, image, link}: IMainPageSelectButtonProps) {
   return (
-    <Link href="/games">
+    <Link href={link}>
       <Box
-        borderRadius={4}
+        component='div'
+        borderRadius={2}
+        padding={2}
         boxShadow={6}
         alignItems="end"
         sx={{
@@ -13,14 +21,30 @@ export default function MainPageSelectButton(){
           width: '100%',
           height: 220,
           backgroundColor: '#252525',
-          backgroundImage: 'url(/images/image_search_games.jpg)',
+          backgroundImage: `url(${image})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          padding: 3
+          overflow: 'hidden',
+          opacity: 0.8,
+          '&:hover': {
+            opacity: 1,
+          }
       }}>
-          <Typography variant="h4" component="h4" fontWeight={'bolder'} letterSpacing={1.2}>
-            GAMES
-          </Typography>
+          <Box
+            component='div'
+            py={1}
+            px={3}
+            borderRadius={2}
+            sx={{
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              backdropFilter: 'blur(10px)',
+              overflow: 'hidden',
+            }}
+          >
+            <Typography variant="h5" component="h5" fontWeight={'bold'} letterSpacing={1.2} color={'white'}>
+              {buttonText}
+            </Typography>
+          </Box>
       </Box>
     </Link>
   )

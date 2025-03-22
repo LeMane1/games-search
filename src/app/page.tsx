@@ -8,7 +8,11 @@ export default function Home() {
       <BgOverlay imageName={'/images/games_bg.jpg'}/>
       
       <Stack>
-        <MainPageSelectButton/>
+        <MainPageSelectButton
+          buttonText='GAMES'
+          image='/images/image_search_games.jpg'
+          link='/games'
+        />
       </Stack>
     </main>
   );
