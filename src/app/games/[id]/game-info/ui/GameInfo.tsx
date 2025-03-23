@@ -1,4 +1,4 @@
-import {Box, Breadcrumbs, Chip, Stack, Typography, Link} from "@mui/material";
+import {Box, Chip, Stack, Typography} from "@mui/material";
 import {IDeveloper, IGenre, IPlatform, IPublisher, IStore} from "@/api/types";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
 import RatingBadge from "@/components/rating-badge";
