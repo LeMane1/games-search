@@ -26,6 +26,7 @@ interface IGameInfoProps {
   publishers?: IPublisher[];
   release: string;
   esrb?: string;
+  playtime?: number;
 }
 
 export default function GameInfo(
@@ -40,7 +41,8 @@ export default function GameInfo(
     developers,
     publishers,
     release,
-    esrb
+    esrb,
+    playtime
   }: IGameInfoProps){
   return (
     <Stack
@@ -123,7 +125,8 @@ export default function GameInfo(
         publishers,
         platforms,
         release,
-        esrb
+        esrb,
+        playtime
       })}/>
       
       <Typography variant="h5" component="h5" mb={1}>

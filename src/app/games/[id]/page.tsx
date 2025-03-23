@@ -98,6 +98,7 @@ export default async function GamePage(props: {
           publishers={game?.publishers}
           release={game?.released}
           esrb={game?.esrb_rating?.name}
+          playtime={game?.playtime}
         />
       </Stack>
     </>

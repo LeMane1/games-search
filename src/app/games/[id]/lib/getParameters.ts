@@ -9,6 +9,7 @@ interface IGameParameters {
   platforms?: IPlatform[];
   release: string;
   esrb?: string;
+  playtime?: number;
 }
 
 export const getParameters = (
@@ -16,7 +17,8 @@ export const getParameters = (
     publishers,
     platforms,
     release,
-    esrb
+    esrb,
+    playtime
   }: IGameParameters): IGameParameter[] => {
   
   const developersParameter: IGameParameter = {
@@ -46,5 +48,17 @@ export const getParameters = (
     parameterValue: esrb ? ''+esrb : '-'
   }
   
-  return [releaseParameter, developersParameter, publishersParameter, platformsParameter, esrbParameter];
+  const playtimeParameter: IGameParameter = {
+    parameterType: 'Average playtime',
+    parameterValue: playtime ? ''+playtime+' hours' : '-'
+  }
+  
+  return [
+    releaseParameter,
+    developersParameter,
+    publishersParameter,
+    platformsParameter,
+    esrbParameter,
+    playtimeParameter
+  ];
 }
