@@ -85,7 +85,8 @@ export default async function GamePage(props: {
         <GameInfo
           id={game?.id}
           name={game?.name}
-          platforms={game?.parent_platforms}
+          parentPlatforms={game?.parent_platforms}
+          platforms={game?.platforms}
           description={game?.description_raw}
           genres={game?.genres}
           stores={game?.stores}

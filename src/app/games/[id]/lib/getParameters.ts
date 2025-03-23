@@ -1,11 +1,12 @@
 import {IGameParameter} from "@/app/games/[id]/game-parameters/ui/GameParameters";
-import {IDeveloper, IPublisher} from "@/api/types";
+import {IDeveloper, IPlatform, IPublisher} from "@/api/types";
 
 const Months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jan', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 interface IGameParameters {
   developers?: IDeveloper[];
   publishers?: IPublisher[];
+  platforms?: IPlatform[];
   release: string;
   esrb?: string;
 }
@@ -13,6 +14,7 @@ interface IGameParameters {
 export const getParameters = (
   {developers,
     publishers,
+    platforms,
     release,
     esrb
   }: IGameParameters): IGameParameter[] => {
@@ -27,6 +29,11 @@ export const getParameters = (
     parameterValue: publishers && publishers.length ? publishers.map((developer:IDeveloper) => developer.name).join(', ') : '-'
   }
   
+  const platformsParameter: IGameParameter = {
+    parameterType: 'Platforms',
+    parameterValue: platforms && platforms.length ? platforms.map((platform:IPlatform) => platform.platform.name).join(', ') : '-'
+  }
+  
   const date = new Date(release);
   
   const releaseParameter: IGameParameter = {
@@ -39,5 +46,5 @@ export const getParameters = (
     parameterValue: esrb ? ''+esrb : '-'
   }
   
-  return [releaseParameter, developersParameter, publishersParameter, esrbParameter];
+  return [releaseParameter, developersParameter, publishersParameter, platformsParameter, esrbParameter];
 }

@@ -12,6 +12,7 @@ import GameAchievements from "@/app/games/[id]/game-achievements";
 interface IGameInfoProps {
   id: number;
   name?: string;
+  parentPlatforms: IPlatform[];
   platforms?: IPlatform[];
   description?: string;
   genres?: IGenre[];
@@ -29,6 +30,7 @@ interface IGameInfoProps {
 export default function GameInfo(
   { id,
     name,
+    parentPlatforms,
     platforms,
     description,
     genres,
@@ -69,7 +71,7 @@ export default function GameInfo(
       </Typography>
       
       <Stack spacing={2} direction="row" sx={{ flexGrow: 1 }} mb={2}>
-        {platforms && platforms.length > 0 && platforms.map((platform) => (
+        {parentPlatforms && parentPlatforms.length > 0 && parentPlatforms.map((platform) => (
           <PlatformBadge platformName={platform.platform.slug} key={platform.platform.id}/>
         ))}
       </Stack>
@@ -118,6 +120,7 @@ export default function GameInfo(
       <GameParameters parameters={getParameters({
         developers,
         publishers,
+        platforms,
         release,
         esrb
       })}/>
