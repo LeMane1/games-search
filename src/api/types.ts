@@ -172,3 +172,18 @@ export interface IGameAchievementsResponse{
   "previous": string,
   "results": IGameAchievement[]
 }
+
+export interface IGameDeveloper {
+  "id": number,
+  "name": string,
+  "slug": string,
+  "games_count": number,
+  "image_background": string
+}
+
+export interface IGameDevelopersResponse {
+  "count": number,
+  "next": string,
+  "previous": string,
+  "results": IGameDeveloper[]
+}

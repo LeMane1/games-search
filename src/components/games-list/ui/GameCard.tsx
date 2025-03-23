@@ -56,7 +56,6 @@ export default function GameCard(
               ))}
             </Stack>
           </CardContent>
-          {/*{id}*/}
         </CardActionArea>
       </Card>
     </Link>
