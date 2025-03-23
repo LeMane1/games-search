@@ -19,6 +19,12 @@ export default function Home() {
           image='/images/image_search_developers.jpg'
           link='/developers'
         />
+        
+        <MainPageSelectButton
+          buttonText='PLATFORMS'
+          image='/images/image_search_platforms.jpg'
+          link='/platforms'
+        />
       </Stack>
     </main>
   );
