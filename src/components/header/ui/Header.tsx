@@ -1,4 +1,4 @@
-import {Box} from '@mui/material'
+import {Box, Button} from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,7 +12,7 @@ export default function Header(){
         alignItems: 'center',
       }}>
         <Link href="/">
-          <Image src={'/icons/icon_logo.svg'} alt='Logo' width={200} height={50} />
+          <Image src={'/icons/icon_logo.svg'} alt='Logo' width={140} height={50} />
         </Link>
       </Box>
     </header>

@@ -123,13 +123,6 @@ export default function GameInfo(
       })}/>
       
       <Typography variant="h5" component="h5" mb={1}>
-        Achievements
-      </Typography>
-      
-      <GameAchievements gameId={id} />
-      <Box mb={3}/>
-      
-      <Typography variant="h5" component="h5" mb={1}>
         Screenshots
       </Typography>
       
@@ -141,6 +134,13 @@ export default function GameInfo(
       </Typography>
       
       <GameMovies gameId={id}/>
+      <Box mb={3}/>
+      
+      <Typography variant="h5" component="h5" mb={1}>
+        Achievements
+      </Typography>
+      
+      <GameAchievements gameId={id} />
       <Box mb={3}/>
       
       <Typography variant="h5" component="h5" mb={1}>

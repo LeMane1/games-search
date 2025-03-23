@@ -13,7 +13,7 @@ export default function Footer() {
           height: 100,
           padding: 2,
       }}>
-        <Image src={'/icons/icon_logo.svg'} alt='Logo' width={140} height={30} />
+        <Image src={'/icons/icon_logo.svg'} alt='Logo' width={80} height={30} />
         
         <Typography component="h6" variant="subtitle1" color={'textSecondary'}>
           Game Searcher, 2025
