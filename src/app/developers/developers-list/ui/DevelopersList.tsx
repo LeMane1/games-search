@@ -30,7 +30,6 @@ export default async function DevelopersList({page}: IDevelopersListProps) {
               <DeveloperCard
                 name={developer.name}
                 gamesCount={developer.games_count}
-                developerId={developer.id}
               />
             </Suspense>
           </Grid>
