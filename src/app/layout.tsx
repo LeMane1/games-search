@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import Providers from "@/lib/Providers";
 import {Box, Container, Stack} from "@mui/material";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 
 export const metadata: Metadata = {
@@ -19,18 +20,27 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-            <Container
-              maxWidth="lg"
-              sx={{
-                minHeight: '100vh',
-                padding: 2,
-              }}>
-              <Stack>
-                <Header/>
-                <Box sx={{ height: 24 }} />
-                {children}
-              </Stack>
-            </Container>
+            <Stack direction="column"
+                   sx={{
+                     minHeight: '100vh',
+                     justifyContent: 'space-between',
+                   }}
+            >
+              <Container
+                maxWidth="lg"
+                sx={{
+                  // minHeight: '90vh',
+                  padding: 2,
+                }}>
+                <Stack>
+                  <Header/>
+                  <Box sx={{ height: 24 }} />
+                  {children}
+                </Stack>
+              </Container>
+              
+              <Footer/>
+            </Stack>
         </Providers>
       </body>
     </html>

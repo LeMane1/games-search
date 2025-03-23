@@ -1,5 +1,3 @@
-'use client'
-
 import {IGame, IPlatform, IGenre} from "@/api/types";
 import {Card, CardActionArea, CardContent, CardMedia, Chip, Stack, Typography} from "@mui/material";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
@@ -8,7 +6,7 @@ import Link from "next/link";
 
 type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic' | 'genres' | 'released'>
 
-export const GameCard = (
+export default function GameCard(
   { id,
     name,
     background_image,
@@ -16,7 +14,7 @@ export const GameCard = (
     metacritic,
     genres,
     released,
-  }:IGameCardProps) => {
+  }:IGameCardProps){
   
   return (
     <Link href={`/games/${id}`} passHref>
@@ -24,6 +22,7 @@ export const GameCard = (
         {metacritic && <RatingBadge ratingValue={metacritic} />}
         <CardActionArea >
           <CardMedia
+            loading={'lazy'}
             component="img"
             image={background_image ?? 'images/image_placeholder.png'}
             alt={name}
@@ -61,6 +60,5 @@ export const GameCard = (
         </CardActionArea>
       </Card>
     </Link>
-    
   )
 }

@@ -53,13 +53,16 @@ export default async function GamePage(props: {
     <>
       <BgOverlay imageName={game?.background_image}/>
       
-      <Stack spacing={5} direction={{
-        xs: 'column',
-        sm: 'column',
-        md: 'row',
-        lg: 'row',
-        xl: 'row'
-      }}>
+      <Stack
+        mb={4}
+        spacing={5}
+        direction={{
+          xs: 'column',
+          sm: 'column',
+          md: 'row',
+          lg: 'row',
+          xl: 'row'
+        }}>
         <Box
           component="img"
           src={game?.background_image}

@@ -157,3 +157,18 @@ export interface IGameMovie {
     "max": string
   }
 }
+
+export interface IGameAchievement{
+  "id": number,
+  "name": string,
+  "description": string,
+  "image": string,
+  "percent": string
+}
+
+export interface IGameAchievementsResponse{
+  "count": number,
+  "next": string,
+  "previous": string,
+  "results": IGameAchievement[]
+}

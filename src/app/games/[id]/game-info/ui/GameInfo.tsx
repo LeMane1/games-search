@@ -1,4 +1,4 @@
-import {Box, Chip, Stack, Typography} from "@mui/material";
+import {Box, Breadcrumbs, Chip, Stack, Typography, Link} from "@mui/material";
 import {IDeveloper, IGenre, IPlatform, IPublisher, IStore} from "@/api/types";
 import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
 import RatingBadge from "@/components/rating-badge";
@@ -7,6 +7,7 @@ import {getParameters} from "@/app/games/[id]/lib/getParameters";
 import GameScreenshots from "@/app/games/[id]/game-screenshots";
 import GameStores from "@/app/games/[id]/game-info/ui/GameStores";
 import GameMovies from "@/app/games/[id]/game-movies";
+import GameAchievements from "@/app/games/[id]/game-achievements";
 
 interface IGameInfoProps {
   id: number;
@@ -120,6 +121,13 @@ export default function GameInfo(
         release,
         esrb
       })}/>
+      
+      <Typography variant="h5" component="h5" mb={1}>
+        Achievements
+      </Typography>
+      
+      <GameAchievements gameId={id} />
+      <Box mb={3}/>
       
       <Typography variant="h5" component="h5" mb={1}>
         Screenshots

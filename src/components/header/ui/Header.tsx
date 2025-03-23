@@ -1,5 +1,6 @@
 import {Box} from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header(){
   return (
@@ -10,7 +11,9 @@ export default function Header(){
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
-        <Image src={'/icons/icon_logo.svg'} alt='Logo' width={200} height={50} />
+        <Link href="/">
+          <Image src={'/icons/icon_logo.svg'} alt='Logo' width={200} height={50} />
+        </Link>
       </Box>
     </header>
   )

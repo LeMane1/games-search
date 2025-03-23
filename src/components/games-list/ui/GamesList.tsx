@@ -1,4 +1,4 @@
-import {GameCard} from "@/components/games-list/ui/GameCard";
+import GameCard from "@/components/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import {SortSelect} from "@/components/sort-select";
@@ -39,20 +39,21 @@ export default async function GamesList(
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
+            gap: 1
           }}
         >
-          <Typography component="div" variant="h5" sx={{ flexGrow: 1 }}>
-            {games?.count} items for {search ? <b>{search}</b> : 'all games'}
+          <Typography component="div" variant="h5">
+            {games?.count} items for {search ? <b>{search}</b> : <b>all games</b>}
           </Typography>
           
           <SortSelect/>
         </Box>
       }
       
-      <Suspense key={search} fallback={<CircularProgress />}>
-        <Grid container spacing={2} my={3}>
-          {games && games.results.map((game) => (
-            <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
+      <Grid container spacing={2} my={3}>
+        {games && games.results.map((game) => (
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
+            <Suspense fallback={<CircularProgress/>}>
               <GameCard
                 id={game.id}
                 name={game.name}
@@ -62,11 +63,11 @@ export default async function GamesList(
                 genres={game.genres}
                 released={game.released}
               />
-            </Grid>
-          ))
-          }
-        </Grid>
-      </Suspense>
+            </Suspense>
+          </Grid>
+        ))
+        }
+      </Grid>
       
       <Pagination itemsCount={games?.count} defaultPage={page} />
     </>
