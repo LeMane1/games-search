@@ -1,6 +1,6 @@
 import {Box} from "@mui/material";
 import {SearchInput} from "@/components/search";
-import GamesList from "@/components/games-list";
+import GamesList from "src/app/games/games-list";
 import BgOverlay from "@/components/bg-overlay";
 
 export default async function GamesPage(props: {

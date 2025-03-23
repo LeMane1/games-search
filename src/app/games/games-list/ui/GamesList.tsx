@@ -1,4 +1,4 @@
-import GameCard from "@/components/games-list/ui/GameCard";
+import GameCard from "@/app/games/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import {SortSelect} from "@/components/sort-select";

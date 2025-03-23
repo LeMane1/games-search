@@ -1,6 +1,6 @@
 import {Box, Chip, Stack, Typography} from "@mui/material";
 import {IDeveloper, IGenre, IPlatform, IPublisher, IStore} from "@/api/types";
-import PlatformBadge from "@/components/games-list/ui/PlatformBadge";
+import PlatformBadge from "@/app/games/games-list/ui/PlatformBadge";
 import RatingBadge from "@/components/rating-badge";
 import GameParameters from "@/app/games/[id]/game-parameters";
 import {getParameters} from "@/app/games/[id]/lib/getParameters";
