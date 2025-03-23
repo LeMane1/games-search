@@ -24,6 +24,7 @@ export default function MainPageSelectButton({buttonText, image, link}: IMainPag
           backgroundImage: `url(${image})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
+          backgroundPosition: "center",
           overflow: 'hidden',
           opacity: 0.8,
           '&:hover': {
