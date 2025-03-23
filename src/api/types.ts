@@ -187,3 +187,21 @@ export interface IGameDevelopersResponse {
   "previous": string,
   "results": IGameDeveloper[]
 }
+
+export interface IGamePlatform {
+  "id": number,
+  "name": string,
+  "slug": string,
+  "games_count": number,
+  "image_background": string,
+  "image": string,
+  "year_start": number,
+  "year_end": number
+}
+
+export interface IGamePlatformsResponse {
+  "count": number,
+  "next": string,
+  "previous": string,
+  "results": IGamePlatform[]
+}
