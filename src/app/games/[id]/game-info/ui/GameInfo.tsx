@@ -8,6 +8,7 @@ import GameScreenshots from "@/app/games/[id]/game-screenshots";
 import GameStores from "@/app/games/[id]/game-info/ui/GameStores";
 import GameMovies from "@/app/games/[id]/game-movies";
 import GameAchievements from "@/app/games/[id]/game-achievements";
+import GameSystemRequirements from "@/app/games/[id]/game-system-requirements";
 
 interface IGameInfoProps {
   id: number;
@@ -151,6 +152,13 @@ export default function GameInfo(
       </Typography>
       
       <GameStores gameId={id} stores={stores}/>
+      <Box mb={3}/>
+      
+      <Typography variant="h5" component="h5" mb={1}>
+        System requirements
+      </Typography>
+      
+      <GameSystemRequirements platforms={platforms}/>
     </Stack>
   )
 }

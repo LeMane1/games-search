@@ -54,6 +54,14 @@ const theme = createTheme({
                 },
             },
         },
+        MuiAccordion: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'rgba(37, 37, 37, 0.6)',
+                    backdropFilter: 'blur(10px)',
+                }
+            }
+        }
     },
 });
 
