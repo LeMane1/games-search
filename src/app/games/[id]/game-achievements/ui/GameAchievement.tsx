@@ -4,9 +4,10 @@ interface IGameAchievementProps {
   name: string;
   description: string;
   image: string;
+  percent: string
 }
 
-export default function GameAchievement({name, image, description}: IGameAchievementProps) {
+export default function GameAchievement({name, image, description, percent}: IGameAchievementProps) {
   return (
     <Box
       component="div"
@@ -36,6 +37,18 @@ export default function GameAchievement({name, image, description}: IGameAchieve
           }}
         >
           {name}
+        </Typography>
+        
+        <Typography
+          variant="caption"
+          component="span"
+          sx={{
+            overflowWrap: "break-word",
+            wordBreak: "break-word",
+            whiteSpace: "normal"
+          }}
+        >
+          {percent} %
         </Typography>
         
         <Typography

@@ -32,6 +32,7 @@ export default async function GameAchievements({gameId}: IGameAchievementsProps)
           name={achievement.name}
           description={achievement.description}
           image={achievement.image}
+          percent={achievement.percent}
         />
       ))}
     </Box>
