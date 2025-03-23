@@ -13,8 +13,6 @@ export default async function GameAchievements({gameId}: IGameAchievementsProps)
   })
   const achievements: IGameAchievement[] = achievementsResponse.results
   
-  console.log(achievementsResponse)
-  
   return(
     <Box
       sx={{
