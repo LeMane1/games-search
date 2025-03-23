@@ -27,13 +27,17 @@ export default async function DevelopersList({page}: IDevelopersListProps) {
         {developers && developers.map((developer: IGameDeveloper) => (
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={developer.id}>
             <Suspense fallback={<CircularProgress/>}>
-              <DeveloperCard name={developer.name} gamesCount={developer.games_count}/>
+              <DeveloperCard
+                name={developer.name}
+                gamesCount={developer.games_count}
+                developerId={developer.id}
+              />
             </Suspense>
           </Grid>
         ))}
       </Grid>
       
-      <Pagination itemsCount={developersResponse?.count} defaultPage={page} />
+      <Pagination itemsCount={developersResponse?.count} defaultPage={page}/>
     </Stack>
   )
 }
