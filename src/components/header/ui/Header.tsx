@@ -1,8 +1,11 @@
-import {Box} from '@mui/material'
+import {Box, Button} from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
+import UserLabel from "@/components/header/ui/UserLabel";
+import {logout} from "@/app/login/login-container/lib/actions";
+import {isAuthenticated} from "@/api/getUser";
 
-export default function Header(){
+export default async function Header(){
   return (
     <header>
       <Box sx={{
@@ -14,6 +17,14 @@ export default function Header(){
         <Link href="/">
           <Image src={'/icons/icon_logo.svg'} alt='Logo' width={140} height={50} />
         </Link>
+        
+        {await isAuthenticated() ?
+          <UserLabel/>
+          :
+          <Button variant={'contained'} component='a' href={'/login'}>Enter</Button>
+        }
+        
+        <Button onClick={logout}>Logout</Button>
       </Box>
     </header>
   )
