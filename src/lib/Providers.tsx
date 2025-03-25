@@ -17,16 +17,18 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }
   
   return (
-        <>
-            <InitColorSchemeScript attribute="class" />
-            <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-                <ThemeProvider theme={theme}>
-                    <CssBaseline />
-                    <Provider store={storeRef.current}>
-                      {children}
-                    </Provider>
-                </ThemeProvider>
-            </AppRouterCacheProvider>
-        </>
+    // <CacheProvider value={clientSideEmotionCache}>
+    <>
+      <InitColorSchemeScript attribute="class" />
+      <AppRouterCacheProvider options={{ key: 'css' }}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Provider store={storeRef.current}>
+            {children}
+          </Provider>
+        </ThemeProvider>
+      </AppRouterCacheProvider>
+    </>
+    // </CacheProvider>
     );
 }
