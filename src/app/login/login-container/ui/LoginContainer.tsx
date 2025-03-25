@@ -1,51 +1,35 @@
 'use client';
 
-// import { useState } from 'react';
-import {Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput} from "@mui/material";
-import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {login, signup} from "@/app/login/login-container/lib/actions";
+import LoginForm from "@/app/login/login-container/ui/LoginForm";
+import RegisterForm from "@/app/login/login-container/ui/RegisterForm";
+import LoginWrapper from "@/app/login/login-wrapper";
+import {useAppSelector} from "@/lib/hooks";
+import {RootState} from "@/lib/store";
 
 export default function LoginContainer() {
+  const isLoginStateSelected: boolean= useAppSelector((state: RootState) => state.mainReducer.isLoginStateSelected)
+  
   return (
     <>
-      <form action={(formData: FormData) => signup(formData)}>
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
-          <OutlinedInput
-            id="imail"
-            type='email'
-            label="Email"
-            name='email'
-          />
-        </FormControl>
-        
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id='password'
-            type='password'
-            name="password"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    'hide the password'
-                  }
-                  // onClick={handleClickShowPassword}
-                  // onMouseDown={handleMouseDownPassword}
-                  // onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                  {<VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-        
-        <Button type={'submit'}>Submit</Button>
-      </form>
+      {isLoginStateSelected ?
+        <LoginWrapper
+          title="Welcome back"
+          subtitle='Sign in to continue to your account'
+          actionExtraText='New to our platform?'
+          actionText='Create an account'
+        >
+          <LoginForm/>
+        </LoginWrapper>
+        :
+        <LoginWrapper
+          title="Welcome!"
+          subtitle='Sign up to continue to your account'
+          actionExtraText='Already have an account?'
+          actionText='Sign in'
+        >
+          <RegisterForm/>
+        </LoginWrapper>
+      }
     </>
   );
 }

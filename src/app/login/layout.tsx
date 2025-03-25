@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Providers from "@/lib/Providers";
-import ContainerLayout from "@/lib/ContainerLayout";
+import {Box, Container} from "@mui/material";
+import BgOverlay from "@/components/bg-overlay";
 
 export const metadata: Metadata = {
   title: "Game Search",
@@ -13,13 +14,22 @@ export default async function LoginLayout({children}: Readonly<{
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <body>
-    <Providers>
-      <ContainerLayout showExtraLayout={false}>
-        {children}
-      </ContainerLayout>
-    </Providers>
-    </body>
+      <body>
+        <Providers>
+          <BgOverlay imageName={'/images/games_bg.jpg'}/>
+          <Box
+            alignItems="center"
+            justifyContent="center"
+            display="flex"
+            width='100vw'
+            height='100vh'
+          >
+            <Container maxWidth="sm">
+              {children}
+            </Container>
+          </Box>
+        </Providers>
+      </body>
     </html>
   );
 }
