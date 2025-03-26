@@ -19,6 +19,7 @@ export default function Loading() {
     }}>
       <Skeleton
         variant="rounded"
+        animation={'wave'}
         sx={{
           width: {
           xs: '100%',
@@ -34,33 +35,33 @@ export default function Loading() {
       
       
       <Stack sx={{width: '100%'}}>
-        <Skeleton variant="rounded" width={'100%'} height={60} />
+        <Skeleton variant="rounded" width={'100%'} height={60} animation={'wave'}/>
         <Box mb={2}/>
         
-        <Skeleton variant="rounded" width={'100%'} height={24}/>
+        <Skeleton variant="rounded" width={'100%'} height={24} animation={'wave'}/>
         <Box mb={3}/>
         
-        <Skeleton variant="rounded" width={'100%'} height={26}/>
+        <Skeleton variant="rounded" width={'100%'} height={26} animation={'wave'}/>
         <Box mb={4}/>
         
-        <Skeleton variant="rounded" width={'100%'} height={30}/>
+        <Skeleton variant="rounded" width={'100%'} height={30} animation={'wave'}/>
         <Box mb={2}/>
         
-        <Skeleton variant="rounded" width={'100%'} height={400}/>
+        <Skeleton variant="rounded" width={'100%'} height={400} animation={'wave'}/>
         <Box mb={4}/>
         
-        <Skeleton variant="rounded" width={'100%'} height={30}/>
+        <Skeleton variant="rounded" width={'100%'} height={30} animation={'wave'}/>
         <Box mb={2}/>
         
         <Grid container spacing={2}>
           <Grid size={4}>
-            <Skeleton variant="rounded" width={'100%'} height={100}/>
+            <Skeleton variant="rounded" width={'100%'} height={100} animation={'wave'}/>
           </Grid>
           <Grid size={4}>
-            <Skeleton variant="rounded" width={'100%'} height={100}/>
+            <Skeleton variant="rounded" width={'100%'} height={100} animation={'wave'}/>
           </Grid>
           <Grid size={4}>
-            <Skeleton variant="rounded" width={'100%'} height={100}/>
+            <Skeleton variant="rounded" width={'100%'} height={100} animation={'wave'}/>
           </Grid>
         </Grid>
       </Stack>
