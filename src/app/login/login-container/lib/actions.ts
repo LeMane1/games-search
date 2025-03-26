@@ -42,7 +42,7 @@ export async function signup(formData: FormData) {
   if (user) {
     const { error } = await supabase
       .from('profiles')
-      .insert([{ id: user.id, username: data.userName }]);
+      .insert([{ id: user.id, username: data.userName, email: data.email }]);
 
     if (error) {
       redirect('/error')
