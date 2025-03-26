@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import Providers from "@/lib/Providers";
 import {Box, Container} from "@mui/material";
 import BgOverlay from "@/components/bg-overlay";
 
@@ -13,23 +12,19 @@ export default async function LoginLayout({children}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <Providers>
-          <BgOverlay imageName={'/images/games_bg.jpg'}/>
-          <Box
-            alignItems="center"
-            justifyContent="center"
-            display="flex"
-            width='100vw'
-            height='100vh'
-          >
-            <Container maxWidth="sm">
-              {children}
-            </Container>
-          </Box>
-        </Providers>
-      </body>
-    </html>
+    <>
+      <BgOverlay imageName={'/images/games_bg.jpg'}/>
+      <Box
+        alignItems="center"
+        justifyContent="center"
+        display="flex"
+        width='100vw'
+        height='100vh'
+      >
+        <Container maxWidth="sm">
+          {children}
+        </Container>
+      </Box>
+    </>
   );
 }

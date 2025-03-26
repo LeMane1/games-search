@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import Providers from "@/lib/Providers";
 import ContainerLayout from "@/lib/ContainerLayout";
 
 export const metadata: Metadata = {
@@ -12,14 +11,8 @@ export default async function GamesLayout({children}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-      <Providers>
-        <ContainerLayout>
-          {children}
-        </ContainerLayout>
-      </Providers>
-      </body>
-    </html>
+    <ContainerLayout>
+      {children}
+    </ContainerLayout>
   );
 }

@@ -12,14 +12,8 @@ export default async function PlatformsLayout({children}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-    <body>
-    <Providers>
-      <ContainerLayout>
-        {children}
-      </ContainerLayout>
-    </Providers>
-    </body>
-    </html>
+    <ContainerLayout>
+      {children}
+    </ContainerLayout>
   );
 }
