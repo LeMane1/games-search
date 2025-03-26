@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Game Searcher
 
-## Getting Started
+---
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can also view [Demo](https://games-search-s237.vercel.app/) which is hosted on Vercel.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## About
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+Fullstack app with quick search of games, developer companies and platforms.
+There are sort parameters for games search. Game Page has a lot of info, like as description,
+screenshots, trailers, achievements, and stores with links.
 
-To learn more about Next.js, take a look at the following resources:
+## Technology stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next, React, Redux Toolkit, Typescript, Material UI, Supabase
 
-## Deploy on Vercel
+## Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+App is implemented on the Next platform, using server and client components.
+Data is fetched through requests in server components and then forwarded to client components.
+There are some server actions for update add/remove game from User game collection.
+Supabase is used as storage for Users and User game collections. 
+
+## Features
+
+---
+
+- Convenient search for games 
+- View game info in Game Page
+- View list of game developer companies and game platforms
+- Sign in/Sign up user account
+- Add/remove game to user game collection
+- Adaptive layout also supported for Mobiles and Tablets
+
+## Screenshots
+
+---
+
+### Home Page
+
+<img src="/screenshots/home.png" alt="Home Page" width="1000" height="600">
+
+### Game Search Page
+
+<img src="/screenshots/game-search.png" alt="Game Search Page" width="1000" height="600">
+
+### Platforms Page
+
+<img src="/screenshots/platforms-page.png" alt="Platforms Page" width="1000" height="600">
+
+### Developers Page
+
+<img src="/screenshots/developers-page.png" alt="Developers Page" width="1000" height="600">
+
+### Game Page
+
+<img src="/screenshots/game_page.png" alt="Game Page" width="1000" height="600">
+
+### Game Screenshots, Trailers and Achievements
+
+<img src="/screenshots/game-screenshots.png" alt="Screenshots, Trailes and Achievements" width="1000" height="600">
+
+### Profile Page
+
+<img src="/screenshots/profile.png" alt="Profile Page" width="1000" height="600">
+
+### Error Page
+
+<img src="/screenshots/error_page.png" alt="Error Page" width="1000" height="600">
+
