@@ -15,7 +15,7 @@ export async function addGameToPurchasedList({gameId, gameName, gameImage}: {gam
       .select('id')
       .eq('id', gameId)
     
-    if (!existingGame) {
+    if (existingGame?.length === 0) {
       const { error: addToGamesError } = await supabase
         .from('games')
         .insert([{ id: gameId, game_name: gameName, game_image: gameImage }]);
