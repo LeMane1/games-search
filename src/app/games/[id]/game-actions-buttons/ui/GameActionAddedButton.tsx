@@ -1,9 +1,10 @@
 'use client'
 
-import {Box, CircularProgress, IconButton, Typography} from "@mui/material";
+import {Box, CircularProgress, IconButton, Stack, Typography} from "@mui/material";
 import CancelIcon from '@mui/icons-material/Cancel';
 import {removeGameFromPurchasedList} from "@/app/games/[id]/game-actions-buttons/lib/actions";
 import {useState} from "react";
+import CheckIcon from '@mui/icons-material/Check';
 
 interface IGameActionAddedButtonProps {
   gameId: number;
@@ -43,21 +44,28 @@ export default function GameActionAddedButton({gameId}: IGameActionAddedButtonPr
           <CircularProgress color={'secondary'} size={20}/>
           :
           <>
-            <Typography
-              variant='subtitle1'
-              component='span'
-              fontWeight='bold'
-              color='primary.main'
-            >
-              You owned this game
-            </Typography>
+            <Stack direction='row' alignItems='center' justifyContent='center'>
+              <IconButton color={'primary'}>
+                <CheckIcon/>
+              </IconButton>
+              
+              <Typography
+                variant='subtitle1'
+                component='span'
+                fontWeight='bold'
+              >
+                You owned this game
+              </Typography>
+            </Stack>
+            
             <IconButton
               color="secondary"
               data-id={'removeGameButton'}
               onClick={handleOnClick}
               sx={{
                 position: 'absolute',
-                right: 16,
+                right: 6,
+                zIndex: 10,
                 opacity: 0,
                 visibility: 'hidden',
                 transform: 'scale(0)',
