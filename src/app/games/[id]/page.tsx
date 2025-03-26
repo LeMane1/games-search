@@ -5,6 +5,7 @@ import {IGameResponse} from "@/api/types";
 import {getData} from "@/api/getData";
 
 import type {Metadata} from "next";
+import GameActionButtons from "@/app/games/[id]/game-actions-buttons";
 
 interface GamePageProps {
   params: Promise<{ id: string }>
@@ -54,7 +55,6 @@ export default async function GamePage(props: {
       <BgOverlay imageName={game?.background_image}/>
       
       <Stack
-        mb={4}
         spacing={5}
         direction={{
           xs: 'column',
@@ -63,24 +63,28 @@ export default async function GamePage(props: {
           lg: 'row',
           xl: 'row'
         }}>
-        <Box
-          component="img"
-          src={game?.background_image}
-          alt="Game Image"
-          boxShadow={5}
-          sx={{
-            width: {
-              xs: '100%',
-              sm: '100%',
-              md: 300,
-              lg: 300,
-              xl: 300
-            },
-            height: 400,
-            objectFit: 'cover',
-            borderRadius: 2
-          }}
-        />
+        <Stack direction='column' spacing={3}>
+          <Box
+            component="img"
+            src={game?.background_image}
+            alt="Game Image"
+            boxShadow={5}
+            sx={{
+              width: {
+                xs: '100%',
+                sm: '100%',
+                md: 300,
+                lg: 300,
+                xl: 300
+              },
+              height: 400,
+              objectFit: 'cover',
+              borderRadius: 2
+            }}
+          />
+          
+          <GameActionButtons gameId={Number(gameId)}/>
+        </Stack>
         
         <GameInfo
           id={game?.id}
