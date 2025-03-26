@@ -2,7 +2,6 @@ import {Box, Button} from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import UserLabel from "@/components/header/ui/UserLabel";
-import {logout} from "@/app/login/login-container/lib/actions";
 import {isAuthenticated} from "@/api/getUser";
 
 export default async function Header(){
@@ -21,10 +20,8 @@ export default async function Header(){
         {await isAuthenticated() ?
           <UserLabel/>
           :
-          <Button variant={'contained'} component='a' href={'/login'}>Enter</Button>
+          <Button variant={'contained'} component='a' href={'/login'}>Login</Button>
         }
-        
-        <Button onClick={logout}>Logout</Button>
       </Box>
     </header>
   )

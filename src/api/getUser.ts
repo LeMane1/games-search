@@ -3,6 +3,13 @@
 import { createClient } from "@/utils/supabase/server";
 import {redirect} from "next/navigation";
 
+export interface IUser{
+  id: string;
+  username: string;
+  created_at: string;
+  email: string;
+}
+
 export const getUser = async () => {
   const supabase = await createClient();
   const {
@@ -19,12 +26,6 @@ export const getUser = async () => {
 export const isAuthenticated = async () => {
   const user = await getUser();
   return !!user;
-}
-
-export interface IUser{
-  id: string;
-  username: string;
-  created_at: string;
 }
 
 export const getCurrentUserData = async (): Promise<IUser | null> => {
