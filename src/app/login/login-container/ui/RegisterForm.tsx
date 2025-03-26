@@ -39,7 +39,7 @@ export default function RegisterForm(){
         
         <Box mb={2}/>
         
-        <Button type={'submit'} variant='contained'>Login</Button>
+        <Button type={'submit'} variant='contained'>Sign up</Button>
         
         <Box mb={2}/>
       </Stack>
