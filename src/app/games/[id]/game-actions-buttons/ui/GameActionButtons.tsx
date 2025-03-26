@@ -1,8 +1,9 @@
-import {Button, Stack} from "@mui/material";
-import {addGameToPurchasedList, checkGameOwn} from "@/app/games/[id]/game-actions-buttons/lib/actions";
+import {Stack} from "@mui/material";
+import {checkGameOwn} from "@/app/games/[id]/game-actions-buttons/lib/actions";
 import {IGameResponse} from "@/api/types";
 import {getData} from "@/api/getData";
-import {GameActionAddedButton} from "@/app/games/[id]/game-actions-buttons/ui/GameActionAddedButton";
+import GameActionAddedButton from "@/app/games/[id]/game-actions-buttons/ui/GameActionAddedButton";
+import GameActionButton from "@/app/games/[id]/game-actions-buttons/ui/GameActionButton";
 
 interface IGameActionButtonsProps {
   gameId: number;
@@ -11,15 +12,9 @@ interface IGameActionButtonsProps {
 export default async function GameActionButtons({gameId}: IGameActionButtonsProps){
   const isGameOwned = await checkGameOwn(gameId);
   
-  const handleOnClick = async () => {
-    'use server'
-    
-    const game: IGameResponse = await getData<IGameResponse>({
-      url: `games/${gameId}`
-    })
-    
-    await addGameToPurchasedList({gameId, gameName: game.name, gameImage: game.background_image})
-  }
+  const game: IGameResponse = await getData<IGameResponse>({
+    url: `games/${gameId}`
+  })
   
   return (
     <Stack spacing={2} direction='column'>
@@ -27,9 +22,11 @@ export default async function GameActionButtons({gameId}: IGameActionButtonsProp
         isGameOwned ?
           <GameActionAddedButton gameId={gameId}/>
           :
-          <Button variant="outlined" color="secondary" onClick={handleOnClick}>
-            Already have a game
-          </Button>
+          <GameActionButton
+            gameId={gameId}
+            gameName={game.name}
+            gameImage={game.background_image}
+          />
       }
       
       
