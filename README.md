@@ -1,7 +1,5 @@
 # Game Searcher
 
----
-
 First, run the development server:
 
 ```bash
@@ -13,21 +11,15 @@ You can also view [Demo](https://games-search-s237.vercel.app/) which is hosted 
 
 ## About
 
----
-
 Fullstack app with quick search of games, developer companies and platforms.
 There are sort parameters for games search. Game Page has a lot of info, like as description,
 screenshots, trailers, achievements, and stores with links.
 
 ## Technology stack
 
----
-
 Next, React, Redux Toolkit, Typescript, Material UI, Supabase
 
 ## Architecture
-
----
 
 App is implemented on the Next platform, using server and client components.
 Data is fetched through requests in server components and then forwarded to client components.
@@ -35,8 +27,6 @@ There are some server actions for update add/remove game from User game collecti
 Supabase is used as storage for Users and User game collections. 
 
 ## Features
-
----
 
 - Convenient search for games 
 - View game info in Game Page
@@ -46,8 +36,6 @@ Supabase is used as storage for Users and User game collections.
 - Adaptive layout also supported for Mobiles and Tablets
 
 ## Screenshots
-
----
 
 ### Home Page
 
