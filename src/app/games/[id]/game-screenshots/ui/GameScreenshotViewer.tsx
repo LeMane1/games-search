@@ -56,6 +56,7 @@ export const GameScreenshotViewer = (
       onClose={handleClose}
       fullScreen
       hideBackdrop
+      disableScrollLock
       sx={{
         '& .MuiDialog-paper': {
           backgroundImage: 'none',
