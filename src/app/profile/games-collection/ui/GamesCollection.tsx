@@ -10,21 +10,28 @@ export default async function GamesCollection(){
   return (
     <Stack direction='column' spacing={3} pb={4}>
       <Typography variant="h3" component='h3'>
-        Your games
+        Favorite games
       </Typography>
       
       <Grid container spacing={2} my={3}>
-        {games && games.map((game) => (
-          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.gameId}>
-            <Suspense fallback={<CircularProgress/>}>
-              <GameCard
-                gameName={game.gameName}
-                gameId={game.gameId}
-                gameImage={game.gameImage}
-              />
-            </Suspense>
-          </Grid>
-        ))}
+        {
+          games && games.length > 0 ?
+            games && games.map((game) => (
+              <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.gameId}>
+                <Suspense fallback={<CircularProgress/>}>
+                  <GameCard
+                    gameName={game.gameName}
+                    gameId={game.gameId}
+                    gameImage={game.gameImage}
+                  />
+                </Suspense>
+              </Grid>
+            ))
+            :
+            <Typography variant="body2" component="span">
+              No games added
+            </Typography>
+        }
       </Grid>
     </Stack>
   )
