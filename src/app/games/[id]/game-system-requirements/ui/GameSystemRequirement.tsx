@@ -10,7 +10,7 @@ interface IGameSystemRequirementProps {
 export default function GameSystemRequirement({ minimum, recommended, platformName }: IGameSystemRequirementProps) {
   return (
     <>
-      <Accordion disabled={!(minimum || recommended)} >
+      {(minimum || recommended) && <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
         >
@@ -43,7 +43,7 @@ export default function GameSystemRequirement({ minimum, recommended, platformNa
             }
           </Stack>
         </AccordionDetails>
-      </Accordion>
+      </Accordion>}
     </>
   )
 }
