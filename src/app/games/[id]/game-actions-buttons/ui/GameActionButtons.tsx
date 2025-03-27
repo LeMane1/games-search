@@ -28,11 +28,6 @@ export default async function GameActionButtons({gameId}: IGameActionButtonsProp
             gameImage={game.background_image}
           />
       }
-      
-      
-      {/*<Button variant="outlined" color="secondary">*/}
-      {/*  Add to wishlist*/}
-      {/*</Button>*/}
     </Stack>
   )
 }

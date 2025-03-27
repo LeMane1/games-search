@@ -31,7 +31,7 @@ export default function GameActionButton(
       variant="outlined"
       color="secondary"
       onClick={() => handleOnClick()}>
-      Already have a game
+      Add to favorites
     </Button>
   )
 }
