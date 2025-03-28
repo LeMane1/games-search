@@ -34,7 +34,7 @@ export default async function UserLabel(){
         />
         
         <Typography variant="subtitle1" component="h6" fontWeight={'bold'}>
-          {user?.user_metadata?.user_name}
+          {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
         </Typography>
         
         <SvgIcon sx={{

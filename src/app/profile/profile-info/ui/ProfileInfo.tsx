@@ -16,7 +16,7 @@ export default async function ProfileInfo() {
           <Typography component='span' variant='h6' color={'textSecondary'}>
             {`Name: `}
           </Typography>
-          {user?.user_metadata?.user_name}
+          {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
         </Typography>
         
         <Typography variant='h6' component='h6'>
