@@ -10,7 +10,7 @@ export async function signinWithOAuth(providerName: Provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: providerName,
     options: {
-      redirectTo: `https://games-search-s237.vercel.app/auth/callback`,
+      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
     },
   })
   
