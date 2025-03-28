@@ -28,7 +28,7 @@ export default async function GamesCollection(){
               </Grid>
             ))
             :
-            <Typography variant="body2" component="span">
+            <Typography variant="h6" component="span" color="textSecondary">
               No games added
             </Typography>
         }
