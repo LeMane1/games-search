@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import {useAppDispatch} from "@/lib/hooks";
 import {changeLoginState} from "@/lib/features/mainSlice";
+import ProviderButtons from "@/app/login/login-wrapper/ui/ProviderButtons";
 
 interface ILoginWrapperProps {
   children?: React.ReactNode;
@@ -49,6 +50,8 @@ export default function LoginWrapper(
       >
         {subtitle}
       </Typography>
+      
+      <ProviderButtons/>
       
       {children}
       
