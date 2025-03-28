@@ -1,10 +1,10 @@
-import {getCurrentUserData} from "@/api/getUser";
+import {getUser} from "@/api/getUser";
 import {Avatar, Stack, SvgIcon, Typography} from "@mui/material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Link from "next/link";
 
 export default async function UserLabel(){
-  const user = await getCurrentUserData()
+  const user = await getUser()
   
   return (
     <Link href={'/profile'} passHref>
@@ -24,17 +24,17 @@ export default async function UserLabel(){
         }}
       >
         <Avatar
+          src={user?.user_metadata?.avatar_url}
           sx={{
             bgcolor: 'primary.main',
             width: 30,
             height: 30,
             color: "white",
           }}
-          src="/broken-image.jpg"
         />
         
         <Typography variant="subtitle1" component="h6" fontWeight={'bold'}>
-          {user?.username}
+          {user?.user_metadata?.user_name}
         </Typography>
         
         <SvgIcon sx={{
