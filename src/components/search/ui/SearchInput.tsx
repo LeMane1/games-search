@@ -30,12 +30,13 @@ export const SearchInput = () => {
   
   return (
     <TextField
+      autoComplete="off"
       id="search-input"
       variant="outlined"
       placeholder='Search...'
       sx={{width: '100%'}}
       onChange={handleSearchChange}
-      defaultValue={searchParams.get('search')?.toString()}
+      defaultValue={searchParams.get('search')?.toString() || ''}
       slotProps={{
         input: {
           startAdornment: (
