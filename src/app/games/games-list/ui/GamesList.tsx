@@ -26,6 +26,7 @@ export default async function GamesList(
       search,
       ordering,
       page: page.toString(),
+      search_precise: 'true'
     },
   })
   
