@@ -18,9 +18,21 @@ export default function GameCard(
   
   return (
     <Link href={`/games/${id}`} passHref>
-      <Card sx={{ width: '100%', position: 'relative' }}>
+      <Card sx={{
+        width: '100%',
+        position: 'relative',
+        minHeight: '100%',
+        height: '100%',
+      }}>
         {metacritic && <RatingBadge ratingValue={metacritic} />}
-        <CardActionArea >
+        <CardActionArea sx={{
+          height: '100%',
+          minHeight: 'fit-content',
+          display: 'flex',
+          justifyContent: 'start',
+          alignItems: 'flex-start',
+          flexDirection: 'column'
+        }}>
           <CardMedia
             loading={'lazy'}
             component="img"
