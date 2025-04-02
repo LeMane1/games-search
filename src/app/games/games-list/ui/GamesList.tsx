@@ -63,6 +63,7 @@ export default async function GamesList(
                 metacritic={game.metacritic}
                 genres={game.genres}
                 released={game.released}
+                short_screenshots={game.short_screenshots}
               />
             </Suspense>
           </Grid>

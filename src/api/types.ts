@@ -17,6 +17,12 @@ export interface IGenre{
   "name": string,
 }
 
+export interface IShortScreenshot {
+  id: number,
+  image: string
+}
+
+
 export interface IGame{
   "id": number,
   "slug": string,
@@ -43,6 +49,7 @@ export interface IGame{
   "platforms": IPlatform[],
   "parent_platforms": IPlatform[],
   "genres": IGenre[],
+  "short_screenshots": IShortScreenshot[]
 }
 
 export interface IGamesResponse{

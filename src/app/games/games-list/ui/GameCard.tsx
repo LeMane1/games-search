@@ -3,10 +3,11 @@ import {Card, CardActionArea, CardContent, CardMedia, Chip, Stack, Typography} f
 import PlatformBadge from "@/app/games/games-list/ui/PlatformBadge";
 import {RatingBadge} from "./RatingBadge";
 import Link from "next/link";
+import ScreenshotsCarousel from "@/app/games/games-list/ui/ScreenshotsCarousel";
 
-type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic' | 'genres' | 'released'>
+type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic' | 'genres' | 'released' | 'short_screenshots'>
 
-export default function GameCard(
+export default async function GameCard(
   { id,
     name,
     background_image,
@@ -14,6 +15,7 @@ export default function GameCard(
     metacritic,
     genres,
     released,
+    short_screenshots,
   }:IGameCardProps){
   
   return (
@@ -33,20 +35,31 @@ export default function GameCard(
           alignItems: 'flex-start',
           flexDirection: 'column'
         }}>
-          <CardMedia
-            loading={'lazy'}
-            component="img"
-            image={background_image ?? 'images/image_placeholder.png'}
-            alt={name}
-            sx={{ height: {
-                xs: 180,
-                sm: 220,
-                md: 260,
-                lg: 300,
-                xl: 340,
-              },
-              objectFit: 'cover',}}
-          />
+          {
+            short_screenshots?.length > 0 ?
+              <ScreenshotsCarousel
+                screenshots={short_screenshots}
+              />
+              :
+              <CardMedia
+                loading={'lazy'}
+                component="img"
+                image={background_image || 'images/image_placeholder.png'}
+                alt={name}
+                sx={{
+                  height: {
+                    xs: 180,
+                    sm: 220,
+                    md: 260,
+                    lg: 300,
+                    xl: 340,
+                  },
+                  width: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+          }
+          
           <CardContent>
             <Typography variant="subtitle2" component="h6" color={'textSecondary'}>
               {new Date(released).getFullYear()}
