@@ -3,6 +3,7 @@ import {Box, Stack} from "@mui/material";
 import BgOverlay from "@/components/bg-overlay";
 import {IGameResponse} from "@/api/types";
 import {getData} from "@/api/getData";
+import {checkAuth} from "@/api/getUser";
 
 import type {Metadata} from "next";
 import GameActionButtons from "@/app/games/[id]/game-actions-buttons";
@@ -50,6 +51,8 @@ export default async function GamePage(props: {
     url: `games/${gameId}`
   })
   
+  const isAuthenticated = await checkAuth();
+  
   return (
     <>
       <BgOverlay imageName={game?.background_image}/>
@@ -83,7 +86,7 @@ export default async function GamePage(props: {
             }}
           />
           
-          <GameActionButtons gameId={Number(gameId)}/>
+          {isAuthenticated && <GameActionButtons gameId={Number(gameId)}/>}
         </Stack>
         
         <GameInfo

@@ -16,7 +16,7 @@ export const getUser = async () => {
   return user;
 };
 
-export const isAuthenticated = async () => {
+export const checkAuth = async () => {
   const user = await getUser();
   return !!user;
 }
