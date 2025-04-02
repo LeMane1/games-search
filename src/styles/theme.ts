@@ -69,6 +69,7 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     fontWeight: 'bolder',
+                    padding: '6px 20px'
                 }
             }
         }
