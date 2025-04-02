@@ -10,6 +10,7 @@ export default async function Header(){
       <Box sx={{
         flexGrow: 1,
         display: 'flex',
+        flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
