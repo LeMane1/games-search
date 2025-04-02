@@ -16,10 +16,11 @@ export default async function UserLabel(){
         borderRadius={1}
         sx={{
           '&:hover': {
-            backgroundColor: "rgba(0, 0, 0, 0.2)",
-            backdropFilter: "blur(8px)",
-            transition: 'transform 0.2s',
             cursor: 'pointer',
+          },
+          '&:hover > #user-label-arrow': {
+            width: 20,
+            transition: 'all .2s ease-out',
           }
         }}
       >
@@ -37,9 +38,12 @@ export default async function UserLabel(){
           {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
         </Typography>
         
-        <SvgIcon sx={{
-          width: 20,
-          height: 20,
+        <SvgIcon
+          id={'user-label-arrow'}
+          sx={{
+            width: 0,
+            height: 20,
+            transition: 'all .2s ease-out',
         }}>
           <ArrowForwardIosIcon/>
         </SvgIcon>
