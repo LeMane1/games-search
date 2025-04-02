@@ -20,6 +20,7 @@ export default async function GameMovies({gameId}: IGameMoviesProps) {
       sx={{
         flexGrow: 1,
         overflowX: 'auto',
+        overflowY: 'hidden',
       }}
     >
       {

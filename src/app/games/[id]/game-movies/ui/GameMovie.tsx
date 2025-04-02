@@ -20,36 +20,36 @@ export default function GameMovie({previewImage, movieURL}: IGameMovieProps){
         backgroundColor: '#000',
       }}
     >
-    <ReactPlayer
-      height='200px'
-      width='340px'
-      light={
-      <Box
-        component='img'
-        src={previewImage}
-        alt='Thumbnail'
-        width={340}
-        height={200}
-        sx={{ objectFit: 'cover' }}
+      {movieURL && <ReactPlayer
+        height='200px'
+        width='340px'
+        light={
+          <Box
+            component='img'
+            src={previewImage}
+            alt='Thumbnail'
+            width={340}
+            height={200}
+            sx={{ objectFit: 'cover' }}
+          />}
+        controls={true}
+        playIcon={
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 10,
+            }}
+          >
+            <IconButton>
+              <PlayArrowIcon sx={{ fontSize: 50, color: 'white' }} />
+            </IconButton>
+          </Box>}
+        url={movieURL}
+        fallback={<Skeleton variant="rectangular" width={340} height={200} />}
       />}
-      controls={true}
-      playIcon={
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 10,
-          }}
-        >
-          <IconButton>
-            <PlayArrowIcon sx={{ fontSize: 50, color: 'white' }} />
-          </IconButton>
-        </Box>}
-      url={movieURL}
-      fallback={<Skeleton variant="rectangular" width={340} height={200} />}
-    />
     </Box>
   )
 }
