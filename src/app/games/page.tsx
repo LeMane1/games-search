@@ -2,6 +2,7 @@ import {Box} from "@mui/material";
 import {SearchInput} from "@/components/search";
 import GamesList from "src/app/games/games-list";
 import BgOverlay from "@/components/bg-overlay";
+import {Suspense} from "react";
 
 export default async function GamesPage(props: {
   searchParams?: Promise<{
@@ -20,7 +21,9 @@ export default async function GamesPage(props: {
       <BgOverlay imageName={'/images/games_bg.jpg'}/>
       <SearchInput/>
       <Box sx={{ height: 16 }} />
-      <GamesList search={search} ordering={ordering} page={currentPage}/>
+      <Suspense>
+        <GamesList search={search} ordering={ordering} page={currentPage}/>
+      </Suspense>
     </main>
   );
 }
