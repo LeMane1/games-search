@@ -21,9 +21,7 @@ export default async function GamesPage(props: {
       <BgOverlay imageName={'/images/games_bg.jpg'}/>
       <SearchInput/>
       <Box sx={{ height: 16 }} />
-      <Suspense>
-        <GamesList search={search} ordering={ordering} page={currentPage}/>
-      </Suspense>
+      <GamesList search={search} ordering={ordering} page={currentPage}/>
     </main>
   );
 }
