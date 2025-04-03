@@ -26,7 +26,8 @@ export default async function WideNavigation() {
             flexWrap: 'wrap',
             alignItems: 'center',
             listStyleType: 'none',
-            gap: 2
+            gap: 2,
+            paddingInlineStart: 0,
           }}
         >
           {

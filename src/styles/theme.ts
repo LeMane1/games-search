@@ -39,7 +39,7 @@ const theme = createTheme({
                 secondary: {
                     light: '#676767',
                     main: '#e6e6e6',
-                    dark: '#ba000d',
+                    dark: '#cdcdcd',
                     contrastText: '#000',
                 },
             },
@@ -72,7 +72,7 @@ const theme = createTheme({
                     padding: '6px 20px'
                 }
             }
-        }
+        },
     },
 });
 
