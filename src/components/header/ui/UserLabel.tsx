@@ -1,11 +1,15 @@
-import {getUser} from "@/api/getUser";
-import {Avatar, Stack, SvgIcon, Typography} from "@mui/material";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Link from "next/link";
+'use client'
 
-export default async function UserLabel(){
-  const user = await getUser()
-  
+import {Avatar, Stack, Typography} from "@mui/material";
+import Link from "next/link";
+import {User} from "@supabase/auth-js";
+
+interface IUserLabelProps{
+  user: User;
+  isExpanded?: boolean;
+}
+
+export default function UserLabel({user, isExpanded = true}:IUserLabelProps){
   return (
     <Link href={'/profile'} passHref>
       <Stack
@@ -18,9 +22,8 @@ export default async function UserLabel(){
           '&:hover': {
             cursor: 'pointer',
           },
-          '&:hover > #user-label-arrow': {
-            width: 20,
-            transition: 'all .2s ease-out',
+          '&:hover > #user-label-username': {
+            opacity: 1,
           }
         }}
       >
@@ -34,19 +37,17 @@ export default async function UserLabel(){
           }}
         />
         
-        <Typography variant="subtitle1" component="h6" fontWeight={'bold'}>
-          {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
-        </Typography>
-        
-        <SvgIcon
-          id={'user-label-arrow'}
+        {isExpanded && <Typography
+          id={'user-label-username'}
+          variant="subtitle1"
+          component="h6"
+          fontWeight={'bold'}
           sx={{
-            width: 0,
-            height: 20,
-            transition: 'all .2s ease-out',
-        }}>
-          <ArrowForwardIosIcon/>
-        </SvgIcon>
+            opacity: .9
+          }}
+        >
+          {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
+        </Typography>}
       </Stack>
     </Link>
   )

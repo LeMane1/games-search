@@ -5,12 +5,14 @@ export interface MainState {
   currentScreenshotId: number;
   isModalOpen: boolean;
   isLoginStateSelected: boolean;
+  isDrawerOpened: boolean;
 }
 
 const initialState: MainState = {
   currentScreenshotId: 0,
   isModalOpen: false,
   isLoginStateSelected: true,
+  isDrawerOpened: false,
 }
 
 export const mainSlice = createSlice({
@@ -25,11 +27,19 @@ export const mainSlice = createSlice({
     },
     changeLoginState: (state) => {
       state.isLoginStateSelected = !state.isLoginStateSelected
-    }
+    },
+    changeDrawerState: (state) => {
+      state.isDrawerOpened = !state.isDrawerOpened
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { changeCurrentScreenshotId, changeModalState, changeLoginState } = mainSlice.actions
+export const {
+  changeCurrentScreenshotId,
+  changeModalState,
+  changeLoginState,
+  changeDrawerState
+} = mainSlice.actions
 
 export default mainSlice.reducer
