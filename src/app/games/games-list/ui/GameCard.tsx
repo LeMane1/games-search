@@ -4,8 +4,15 @@ import PlatformBadge from "@/app/games/games-list/ui/PlatformBadge";
 import {RatingBadge} from "./RatingBadge";
 import Link from "next/link";
 import ScreenshotsCarousel from "@/app/games/games-list/ui/ScreenshotsCarousel";
+import FavoriteButton from "@/components/favorite-button";
 
-type IGameCardProps = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic' | 'genres' | 'released' | 'short_screenshots'>
+type GameCard = Pick<IGame, 'id' | 'name' | 'background_image' | 'platforms' | 'metacritic' | 'genres' | 'released' | 'short_screenshots'>
+
+interface IGameCardProps extends GameCard{
+  isAuthenticated: boolean;
+  isFavorite: boolean;
+}
+
 
 export default async function GameCard(
   { id,
@@ -16,6 +23,8 @@ export default async function GameCard(
     genres,
     released,
     short_screenshots,
+    isAuthenticated,
+    isFavorite,
   }:IGameCardProps){
   
   return (
@@ -26,7 +35,20 @@ export default async function GameCard(
         minHeight: '100%',
         height: '100%',
       }}>
+        {isAuthenticated && <FavoriteButton
+          isFavorite={isFavorite}
+          gameName={name}
+          gameImage={background_image}
+          gameId={id}
+          sx={{
+            position: 'absolute',
+            left: '6px',
+            top: '6px',
+            zIndex: 100
+        }}/>}
+        
         {metacritic && <RatingBadge ratingValue={metacritic} />}
+        
         <CardActionArea sx={{
           height: '100%',
           minHeight: 'fit-content',
@@ -61,12 +83,12 @@ export default async function GameCard(
           }
           
           <CardContent>
-            <Typography variant="subtitle2" component="h6" color={'textSecondary'}>
-              {new Date(released).getFullYear()}
+            <Typography variant="h5" component="h5" sx={{ fontWeight: 'bold' }}>
+              {name}
             </Typography>
             
-            <Typography gutterBottom variant="h5" component="h5" sx={{ fontWeight: 'bold' }}>
-              {name}
+            <Typography gutterBottom variant="subtitle2" component="h6" color={'textSecondary'}>
+              {new Date(released).getFullYear()}
             </Typography>
             
             <Stack direction="row" mb={2} sx={{flexWrap: 'wrap', gap: 1}}>

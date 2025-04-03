@@ -6,6 +6,9 @@ import {Pagination} from "@/components/pagination";
 import {IGamesResponse} from "@/api/types";
 import {Suspense} from "react";
 import {getData} from "@/api/getData";
+import {checkAuth} from "@/api/getUser";
+import {getFavoriteGames} from "@/app/games/games-list/lib/actions";
+import {checkFavorite} from "@/app/games/games-list/lib/checkFavorite";
 
 interface IGamesListProps {
   search: string;
@@ -29,6 +32,9 @@ export default async function GamesList(
       search_precise: 'true'
     },
   })
+  
+  const isAuthenticated = await checkAuth()
+  const favoriteGames = await getFavoriteGames()
   
   return (
     <>
@@ -64,6 +70,8 @@ export default async function GamesList(
                 genres={game.genres}
                 released={game.released}
                 short_screenshots={game.short_screenshots}
+                isAuthenticated={isAuthenticated}
+                isFavorite={favoriteGames ? checkFavorite(favoriteGames, game.id) : false}
               />
             </Suspense>
           </Grid>
