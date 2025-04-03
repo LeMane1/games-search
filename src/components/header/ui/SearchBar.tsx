@@ -1,7 +1,7 @@
 'use client'
 
 import {Button, InputAdornment, TextField} from "@mui/material";
-import {useState, KeyboardEvent} from "react";
+import {useState, KeyboardEvent, useEffect} from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import {redirect, usePathname, useRouter, useSearchParams} from "next/navigation";
 
@@ -10,6 +10,13 @@ export default function SearchBar(){
   const pathname = usePathname();
   const { replace } = useRouter();
   const [searchText, setSearchText] = useState('');
+  
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    const searchValue = params.get('search')
+    
+    if (searchValue) setSearchText(searchValue)
+  },[])
   
   const handleSearch = () => {
     const params = new URLSearchParams(searchParams);
