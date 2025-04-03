@@ -2,7 +2,6 @@ import {Box} from "@mui/material";
 import {SearchInput} from "@/components/search";
 import GamesList from "src/app/games/games-list";
 import BgOverlay from "@/components/bg-overlay";
-import {Suspense} from "react";
 
 export default async function GamesPage(props: {
   searchParams?: Promise<{
