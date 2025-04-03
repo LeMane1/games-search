@@ -1,7 +1,6 @@
 import GameCard from "@/app/games/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
-import {Box, CircularProgress, Typography} from "@mui/material";
-import {SortSelect} from "@/components/sort-select";
+import {CircularProgress, Stack, Typography} from "@mui/material";
 import {Pagination} from "@/components/pagination";
 import {IGamesResponse} from "@/api/types";
 import {Suspense} from "react";
@@ -9,6 +8,7 @@ import {getData} from "@/api/getData";
 import {checkAuth} from "@/api/getUser";
 import {getFavoriteGames} from "@/app/games/games-list/lib/actions";
 import {checkFavorite} from "@/app/games/games-list/lib/checkFavorite";
+import SearchParametersBar from "@/components/search-parameters-bar";
 
 interface IGamesListProps {
   search: string;
@@ -38,46 +38,41 @@ export default async function GamesList(
   
   return (
     <>
-      {games &&
-        <Box
-          my={2}
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: 1
-          }}
-        >
-          <Typography component="div" variant="h5">
-            {games?.count} items for {search ? <b>{search}</b> : <b>all games</b>}
-          </Typography>
-          
-          <SortSelect/>
-        </Box>
-      }
+      <Stack direction='column' mb={3}>
+        <Typography component="h4" variant="h4">
+          {search && search.length > 0 ? search : 'all games'}
+        </Typography>
+        
+        <Typography component="h6" variant="subtitle1" color="textSecondary">
+          {games?.count} items
+        </Typography>
+      </Stack>
       
-      <Grid container spacing={2} my={3}>
-        {games && games.results.map((game) => (
-          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
-            <Suspense fallback={<CircularProgress/>}>
-              <GameCard
-                id={game.id}
-                name={game.name}
-                background_image={game.background_image}
-                platforms={game.parent_platforms}
-                metacritic={game.metacritic}
-                genres={game.genres}
-                released={game.released}
-                short_screenshots={game.short_screenshots}
-                isAuthenticated={isAuthenticated}
-                isFavorite={favoriteGames ? checkFavorite(favoriteGames, game.id) : false}
-              />
-            </Suspense>
-          </Grid>
-        ))
-        }
-      </Grid>
+      <Stack direction="row" spacing={4}>
+        <SearchParametersBar/>
+        
+        <Grid container spacing={2} my={3}>
+          {games && games.results.map((game) => (
+            <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
+              <Suspense fallback={<CircularProgress/>}>
+                <GameCard
+                  id={game.id}
+                  name={game.name}
+                  background_image={game.background_image}
+                  platforms={game.parent_platforms}
+                  metacritic={game.metacritic}
+                  genres={game.genres}
+                  released={game.released}
+                  short_screenshots={game.short_screenshots}
+                  isAuthenticated={isAuthenticated}
+                  isFavorite={favoriteGames ? checkFavorite(favoriteGames, game.id) : false}
+                />
+              </Suspense>
+            </Grid>
+          ))
+          }
+        </Grid>
+      </Stack>
       
       <Pagination itemsCount={games?.count} defaultPage={page} />
     </>

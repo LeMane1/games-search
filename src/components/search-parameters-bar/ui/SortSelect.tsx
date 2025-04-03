@@ -27,7 +27,7 @@ export const SortSelect = () => {
   }, 1000)
   
   return (
-    <FormControl variant="filled" sx={{ minWidth: 200 }}>
+    <FormControl variant='standard' sx={{ minWidth: 200 }}>
       <InputLabel id="sort-select">Sort by</InputLabel>
       <Select
         labelId="sort-select"
