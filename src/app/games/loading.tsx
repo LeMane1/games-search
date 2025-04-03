@@ -4,9 +4,6 @@ import {Grid} from "@mui/system";
 export default function Loading() {
   return (
     <Stack sx={{width: '100%'}}>
-      <Skeleton variant="rounded" width={'100%'} height={60} animation={'wave'}/>
-      <Box mb={4}/>
-      
       <Skeleton variant="rounded" width={'100%'} height={50} animation={'wave'}/>
       <Box mb={4}/>
       
