@@ -6,7 +6,7 @@ import {
   Typography
 } from "@mui/material";
 import {useAppDispatch} from "@/lib/hooks";
-import {changeLoginState} from "@/lib/features/mainSlice";
+import {changeLoginState} from "@/lib/slices/mainSlice";
 import ProviderButtons from "@/app/login/login-wrapper/ui/ProviderButtons";
 
 interface ILoginWrapperProps {

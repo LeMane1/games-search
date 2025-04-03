@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import {gamesApi} from "@/api/api";
-import mainReducer from './features/mainSlice'
+import mainReducer from '@/lib/slices/mainSlice'
 
 const rootReducer = combineReducers({
   [gamesApi.reducerPath]: gamesApi.reducer,

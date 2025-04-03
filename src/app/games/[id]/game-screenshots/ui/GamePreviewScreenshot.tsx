@@ -2,7 +2,7 @@
 
 import {Box} from "@mui/material";
 import {useAppDispatch} from "@/lib/hooks";
-import {changeCurrentScreenshotId, changeModalState} from "@/lib/features/mainSlice";
+import {changeCurrentScreenshotId, changeModalState} from "@/lib/slices/mainSlice";
 
 interface IGamePreviewScreenshotProps {
   image: string;

@@ -5,7 +5,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {IGameScreenshot} from "@/api/types";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {changeCurrentScreenshotId, changeModalState} from "@/lib/features/mainSlice";
+import {changeCurrentScreenshotId, changeModalState} from "@/lib/slices/mainSlice";
 import {RootState} from "@/lib/store";
 import CloseIcon from '@mui/icons-material/Close';
 
