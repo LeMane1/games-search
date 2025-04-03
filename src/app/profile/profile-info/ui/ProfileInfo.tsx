@@ -1,4 +1,4 @@
-import {Button, Stack, Typography} from "@mui/material";
+import {Avatar, Button, Stack, Typography} from "@mui/material";
 import {logout} from "@/app/login/login-container/lib/actions";
 import {getUser} from "@/api/getUser";
 
@@ -11,20 +11,26 @@ export default async function ProfileInfo() {
         Profile
       </Typography>
       
-      <Stack direction='column' spacing={1}>
-        <Typography variant='h6' component='h6'>
-          <Typography component='span' variant='h6' color={'textSecondary'}>
-            {`Name: `}
-          </Typography>
-          {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
-        </Typography>
+      <Stack direction='row' spacing={2}>
+        <Avatar
+          src={user?.user_metadata?.avatar_url}
+          sx={{
+            bgcolor: 'primary.main',
+            width: 150,
+            height: 150,
+            color: "white",
+          }}
+        />
         
-        <Typography variant='h6' component='h6'>
-          <Typography component='span' variant='h6' color={'textSecondary'}>
-            {`Email: `}
+        <Stack direction='column'>
+          <Typography variant='h4' component='h4'>
+            {user?.user_metadata?.full_name || user?.user_metadata?.user_name}
           </Typography>
-          {user?.user_metadata?.email}
-        </Typography>
+          
+          <Typography variant='subtitle1' component='h6' color={'textSecondary'}>
+            {user?.user_metadata?.email}
+          </Typography>
+        </Stack>
       </Stack>
       
       <Button
