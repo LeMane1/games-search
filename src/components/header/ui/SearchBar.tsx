@@ -24,7 +24,7 @@ export default function SearchBar(){
       params.set('page', '1');
     }
     
-    if (pathname.indexOf('/games')){
+    if (!pathname.indexOf('/games')){
       redirect(`/games?${params.toString()}`)
     }
     
