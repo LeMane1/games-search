@@ -13,8 +13,7 @@ interface IGameCardProps extends GameCard{
   isFavorite: boolean;
 }
 
-
-export default async function GameCard(
+export default function GameCard(
   { id,
     name,
     background_image,

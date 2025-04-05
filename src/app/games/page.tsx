@@ -1,5 +1,6 @@
 import GamesList from "src/app/games/games-list";
 import BgOverlay from "@/components/bg-overlay";
+import {Suspense} from "react";
 
 export default async function GamesPage(props: {
   searchParams?: Promise<{
@@ -16,7 +17,9 @@ export default async function GamesPage(props: {
   return (
     <main style={{width: '100%'}}>
       <BgOverlay imageName={'/images/games_bg.jpg'}/>
-      <GamesList search={search} ordering={ordering} page={currentPage}/>
+      <Suspense>
+        <GamesList search={search} ordering={ordering} page={currentPage}/>
+      </Suspense>
     </main>
   );
 }

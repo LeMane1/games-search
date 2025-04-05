@@ -1,6 +1,6 @@
 import GameCard from "@/app/games/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
-import {CircularProgress, Fab, Stack, Typography} from "@mui/material";
+import {CircularProgress, Stack, Typography} from "@mui/material";
 import {Pagination} from "@/components/pagination";
 import {IGamesResponse} from "@/api/types";
 import {Suspense} from "react";
