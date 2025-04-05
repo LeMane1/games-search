@@ -6,6 +6,7 @@ export interface MainState {
   isModalOpen: boolean;
   isLoginStateSelected: boolean;
   isDrawerOpened: boolean;
+  isSearchParametersModalOpened: boolean;
 }
 
 const initialState: MainState = {
@@ -13,6 +14,7 @@ const initialState: MainState = {
   isModalOpen: false,
   isLoginStateSelected: true,
   isDrawerOpened: false,
+  isSearchParametersModalOpened: false,
 }
 
 export const mainSlice = createSlice({
@@ -31,6 +33,9 @@ export const mainSlice = createSlice({
     changeDrawerState: (state) => {
       state.isDrawerOpened = !state.isDrawerOpened
     },
+    changeSearchParametersModalState: (state) => {
+      state.isSearchParametersModalOpened = !state.isSearchParametersModalOpened
+    }
   },
 })
 
@@ -39,7 +44,8 @@ export const {
   changeCurrentScreenshotId,
   changeModalState,
   changeLoginState,
-  changeDrawerState
+  changeDrawerState,
+  changeSearchParametersModalState
 } = mainSlice.actions
 
 export default mainSlice.reducer
