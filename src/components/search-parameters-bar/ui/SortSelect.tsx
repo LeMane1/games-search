@@ -1,41 +1,43 @@
 'use client'
 
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
-import {useDebouncedCallback} from "use-debounce";
-import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {useSearchParams} from "next/navigation";
+import {useEffect} from "react";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {changeSortOrdering} from "@/lib/slices/searchParametersSlice";
+import {RootState} from "@/lib/store";
 
 export const SortSelect = () => {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const dispatch = useAppDispatch();
+  const sortOrdering = useAppSelector((state: RootState) => state.searchParametersReducer.sortOrdering)
   
-  const handleChange = useDebouncedCallback((event: SelectChangeEvent) => {
-    const sortValue:string = event.target.value
+  useEffect(() => {
     const params = new URLSearchParams(searchParams);
+    const ordering = params.get('ordering');
     
-    if (sortValue) {
-      params.set('ordering', sortValue);
-    } else {
-      params.delete('ordering');
+    if (ordering){
+      dispatch(changeSortOrdering(ordering))
     }
-    
-    if (params.get('page')){
-      params.set('page', '1');
-    }
-    
-    replace(`${pathname}?${params.toString()}`);
-  }, 1000)
+  }, [])
+  
+  const handleOnChange = (event: SelectChangeEvent) => {
+    const sortValue:string = event.target.value
+    dispatch(changeSortOrdering(sortValue));
+  }
   
   return (
-    <FormControl variant='standard' sx={{ minWidth: 200 }}>
-      <InputLabel id="sort-select">Sort by</InputLabel>
+    <FormControl variant='standard' sx={{ width: '100%' }}>
+      <InputLabel id="sort-select">Ordering</InputLabel>
       <Select
         labelId="sort-select"
         id="sort-select"
-        onChange={handleChange}
-        value={searchParams.get('ordering')?.toString()}
-        defaultValue={searchParams.get('ordering')?.toString()}
+        onChange={handleOnChange}
+        value={sortOrdering}
         displayEmpty={false}
+        MenuProps={{
+          disableScrollLock: true
+        }}
       >
         <MenuItem value='-name'>Name</MenuItem>
         <MenuItem value='-released'>Release Date</MenuItem>
