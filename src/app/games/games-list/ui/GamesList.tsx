@@ -40,7 +40,7 @@ export default async function GamesList(
     <>
       <Stack direction='column' mb={3}>
         <Typography component="h4" variant="h4">
-          {search && search.length > 0 ? search : 'all games'}
+          {search && search.length > 0 ? search : 'All games'}
         </Typography>
         
         <Typography component="h6" variant="subtitle1" color="textSecondary">
