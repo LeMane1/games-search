@@ -13,15 +13,15 @@ interface IMediaQueryContainerProps {
 export const MediaQueryContainer = (
   {
     breakPointValue,
-    isLowerThanBreakpoint = true,
+    isLowerThanBreakpoint = false,
     children
   }: IMediaQueryContainerProps) => {
   const theme = useTheme();
-  const isLower = useMediaQuery(theme.breakpoints.up(breakPointValue));
+  const isActive = useMediaQuery(theme.breakpoints.up(breakPointValue));
   
   return (
     <>
-      {(isLowerThanBreakpoint ? isLower : !isLower) && children}
+      {(isLowerThanBreakpoint ? !isActive : isActive) && children}
     </>
   )
 }

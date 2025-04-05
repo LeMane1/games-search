@@ -11,7 +11,7 @@ export default async function ShortNavigation() {
   const user: User | null = await getUser()
   
   return (
-    <MediaQueryContainer breakPointValue={'md'} isLowerThanBreakpoint={false}>
+    <MediaQueryContainer breakPointValue={'md'} isLowerThanBreakpoint={true}>
       <Box sx={{
         display: 'flex',
         flexWrap: 'wrap',

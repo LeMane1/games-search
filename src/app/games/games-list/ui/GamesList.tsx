@@ -1,6 +1,6 @@
 import GameCard from "@/app/games/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
-import {CircularProgress, Stack, Typography} from "@mui/material";
+import {CircularProgress, Fab, Stack, Typography} from "@mui/material";
 import {Pagination} from "@/components/pagination";
 import {IGamesResponse} from "@/api/types";
 import {Suspense} from "react";
@@ -8,7 +8,7 @@ import {getData} from "@/api/getData";
 import {checkAuth} from "@/api/getUser";
 import {getFavoriteGames} from "@/app/games/games-list/lib/actions";
 import {checkFavorite} from "@/app/games/games-list/lib/checkFavorite";
-import SearchParametersBar from "@/components/search-parameters-bar";
+import SearchParameters from "@/app/games/games-list/ui/SearchParameters";
 
 interface IGamesListProps {
   search: string;
@@ -38,7 +38,13 @@ export default async function GamesList(
   
   return (
     <>
-      <Stack direction='column' mb={3}>
+      <Stack direction='column' mb={{
+        xs: 1,
+        sm: 1,
+        md: 3,
+        lg: 3,
+        xl: 3,
+      }}>
         <Typography component="h4" variant="h4">
           {search && search.length > 0 ? search : 'All games'}
         </Typography>
@@ -48,8 +54,10 @@ export default async function GamesList(
         </Typography>
       </Stack>
       
-      <Stack direction="row" spacing={4}>
-        <SearchParametersBar/>
+      <Stack direction="row" sx={{
+        gap: 4
+      }}>
+        <SearchParameters/>
         
         <Grid container spacing={2} my={3}>
           {games && games.results.map((game) => (
