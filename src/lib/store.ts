@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import {gamesApi} from "@/api/api";
 import mainReducer from '@/lib/slices/mainSlice'
+import searchParametersReducer from "@/lib/slices/searchParametersSlice";
 
 const rootReducer = combineReducers({
   [gamesApi.reducerPath]: gamesApi.reducer,
   mainReducer,
+  searchParametersReducer
 })
 
 export const makeStore = () => {

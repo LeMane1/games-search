@@ -1,12 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+export interface PlatformValue {
+  platformId: number;
+  platformName: string;
+}
+
 export interface SearchParametersState {
-  sortOrdering: string
+  sortOrdering: string;
+  selectedPlatforms: PlatformValue[];
 }
 
 const initialState: SearchParametersState = {
   sortOrdering: '',
+  selectedPlatforms: []
 }
 
 export const searchParametersSlice = createSlice({
@@ -16,15 +23,20 @@ export const searchParametersSlice = createSlice({
     resetAllSearchParameters: (state) => {
       state.sortOrdering = ''
     },
-    // changeCurrentScreenshotId: (state, action: PayloadAction<number>) => {
-    //   state.currentScreenshotId = action.payload
-    // },
+    changeSortOrdering: (state, action: PayloadAction<string>) => {
+      state.sortOrdering = action.payload
+    },
+    changeSelectedPlatforms: (state, action: PayloadAction<PlatformValue[]>) => {
+      state.selectedPlatforms = action.payload
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
 export const {
   resetAllSearchParameters,
+  changeSortOrdering,
+  changeSelectedPlatforms
 } = searchParametersSlice.actions
 
 export default searchParametersSlice.reducer

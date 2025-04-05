@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {IGameScreenShotResponse} from "@/api/types";
+import {IGamePlatformsResponse} from "@/api/types";
 
 export const gamesApi = createApi({
   reducerPath: 'gamesApi',
@@ -11,9 +11,9 @@ export const gamesApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getGameScreenShotsById: builder.query<IGameScreenShotResponse, number>({
-      query: (id: number) => ({
-        url: `/games/${id}/screenshots`,
+    getPlatformsList: builder.query<IGamePlatformsResponse, void>({
+      query: () => ({
+        url: `/platforms/lists/parents`,
         method: 'GET',
         params: {
           key: 'c717a6d152e74669a6066ea4cfe239b1'
@@ -23,4 +23,4 @@ export const gamesApi = createApi({
   }),
 })
 
-export const {useGetGameScreenShotsByIdQuery} = gamesApi
+export const {useGetPlatformsListQuery} = gamesApi
