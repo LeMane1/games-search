@@ -40,7 +40,7 @@ export default function ApplyButton(){
       variant={'contained'}
       onClick={handleOnClick}
     >
-      Apply Filters
+      Apply
     </Button>
   )
 }

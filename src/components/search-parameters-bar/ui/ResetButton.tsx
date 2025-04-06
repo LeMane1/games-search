@@ -28,7 +28,7 @@ export default function ResetButton(){
       fullWidth
       onClick={handleOnClick}
     >
-      Reset filters
+      Reset
     </Button>
   )
 }

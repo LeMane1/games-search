@@ -1,5 +1,5 @@
 import {SortSelect} from "./SortSelect";
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import ApplyButton from "@/components/search-parameters-bar/ui/ApplyButton";
 import PlatformsSelect from "@/components/search-parameters-bar/ui/PlatformsSelect";
 import ResetButton from "@/components/search-parameters-bar/ui/ResetButton";
@@ -26,6 +26,10 @@ export default async function SearchParametersBar({width = 250}: ISearchParamete
         minWidth: width
       }}
     >
+      <Typography variant="h5" component="h5" fontWeight="semibold">
+        Filters
+      </Typography>
+      
       <SortSelect/>
       
       <Box mb={2}/>
