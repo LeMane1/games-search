@@ -26,7 +26,7 @@ export default async function GamesList(
   }: IGamesListProps){
   
   const games: IGamesResponse = await getData<IGamesResponse>({
-    url: 'games',
+    url: '/games',
     searchParams: {
       search,
       ordering,

@@ -12,7 +12,7 @@ interface IPlatformsListProps {
 
 export default async function PlatformsList({page}: IPlatformsListProps) {
   const platformsResponse: IGamePlatformsResponse = await getData<IGamePlatformsResponse>({
-    url: 'platforms',
+    url: '/platforms',
     searchParams: {
       page: page.toString()
     },

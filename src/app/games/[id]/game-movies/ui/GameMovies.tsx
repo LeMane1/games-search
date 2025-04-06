@@ -9,7 +9,7 @@ interface IGameMoviesProps {
 
 export default async function GameMovies({gameId}: IGameMoviesProps) {
   const moviesResponse = await getData<IGameMoviesResponse>({
-    url: `games/${gameId}/movies`
+    url: `/games/${gameId}/movies`
   })
   const movies: IGameMovie[] = moviesResponse.results;
   

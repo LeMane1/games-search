@@ -9,7 +9,7 @@ interface IGameAchievementsProps {
 
 export default async function GameAchievements({gameId}: IGameAchievementsProps){
   const achievementsResponse = await getData<IGameAchievementsResponse>({
-    url: `games/${gameId}/achievements`
+    url: `/games/${gameId}/achievements`
   })
   const achievements: IGameAchievement[] = achievementsResponse.results
   

@@ -18,7 +18,7 @@ export async function generateMetadata(
   const { id: gameId } = await params
   
   const game: IGameResponse = await getData<IGameResponse>({
-    url: `games/${gameId}`
+    url: `/games/${gameId}`
   })
   
   return {
@@ -48,7 +48,7 @@ export default async function GamePage(props: {
   const gameId:string = params?.id || '';
   
   const game: IGameResponse = await getData<IGameResponse>({
-    url: `games/${gameId}`
+    url: `/games/${gameId}`
   })
   
   const isAuthenticated = await checkAuth();

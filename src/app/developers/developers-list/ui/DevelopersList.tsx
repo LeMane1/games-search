@@ -12,7 +12,7 @@ interface IDevelopersListProps {
 
 export default async function DevelopersList({page}: IDevelopersListProps) {
   const developersResponse: IGameDevelopersResponse = await getData<IGameDevelopersResponse>({
-    url: 'developers',
+    url: '/developers',
     searchParams: {
       page: page.toString(),
       page_size: '20'

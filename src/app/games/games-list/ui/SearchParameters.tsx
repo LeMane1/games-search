@@ -1,5 +1,3 @@
-'use client'
-
 import {Fab} from "@mui/material";
 import TuneIcon from "@mui/icons-material/Tune";
 import SearchParametersBar from "@/components/search-parameters-bar";

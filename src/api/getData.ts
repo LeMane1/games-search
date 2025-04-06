@@ -3,7 +3,7 @@ interface IGetDataProps{
   searchParams?: Record<string, string>;
 }
 
-const defaultUrlBase: string ='https://api.rawg.io/api/'
+const defaultUrlBase: string ='https://api.rawg.io/api'
 
 export const getData = async<T> (
   {

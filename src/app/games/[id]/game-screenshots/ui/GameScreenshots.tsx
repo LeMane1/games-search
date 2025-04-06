@@ -13,7 +13,7 @@ interface IGameScreenshotsProps {
 
 export default async function GameScreenshots({gameId}: IGameScreenshotsProps) {
   const screenshots: IGameScreenShotResponse = await getData<IGameScreenShotResponse>({
-    url: `games/${gameId}/screenshots`
+    url: `/games/${gameId}/screenshots`
   })
   
   return (

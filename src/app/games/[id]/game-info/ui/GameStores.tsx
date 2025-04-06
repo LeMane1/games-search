@@ -10,7 +10,7 @@ interface IGameStoresProps {
 
 export default async function GameStores({gameId, stores}: IGameStoresProps) {
   const {results} = await getData<IGameStoresResponse>({
-    url: `games/${gameId}/stores`
+    url: `/games/${gameId}/stores`
   })
   const storesLinks: IGameStore[] = results
   

@@ -1,6 +1,5 @@
 'use client'
 
-import {useGetPlatformsListQuery} from "@/api/api";
 import {Checkbox, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
@@ -8,6 +7,7 @@ import {RootState} from "@/lib/store";
 import {changeSelectedPlatforms} from "@/lib/slices/searchParametersSlice";
 import {useEffect} from "react";
 import {useSearchParams} from "next/navigation";
+import {IGamePlatform} from "@/api/types";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -21,9 +21,12 @@ const MenuProps = {
   disableScrollLock: true
 };
 
-export default function PlatformsSelect() {
+interface IPlatformsSelectProps {
+  parentPlatformsList: IGamePlatform[];
+}
+
+export default function PlatformsSelect({parentPlatformsList}: IPlatformsSelectProps) {
   const searchParams = useSearchParams();
-  const { data: platforms } = useGetPlatformsListQuery();
   const dispatch = useAppDispatch();
   const selectedPlatforms = useAppSelector((state: RootState) =>
     state.searchParametersReducer.selectedPlatforms
@@ -57,15 +60,15 @@ export default function PlatformsSelect() {
         value={selectedPlatforms}
         onChange={handleOnChange}
         renderValue={(selected) => {
-          if (!platforms?.results) return '';
+          if (!parentPlatformsList) return '';
           
           return selected.map(id =>
-            platforms.results.find(p => p.id === id)?.name || ''
+            parentPlatformsList.find(p => p.id === id)?.name || ''
           ).filter(Boolean).join(', ');
         }}
         MenuProps={MenuProps}
       >
-        {platforms?.results.map((platform) => (
+        {parentPlatformsList.map((platform) => (
           <MenuItem key={platform.id} value={platform.id}>
             <Checkbox checked={Boolean(selectedPlatforms?.find(p => p === platform.id))} />
             <ListItemText primary={platform.name} />

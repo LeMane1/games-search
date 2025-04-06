@@ -13,7 +13,7 @@ export default async function GameActionButtons({gameId}: IGameActionButtonsProp
   const isGameOwned = await checkGameOwn(gameId);
   
   const game: IGameResponse = await getData<IGameResponse>({
-    url: `games/${gameId}`
+    url: `/games/${gameId}`
   })
   
   return (
