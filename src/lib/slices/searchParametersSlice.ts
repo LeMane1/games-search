@@ -17,6 +17,7 @@ export const searchParametersSlice = createSlice({
   reducers: {
     resetAllSearchParameters: (state) => {
       state.sortOrdering = ''
+      state.selectedPlatforms = []
     },
     changeSortOrdering: (state, action: PayloadAction<string>) => {
       state.sortOrdering = action.payload

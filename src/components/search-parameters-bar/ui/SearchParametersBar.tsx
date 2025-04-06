@@ -1,7 +1,8 @@
 import {SortSelect} from "./SortSelect";
-import {Box, Button} from "@mui/material";
+import {Box} from "@mui/material";
 import ApplyButton from "@/components/search-parameters-bar/ui/ApplyButton";
 import PlatformsSelect from "@/components/search-parameters-bar/ui/PlatformsSelect";
+import ResetButton from "@/components/search-parameters-bar/ui/ResetButton";
 
 interface ISearchParametersBarProps {
   width?: number;
@@ -31,13 +32,7 @@ export default function SearchParametersBar({width = 250}: ISearchParametersBarP
       
       <Box mb={2}/>
       
-      <Button
-        variant={'outlined'}
-        color={'secondary'}
-        fullWidth
-      >
-        Reset filters
-      </Button>
+      <ResetButton/>
     </Box>
   )
 }
