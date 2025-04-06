@@ -14,13 +14,15 @@ interface IGamesListProps {
   search: string;
   ordering: string;
   page: number;
+  parentPlatforms: string;
 }
 
 export default async function GamesList(
   {
     search,
     ordering,
-    page
+    page,
+    parentPlatforms
   }: IGamesListProps){
   
   const games: IGamesResponse = await getData<IGamesResponse>({
@@ -29,6 +31,7 @@ export default async function GamesList(
       search,
       ordering,
       page: page.toString(),
+      parent_platforms: parentPlatforms,
       search_precise: 'true'
     },
   })
@@ -59,7 +62,7 @@ export default async function GamesList(
       }}>
         <SearchParameters/>
         
-        <Grid container spacing={2} my={3}>
+        <Grid container spacing={2}>
           {games && games.results.map((game) => (
             <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
               <Suspense fallback={<CircularProgress/>}>

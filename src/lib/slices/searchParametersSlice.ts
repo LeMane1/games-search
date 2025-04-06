@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface PlatformValue {
-  platformId: number;
-  platformName: string;
-}
-
 export interface SearchParametersState {
   sortOrdering: string;
-  selectedPlatforms: PlatformValue[];
+  selectedPlatforms: number[];
 }
 
 const initialState: SearchParametersState = {
@@ -26,7 +21,7 @@ export const searchParametersSlice = createSlice({
     changeSortOrdering: (state, action: PayloadAction<string>) => {
       state.sortOrdering = action.payload
     },
-    changeSelectedPlatforms: (state, action: PayloadAction<PlatformValue[]>) => {
+    changeSelectedPlatforms: (state, action: PayloadAction<number[]>) => {
       state.selectedPlatforms = action.payload
     }
   },
