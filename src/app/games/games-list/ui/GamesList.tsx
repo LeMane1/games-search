@@ -63,7 +63,7 @@ export default async function GamesList(
         <SearchParameters/>
         
         <Grid container spacing={2}>
-          {games && games.results.map((game) => (
+          {games && games?.results?.length > 0 ? games.results.map((game) => (
             <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
               <Suspense fallback={<CircularProgress/>}>
                 <GameCard
@@ -81,6 +81,10 @@ export default async function GamesList(
               </Suspense>
             </Grid>
           ))
+            :
+            <Typography component="h6" variant="h6" color="textSecondary">
+              No games found
+            </Typography>
           }
         </Grid>
       </Stack>
