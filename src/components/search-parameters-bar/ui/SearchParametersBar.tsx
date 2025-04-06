@@ -3,7 +3,11 @@ import {Box, Button} from "@mui/material";
 import ApplyButton from "@/components/search-parameters-bar/ui/ApplyButton";
 import PlatformsSelect from "@/components/search-parameters-bar/ui/PlatformsSelect";
 
-export default function SearchParametersBar(){
+interface ISearchParametersBarProps {
+  width?: number;
+}
+
+export default function SearchParametersBar({width = 250}: ISearchParametersBarProps) {
   return (
     <Box
       padding={3}
@@ -11,8 +15,8 @@ export default function SearchParametersBar(){
       sx={{
         backgroundColor: "rgba(0, 0, 0, 0.1)",
         height: "fit-content",
-        width: 250,
-        minWidth: 250
+        width: width,
+        minWidth: width
       }}
     >
       <SortSelect/>
