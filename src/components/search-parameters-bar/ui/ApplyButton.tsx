@@ -24,7 +24,7 @@ export default function ApplyButton(){
       const platformsString = selectedPlatforms.join(',');
       params.set('parent_platforms', platformsString);
     }else{
-      params.delete('platforms');
+      params.delete('parent_platforms');
     }
     
     if (params.get('page')){
