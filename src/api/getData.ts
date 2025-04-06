@@ -27,9 +27,18 @@ export const getData = async<T> (
 }
 
 function getQueryString(searchParams?: Record<string, string>): string{
-  const urlSearchParams: URLSearchParams = new URLSearchParams(searchParams);
+  const urlSearchParams: URLSearchParams = new URLSearchParams();
+  urlSearchParams.set('key', process.env.RAWG_API_KEY ?? '');
   
-  if (process.env.RAWG_API_KEY) urlSearchParams.set('key', process.env.RAWG_API_KEY);
+  if (!searchParams) {
+    return `?${urlSearchParams.toString()}`;
+  }
+  
+  for (const [key, value] of Object.entries(searchParams)) {
+      if (value && value.trim() !== '') {
+        urlSearchParams.set(key, value);
+      }
+  }
   
   return '?'+urlSearchParams.toString();
 }
