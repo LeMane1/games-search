@@ -54,7 +54,6 @@ export async function checkGameOwn(gameId: number) {
       return false;
     }
     
-    console.log('Game ownership check result:', data);
     return !!data;
   }
 }
