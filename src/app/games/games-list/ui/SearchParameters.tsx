@@ -1,7 +1,6 @@
-import {Fab} from "@mui/material";
-import TuneIcon from "@mui/icons-material/Tune";
 import SearchParametersBar from "@/components/search-parameters-bar";
 import {MediaQueryContainer} from "@/components/media-query-container";
+import SearchParametersDrawer, {SearchParametersDrawerButton} from "@/components/search-parameters-drawer";
 
 export default function SearchParameters() {
   return (
@@ -11,14 +10,12 @@ export default function SearchParameters() {
       </MediaQueryContainer>
       
       <MediaQueryContainer breakPointValue={'md'} isLowerThanBreakpoint={true}>
-        <Fab color="primary" aria-label="add" sx={{
-          position: 'fixed',
-          right: 20,
-          bottom: 20,
-        }}>
-          <TuneIcon />
-        </Fab>
+        <SearchParametersDrawerButton/>
       </MediaQueryContainer>
+      
+      <SearchParametersDrawer>
+        <SearchParametersBar width={'100%'} backgroundColor={'transparent'}/>
+      </SearchParametersDrawer>
     </>
   )
 }

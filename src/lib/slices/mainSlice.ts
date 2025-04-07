@@ -33,8 +33,8 @@ export const mainSlice = createSlice({
     changeDrawerState: (state) => {
       state.isDrawerOpened = !state.isDrawerOpened
     },
-    changeSearchParametersModalState: (state) => {
-      state.isSearchParametersModalOpened = !state.isSearchParametersModalOpened
+    changeSearchParametersModalState: (state, action: PayloadAction<boolean>) => {
+      state.isSearchParametersModalOpened = action.payload
     }
   },
 })

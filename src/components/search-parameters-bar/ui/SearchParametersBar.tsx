@@ -7,10 +7,15 @@ import {getData} from "@/api/getData";
 import {IGamePlatformsResponse} from "@/api/types";
 
 interface ISearchParametersBarProps {
-  width?: number;
+  width?: number | string;
+  backgroundColor?: string;
 }
 
-export default async function SearchParametersBar({width = 250}: ISearchParametersBarProps) {
+export default async function SearchParametersBar(
+  {
+    width = 250,
+    backgroundColor = "rgba(0, 0, 0, 0.1)",
+  }: ISearchParametersBarProps) {
   const parentPlatformsResponse = await getData<IGamePlatformsResponse>({
     url: '/platforms/lists/parents'
   })
@@ -20,7 +25,7 @@ export default async function SearchParametersBar({width = 250}: ISearchParamete
       padding={3}
       borderRadius={2}
       sx={{
-        backgroundColor: "rgba(0, 0, 0, 0.1)",
+        backgroundColor: backgroundColor,
         height: "fit-content",
         width: width,
         minWidth: width

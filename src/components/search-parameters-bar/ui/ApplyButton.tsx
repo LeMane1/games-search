@@ -2,14 +2,16 @@
 
 import {Button} from "@mui/material";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {useAppSelector} from "@/lib/hooks";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {RootState} from "@/lib/store";
+import {changeSearchParametersModalState} from "@/lib/slices/mainSlice";
 
 export default function ApplyButton(){
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
   const {sortOrdering, selectedPlatforms} = useAppSelector((state: RootState) => state.searchParametersReducer);
+  const dispatch = useAppDispatch();
   
   const handleOnClick = () => {
     const params = new URLSearchParams(searchParams);
@@ -31,6 +33,7 @@ export default function ApplyButton(){
       params.set('page', '1');
     }
     
+    dispatch(changeSearchParametersModalState(false))
     replace(`${pathname}?${params.toString()}`);
   }
   
