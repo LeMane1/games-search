@@ -1,5 +1,5 @@
 import {Divider, Stack, Typography} from "@mui/material";
-import ProviderButton from "@/app/login/login-wrapper/ui/ProviderButton";
+import ProviderButton from "@/app/auth/ui/ProviderButton";
 
 export default function ProviderButtons(){
   return (

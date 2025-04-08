@@ -5,29 +5,27 @@ import {
   Stack,
   Typography
 } from "@mui/material";
-import {useAppDispatch} from "@/lib/hooks";
-import {changeLoginState} from "@/lib/slices/mainSlice";
-import ProviderButtons from "@/app/login/login-wrapper/ui/ProviderButtons";
+import ProviderButtons from "@/app/auth/ui/ProviderButtons";
+import Link from "next/link";
 
-interface ILoginWrapperProps {
+interface IAuthWrapperProps {
   children?: React.ReactNode;
   title?: string;
   subtitle?: string;
   actionExtraText?: string;
   actionText?: string;
+  link: string;
 }
 
-export default function LoginWrapper(
+export default function AuthWrapper(
   {
     children,
     title,
     subtitle,
     actionExtraText,
     actionText,
-  }: ILoginWrapperProps) {
-  
-  const dispatch = useAppDispatch();
-  
+    link
+  }: IAuthWrapperProps) {
   return (
     <Stack
       direction="column"
@@ -61,17 +59,11 @@ export default function LoginWrapper(
             {actionExtraText}
           </Typography>
           
-          <Box
-            onClick={() => dispatch(changeLoginState())}
-            sx={{
-              '&:hover':{
-                cursor: 'pointer'
-              }
-          }}>
+          <Link href={link}>
             <Typography component="h6" variant="subtitle1" color={'primary.main'} fontWeight={'bold'}>
               {actionText}
             </Typography>
-          </Box>
+          </Link>
         </Stack>
       </Box>
     </Stack>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {Button} from "@mui/material";
-import {signinWithOAuth} from "@/app/login/login-wrapper/lib/actions";
+import {signinWithOAuth} from "@/app/auth/lib/actions";
 import {Provider} from "@supabase/auth-js";
 
 interface IProviderButtonProps {

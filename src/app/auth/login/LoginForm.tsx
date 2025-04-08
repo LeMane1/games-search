@@ -1,6 +1,6 @@
 'use client'
 
-import {login} from "@/app/login/login-container/lib/actions";
+import {login} from "@/app/auth/lib/actions";
 import {
   Box,
   Button,
@@ -9,7 +9,7 @@ import {
   OutlinedInput,
   Stack,
 } from "@mui/material";
-import PasswordInput from "@/app/login/login-container/ui/PasswordInput";
+import PasswordInput from "@/app/auth/ui/PasswordInput";
 
 export default function LoginForm(){
   return(

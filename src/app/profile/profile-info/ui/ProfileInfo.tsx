@@ -1,5 +1,5 @@
 import {Avatar, Button, Stack, Typography} from "@mui/material";
-import {logout} from "@/app/login/login-container/lib/actions";
+import {logout} from "@/app/auth/lib/actions";
 import {getUser} from "@/api/getUser";
 
 export default async function ProfileInfo() {
