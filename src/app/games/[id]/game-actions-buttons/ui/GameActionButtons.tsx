@@ -20,7 +20,10 @@ export default async function GameActionButtons({gameId}: IGameActionButtonsProp
     <Stack spacing={2} direction='column'>
       {
         isGameOwned ?
-          <GameActionAddedButton gameId={gameId}/>
+          <GameActionAddedButton
+            gameId={gameId}
+            gameName={game.name}
+          />
           :
           <GameActionButton
             gameId={gameId}

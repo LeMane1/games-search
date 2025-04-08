@@ -5,18 +5,29 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import {removeGameFromPurchasedList} from "@/app/games/[id]/game-actions-buttons/lib/actions";
 import {useState} from "react";
 import CheckIcon from '@mui/icons-material/Check';
+import {changeSnackMessage} from "@/lib/slices/mainSlice";
+import {useAppDispatch} from "@/lib/hooks";
 
 interface IGameActionAddedButtonProps {
   gameId: number;
+  gameName: string;
 }
 
-export default function GameActionAddedButton({gameId}: IGameActionAddedButtonProps){
+export default function GameActionAddedButton({gameId, gameName}: IGameActionAddedButtonProps){
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useAppDispatch();
   
   const handleOnClick = async () => {
-    setIsLoading(true);
-    await removeGameFromPurchasedList(gameId)
-    setIsLoading(false);
+    try{
+      setIsLoading(true);
+      await removeGameFromPurchasedList(gameId)
+      dispatch(changeSnackMessage(`${gameName} was removed from favorites`))
+    }catch(e){
+      console.error('Unexpected fail while remove game to favorites', e);
+      dispatch(changeSnackMessage('Something went wrong. Try again'));
+    }finally{
+      setIsLoading(false);
+    }
   }
   
   return (

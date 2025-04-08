@@ -3,6 +3,8 @@
 import {Button} from "@mui/material";
 import {addGameToPurchasedList} from "@/app/games/[id]/game-actions-buttons/lib/actions";
 import {useState} from "react";
+import {changeSnackMessage} from "@/lib/slices/mainSlice";
+import {useAppDispatch} from "@/lib/hooks";
 
 interface IGameActionButtonProps {
   gameId: number;
@@ -18,11 +20,19 @@ export default function GameActionButton(
   }: IGameActionButtonProps
 ){
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useAppDispatch();
   
   const handleOnClick = async () => {
-    setIsLoading(true);
-    await addGameToPurchasedList({gameId, gameName: gameName, gameImage: gameImage})
-    setIsLoading(false);
+    try{
+      setIsLoading(true);
+      await addGameToPurchasedList({gameId, gameName: gameName, gameImage: gameImage})
+      dispatch(changeSnackMessage(`${gameName} was added to favorites`))
+    }catch(e){
+      console.error('Unexpected fail while add game to favorites', e);
+      dispatch(changeSnackMessage('Something went wrong. Try again'));
+    }finally{
+      setIsLoading(false);
+    }
   }
   
   return (
