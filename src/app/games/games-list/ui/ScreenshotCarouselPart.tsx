@@ -18,6 +18,7 @@ export default function ScreenshotCarouselPart({onClick, screenshotId, isSelecte
   return (
     <Box
       onClick={handleOnClick}
+      px={0.5}
       sx={{
         flex: 1,
         height: '100%',

@@ -34,7 +34,6 @@ export default function ScreenshotsCarousel({screenshots}: IScreenshotsCarouselP
     }}>
       <Stack
         direction='row'
-        spacing={1}
         py={1}
         px={2}
         sx={{
