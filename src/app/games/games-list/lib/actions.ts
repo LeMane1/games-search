@@ -26,7 +26,6 @@ export async function getFavoriteGames(): Promise<FavoriteGamesResponse[] | null
       return null;
     }
     
-    console.log('Favorite games result:', data);
     return data;
   }else{
     return null;

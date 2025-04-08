@@ -38,7 +38,6 @@ export const GameScreenshotViewer = (
         }
       }else if (direction === 'right' && currentIndex !== undefined) {
         if (currentIndex === screenshotsLength - 1){
-          console.log(currentIndex)
           currentIndex = 0
         }else{
           currentIndex++
