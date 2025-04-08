@@ -12,6 +12,18 @@ export default function NavDrawer(){
     <Drawer
       anchor={'right'}
       open={isDrawerOpened}
+      disableScrollLock={true}
+      slotProps={
+        {
+          'paper': {
+            sx:{
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              backdropFilter: 'blur(20px)',
+              height: '100%',
+            }
+          }
+        }
+      }
     >
       <Box
         sx={{
