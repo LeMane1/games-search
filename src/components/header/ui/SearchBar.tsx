@@ -49,6 +49,7 @@ export default function SearchBar(){
       sx={{
         flexGrow: 1,
       }}
+      autoComplete={'off'}
       size='small'
       variant='outlined'
       placeholder="I would like to find a..."
