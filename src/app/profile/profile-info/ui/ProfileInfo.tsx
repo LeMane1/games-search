@@ -16,8 +16,20 @@ export default async function ProfileInfo() {
           src={user?.user_metadata?.avatar_url}
           sx={{
             bgcolor: 'primary.main',
-            width: 150,
-            height: 150,
+            width: {
+              xs: 80,
+              sm: 100,
+              md: 150,
+              lg: 150,
+              xl: 150,
+            },
+            height: {
+              xs: 80,
+              sm: 100,
+              md: 150,
+              lg: 150,
+              xl: 150,
+            },
             color: "white",
           }}
         />
