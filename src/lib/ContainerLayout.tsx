@@ -2,6 +2,7 @@ import {Box, Container, Stack} from "@mui/material";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import {Suspense} from "react";
+import {HeaderSkeleton} from "@/components/skeletons";
 
 export default function ContainerLayout(
   {
@@ -20,7 +21,7 @@ export default function ContainerLayout(
           padding: 2,
         }}>
         <Stack>
-          <Suspense>
+          <Suspense fallback={<HeaderSkeleton/>}>
             <Header/>
           </Suspense>
           <Box sx={{ height: 24 }} />
