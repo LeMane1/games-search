@@ -7,6 +7,7 @@ export interface MainState {
   isLoginStateSelected: boolean;
   isDrawerOpened: boolean;
   isSearchParametersModalOpened: boolean;
+  snackMessage: string;
 }
 
 const initialState: MainState = {
@@ -15,6 +16,7 @@ const initialState: MainState = {
   isLoginStateSelected: true,
   isDrawerOpened: false,
   isSearchParametersModalOpened: false,
+  snackMessage: ''
 }
 
 export const mainSlice = createSlice({
@@ -35,6 +37,9 @@ export const mainSlice = createSlice({
     },
     changeSearchParametersModalState: (state, action: PayloadAction<boolean>) => {
       state.isSearchParametersModalOpened = action.payload
+    },
+    changeSnackMessage: (state, action: PayloadAction<string>) => {
+      state.snackMessage = action.payload
     }
   },
 })
@@ -45,7 +50,8 @@ export const {
   changeModalState,
   changeLoginState,
   changeDrawerState,
-  changeSearchParametersModalState
+  changeSearchParametersModalState,
+  changeSnackMessage
 } = mainSlice.actions
 
 export default mainSlice.reducer

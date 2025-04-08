@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import ContainerLayout from "@/lib/ContainerLayout";
+import SnackMessage from "@/components/snack-message";
 
 export const metadata: Metadata = {
   title: "Game Search",
@@ -13,6 +14,7 @@ export default async function GamesLayout({children}: Readonly<{
   return (
     <ContainerLayout>
       {children}
+      <SnackMessage />
     </ContainerLayout>
   );
 }

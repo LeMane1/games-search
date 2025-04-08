@@ -9,7 +9,6 @@ import {checkAuth} from "@/api/getUser";
 import {getFavoriteGames} from "@/app/games/games-list/lib/actions";
 import {checkFavorite} from "@/app/games/games-list/lib/checkFavorite";
 import SearchParameters from "@/app/games/games-list/ui/SearchParameters";
-import SnackMessage from "@/components/snack-message";
 
 interface IGamesListProps {
   search: string;
@@ -97,8 +96,6 @@ export default async function GamesList(
           {games?.count > 0 && <Pagination itemsCount={games?.count} defaultPage={page} />}
         </Stack>
       </Stack>
-      
-      <SnackMessage />
     </>
   )
 }
