@@ -62,34 +62,36 @@ export default async function GamesList(
       }}>
         <SearchParameters/>
         
-        <Grid container spacing={2}>
-          {games && games?.results?.length > 0 ? games.results.map((game) => (
-            <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
-              <Suspense fallback={<CircularProgress/>}>
-                <GameCard
-                  id={game.id}
-                  name={game.name}
-                  background_image={game.background_image}
-                  platforms={game.parent_platforms}
-                  metacritic={game.metacritic}
-                  genres={game.genres}
-                  released={game.released}
-                  short_screenshots={game.short_screenshots}
-                  isAuthenticated={isAuthenticated}
-                  isFavorite={favoriteGames ? checkFavorite(favoriteGames, game.id) : false}
-                />
-              </Suspense>
-            </Grid>
-          ))
-            :
-            <Typography component="h6" variant="h6" color="textSecondary">
-              No games found
-            </Typography>
-          }
-        </Grid>
+        <Stack direction="column" spacing={3}>
+          <Grid container spacing={2}>
+            {games && games?.results?.length > 0 ? games.results.map((game) => (
+                <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
+                  <Suspense fallback={<CircularProgress/>}>
+                    <GameCard
+                      id={game.id}
+                      name={game.name}
+                      background_image={game.background_image}
+                      platforms={game.parent_platforms}
+                      metacritic={game.metacritic}
+                      genres={game.genres}
+                      released={game.released}
+                      short_screenshots={game.short_screenshots}
+                      isAuthenticated={isAuthenticated}
+                      isFavorite={favoriteGames ? checkFavorite(favoriteGames, game.id) : false}
+                    />
+                  </Suspense>
+                </Grid>
+              ))
+              :
+              <Typography component="h6" variant="h6" color="textSecondary">
+                No games found
+              </Typography>
+            }
+          </Grid>
+          
+          <Pagination itemsCount={games?.count} defaultPage={page} />
+        </Stack>
       </Stack>
-      
-      <Pagination itemsCount={games?.count} defaultPage={page} />
     </>
   )
 }
