@@ -1,16 +1,10 @@
 import {Box} from "@mui/material";
 import NavLink from "@/components/header/ui/NavLink";
-import UserLabel from "@/components/header/ui/UserLabel";
 import {MediaQueryContainer} from "@/components/media-query-container";
-import {checkAuth, getUser} from "@/api/getUser";
-import {User} from "@supabase/auth-js";
-import LoginButton from "@/components/header/ui/LoginButton";
 import {navLinks} from "@/components/header/lib/constants";
+import AuthWrapper from "@/components/header/ui/AuthWrapper";
 
-export default async function WideNavigation() {
-  const isAuthenticated = await checkAuth()
-  const user: User | null = await getUser()
-  
+export default function WideNavigation() {
   return (
     <MediaQueryContainer breakPointValue={'md'}>
       <Box sx={{
@@ -41,11 +35,7 @@ export default async function WideNavigation() {
           }
         </Box>
         
-        {isAuthenticated && user ?
-          <UserLabel user={user}/>
-          :
-          <LoginButton/>
-        }
+        <AuthWrapper />
       </Box>
     </MediaQueryContainer>
   )
