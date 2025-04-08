@@ -5,7 +5,7 @@ import {User} from "@supabase/auth-js";
 import LoginButton from "@/components/header/ui/LoginButton";
 import UserLabel from "@/components/header/ui/UserLabel";
 import {useEffect, useState} from "react";
-import {CircularProgress} from "@mui/material";
+import {Skeleton} from "@mui/material";
 
 interface IAuthWrapperProps {
   isExpanded?: boolean;
@@ -14,7 +14,7 @@ interface IAuthWrapperProps {
 export default function AuthWrapper({isExpanded = true}: IAuthWrapperProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     (async function(){
@@ -41,7 +41,7 @@ export default function AuthWrapper({isExpanded = true}: IAuthWrapperProps) {
       }
       
       {
-        isLoading && <CircularProgress color={'secondary'}/>
+        isLoading && <Skeleton variant="rounded" width={150} height={50} animation={'wave'}/>
       }
     </>
   )
