@@ -5,7 +5,6 @@ import ListItemText from '@mui/material/ListItemText';
 import {navLinks} from "@/components/header/lib/constants";
 import CloseButton from "@/components/header/ui/CloseButton";
 import {useAppSelector} from "@/lib/hooks";
-import SearchBar from "@/components/header/ui/SearchBar";
 
 export default function NavDrawer(){
   const isDrawerOpened = useAppSelector(state => state.mainReducer.isDrawerOpened)

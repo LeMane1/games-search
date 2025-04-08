@@ -1,7 +1,6 @@
 import {Box} from "@mui/material";
 import MenuButton from "@/components/header/ui/MenuButton";
 import AuthWrapper from "@/components/header/ui/AuthWrapper";
-import {Suspense} from "react";
 
 export default function ShortNavigation() {
   return (
@@ -11,9 +10,7 @@ export default function ShortNavigation() {
       alignItems: 'center',
       gap: 1
     }}>
-      <Suspense>
-        <AuthWrapper isExpanded={false}/>
-      </Suspense>
+      <AuthWrapper isExpanded={false}/>
       <MenuButton/>
     </Box>
   )

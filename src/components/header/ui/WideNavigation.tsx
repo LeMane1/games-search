@@ -2,7 +2,6 @@ import {Box} from "@mui/material";
 import NavLink from "@/components/header/ui/NavLink";
 import {navLinks} from "@/components/header/lib/constants";
 import AuthWrapper from "@/components/header/ui/AuthWrapper";
-import {Suspense} from "react";
 import SearchBar from "@/components/header/ui/SearchBar";
 
 export default function WideNavigation() {
@@ -14,7 +13,6 @@ export default function WideNavigation() {
       gap: 2,
       flexGrow: 1,
       justifyContent: 'flex-end',
-      // backgroundColor: 'white',
     }}>
       <SearchBar/>
       <Box
@@ -39,9 +37,7 @@ export default function WideNavigation() {
         }
       </Box>
       
-      <Suspense>
-        <AuthWrapper />
-      </Suspense>
+      <AuthWrapper />
     </Box>
   )
 }
