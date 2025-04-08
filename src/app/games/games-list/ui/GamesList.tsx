@@ -9,6 +9,7 @@ import {checkAuth} from "@/api/getUser";
 import {getFavoriteGames} from "@/app/games/games-list/lib/actions";
 import {checkFavorite} from "@/app/games/games-list/lib/checkFavorite";
 import SearchParameters from "@/app/games/games-list/ui/SearchParameters";
+import SnackMessage from "@/components/snack-message";
 
 interface IGamesListProps {
   search: string;
@@ -41,18 +42,22 @@ export default async function GamesList(
   
   return (
     <>
-      <Stack direction='column' mb={{
-        xs: 1,
-        sm: 1,
-        md: 3,
-        lg: 3,
-        xl: 3,
-      }}>
+      <Stack
+        direction='row'
+        justifyContent='space-between'
+        alignItems='center'
+        flexWrap={'wrap'}
+        mb={3}
+        pb={1}
+        sx={{
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        }}
+      >
         <Typography component="h4" variant="h4">
           {search && search.length > 0 ? search : 'All games'}
         </Typography>
         
-        <Typography component="h6" variant="subtitle1" color="textSecondary">
+        <Typography component="h5" variant="h5" color="textSecondary">
           {games?.count} items
         </Typography>
       </Stack>
@@ -89,9 +94,11 @@ export default async function GamesList(
             }
           </Grid>
           
-          <Pagination itemsCount={games?.count} defaultPage={page} />
+          {games?.count > 0 && <Pagination itemsCount={games?.count} defaultPage={page} />}
         </Stack>
       </Stack>
+      
+      <SnackMessage />
     </>
   )
 }
