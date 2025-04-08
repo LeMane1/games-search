@@ -3,31 +3,39 @@
 import {Box} from "@mui/material";
 
 interface IScreenshotCarouselProps {
-  onMouseEnter: (screenshotId: number) => void;
+  onClick: (screenshotId: number) => void;
   screenshotId: number;
   isSelected: boolean;
 }
 
-export default function ScreenshotCarouselPart({onMouseEnter, screenshotId, isSelected}: IScreenshotCarouselProps) {
-  const handleOnMouseEnter = () => {
-    onMouseEnter(screenshotId)
+export default function ScreenshotCarouselPart({onClick, screenshotId, isSelected}: IScreenshotCarouselProps) {
+  const handleOnClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onClick(screenshotId)
   }
   
   return (
     <Box
-      onMouseEnter={handleOnMouseEnter}
+      onClick={handleOnClick}
       sx={{
         flex: 1,
         height: '100%',
         display: 'flex',
         alignItems: 'flex-end',
+        '&:hover > :first-child':{
+          opacity: isSelected ? 1 : 0.6,
+          transition: 'all .2s ease-in-out',
+        }
     }}>
-      <Box height={4} width={'100%'}
-           sx={{
-             backgroundColor: 'white',
-             opacity: isSelected ? 1 : 0.4
-           }}
-      />
+      <Box
+        height={4}
+        width={'100%'}
+        sx={{
+          backgroundColor: 'white',
+          opacity: isSelected ? 1 : 0.4,
+          transition: 'all .2s ease-in-out',
+        }}/>
     </Box>
   )
 }
