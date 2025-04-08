@@ -22,7 +22,7 @@ export default function SearchParametersDrawer({children}: ISearchParametersDraw
       onOpen={() => {}}
       swipeAreaWidth={56}
       disableSwipeToOpen={true}
-      disableScrollLock={false}
+      disableScrollLock={true}
       keepMounted
       slotProps={
         {

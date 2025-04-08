@@ -16,7 +16,7 @@ export default function SearchBar(){
     const searchValue = params.get('search')
     
     if (searchValue) setSearchText(searchValue)
-  },[])
+  },[searchParams])
   
   const handleSearch = () => {
     const params = new URLSearchParams(searchParams);
@@ -31,7 +31,7 @@ export default function SearchBar(){
       params.set('page', '1');
     }
     
-    if (!pathname.indexOf('/games')){
+    if (pathname.indexOf('/games') === -1){
       redirect(`/games?${params.toString()}`)
     }
     

@@ -39,7 +39,7 @@ export default function PlatformsSelect({parentPlatformsList}: IPlatformsSelectP
     if (parentPlatforms){
       dispatch(changeSelectedPlatforms(parentPlatforms.split(',').map(Number)))
     }
-  }, [])
+  }, [dispatch, searchParams])
   
   const handleOnChange = (event: SelectChangeEvent<number[]>) => {
     const value = event.target.value;

@@ -19,7 +19,7 @@ export const SortSelect = () => {
     if (ordering){
       dispatch(changeSortOrdering(ordering))
     }
-  }, [])
+  }, [searchParams, dispatch])
   
   const handleOnChange = (event: SelectChangeEvent) => {
     const sortValue:string = event.target.value
