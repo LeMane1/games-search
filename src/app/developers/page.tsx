@@ -1,5 +1,6 @@
 import BgOverlay from "@/components/bg-overlay";
 import DevelopersList from "@/app/developers/developers-list";
+import {Suspense} from "react";
 
 export default async function DevelopersPage(props: {
   searchParams?: Promise<{
@@ -12,7 +13,9 @@ export default async function DevelopersPage(props: {
   return (
     <main style={{width: '100%'}}>
       <BgOverlay imageName={'/images/developers_bg.webp'}/>
-      <DevelopersList page={currentPage}/>
+      <Suspense>
+        <DevelopersList page={currentPage}/>
+      </Suspense>
     </main>
   );
 }
