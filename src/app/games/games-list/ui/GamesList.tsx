@@ -1,14 +1,12 @@
 import GameCard from "@/app/games/games-list/ui/GameCard";
 import {Grid} from "@mui/system";
-import {CircularProgress, Stack, Typography} from "@mui/material";
+import {Stack, Typography} from "@mui/material";
 import {Pagination} from "@/components/pagination";
-import {IGamesResponse} from "@/api/types";
-import {Suspense} from "react";
-import {getData} from "@/api/getData";
 import {checkAuth} from "@/api/getUser";
 import {getFavoriteGames} from "@/app/games/games-list/lib/actions";
 import {checkFavorite} from "@/app/games/games-list/lib/checkFavorite";
 import SearchParameters from "@/app/games/games-list/ui/SearchParameters";
+import {getGames} from "@/app/games/games-list/lib/getGames";
 
 interface IGamesListProps {
   search: string;
@@ -25,15 +23,12 @@ export default async function GamesList(
     parentPlatforms
   }: IGamesListProps){
   
-  const games: IGamesResponse = await getData<IGamesResponse>({
-    url: '/games',
-    searchParams: {
-      search,
-      ordering,
-      page: page.toString(),
-      parent_platforms: parentPlatforms,
-      search_precise: 'true'
-    },
+  const games = await getGames({
+    search,
+    ordering,
+    page: page.toString(),
+    parent_platforms: parentPlatforms,
+    search_precise: 'true'
   })
   
   const isAuthenticated = await checkAuth()
@@ -57,7 +52,7 @@ export default async function GamesList(
         </Typography>
         
         <Typography component="h5" variant="h5" color="textSecondary">
-          {games?.count} items
+          {games?.count ?? 0} items
         </Typography>
       </Stack>
       
@@ -70,7 +65,6 @@ export default async function GamesList(
           <Grid container spacing={2}>
             {games && games?.results?.length > 0 ? games.results.map((game) => (
                 <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={game.id}>
-                  <Suspense fallback={<CircularProgress/>}>
                     <GameCard
                       id={game.id}
                       name={game.name}
@@ -83,7 +77,6 @@ export default async function GamesList(
                       isAuthenticated={isAuthenticated}
                       isFavorite={favoriteGames ? checkFavorite(favoriteGames, game.id) : false}
                     />
-                  </Suspense>
                 </Grid>
               ))
               :
@@ -93,7 +86,7 @@ export default async function GamesList(
             }
           </Grid>
           
-          {games?.count > 0 && <Pagination itemsCount={games?.count} defaultPage={page} />}
+          {games && games?.count > 0 && <Pagination itemsCount={games?.count} defaultPage={page} />}
         </Stack>
       </Stack>
     </>
