@@ -22,7 +22,7 @@ const MenuProps = {
 };
 
 interface IPlatformsSelectProps {
-  parentPlatformsList: IGamePlatform[];
+  parentPlatformsList: IGamePlatform[] | null;
 }
 
 export default function PlatformsSelect({parentPlatformsList}: IPlatformsSelectProps) {
@@ -68,7 +68,7 @@ export default function PlatformsSelect({parentPlatformsList}: IPlatformsSelectP
         }}
         MenuProps={MenuProps}
       >
-        {parentPlatformsList.map((platform) => (
+        {parentPlatformsList && parentPlatformsList.map((platform) => (
           <MenuItem key={platform.id} value={platform.id}>
             <Checkbox checked={Boolean(selectedPlatforms?.find(p => p === platform.id))} />
             <ListItemText primary={platform.name} />

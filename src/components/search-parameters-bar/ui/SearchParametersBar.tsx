@@ -3,8 +3,7 @@ import {Box, Typography} from "@mui/material";
 import ApplyButton from "@/components/search-parameters-bar/ui/ApplyButton";
 import PlatformsSelect from "@/components/search-parameters-bar/ui/PlatformsSelect";
 import ResetButton from "@/components/search-parameters-bar/ui/ResetButton";
-import {getData} from "@/api/getData";
-import {IGamePlatformsResponse} from "@/api/types";
+import {getParentPlatforms} from "@/components/search-parameters-bar/lib/getParentPlatforms";
 
 interface ISearchParametersBarProps {
   width?: number | string;
@@ -16,9 +15,8 @@ export default async function SearchParametersBar(
     width = 250,
     backgroundColor = "rgba(0, 0, 0, 0.1)",
   }: ISearchParametersBarProps) {
-  const parentPlatformsResponse = await getData<IGamePlatformsResponse>({
-    url: '/platforms/lists/parents'
-  })
+  
+  const parentPlatforms = await getParentPlatforms()
   
   return (
     <Box
@@ -39,7 +37,14 @@ export default async function SearchParametersBar(
       
       <Box mb={2}/>
       
-      <PlatformsSelect parentPlatformsList={parentPlatformsResponse.results}/>
+      {
+        parentPlatforms ?
+          <PlatformsSelect parentPlatformsList={parentPlatforms}/>
+          :
+          <Typography component="h6" variant="subtitle1" color="textSecondary">
+            {`Can't get platforms`}
+          </Typography>
+      }
       
       <Box mb={4}/>
       
