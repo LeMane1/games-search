@@ -1,0 +1,1 @@
+export const removeTagsFromString = (string: string) => string.replace(/<[^>]*>/g, '')

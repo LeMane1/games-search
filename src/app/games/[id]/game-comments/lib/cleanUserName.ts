@@ -1,0 +1,1 @@
+export const cleanUserName = (str: string) => str.replace(/\/u\//g, '')

@@ -212,3 +212,21 @@ export interface IGamePlatformsResponse {
   "previous": string,
   "results": IGamePlatform[]
 }
+
+export interface IGameCommentsResponse {
+  count: number;
+  next: string;
+  previous: string;
+  results: IGameComment[];
+}
+
+export interface IGameComment {
+  "id": number,
+  "name": string,
+  "text": string,
+  "image": string,
+  "url": string,
+  "username": string,
+  "username_url": string,
+  "created": string
+}

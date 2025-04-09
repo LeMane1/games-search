@@ -9,6 +9,9 @@ import GameStores from "@/app/games/[id]/game-info/ui/GameStores";
 import GameMovies from "@/app/games/[id]/game-movies";
 import GameAchievements from "@/app/games/[id]/game-achievements";
 import GameSystemRequirements from "@/app/games/[id]/game-system-requirements";
+import GameInfoBlockHeader from "@/app/games/[id]/ui/GameInfoBlockHeader";
+import GameComments from "@/app/games/[id]/game-comments";
+import {Suspense} from "react";
 
 interface IGameInfoProps {
   id: number;
@@ -108,18 +111,12 @@ export default function GameInfo(
         }
       </Stack>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        About
-      </Typography>
-      
+      <GameInfoBlockHeader headerText='About'/>
       <Typography variant="body1" component="p" mb={3} color={'textSecondary'}>
         {description}
       </Typography>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        Info
-      </Typography>
-      
+      <GameInfoBlockHeader headerText='Info'/>
       <GameParameters parameters={getParameters({
         developers,
         publishers,
@@ -129,39 +126,33 @@ export default function GameInfo(
         playtime
       })}/>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        Screenshots
-      </Typography>
-      
+      <GameInfoBlockHeader headerText='Screenshots'/>
       <GameScreenshots gameId={id}/>
       <Box mb={3}/>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        Trailers
-      </Typography>
-      
+      <GameInfoBlockHeader headerText='Trailers'/>
       <GameMovies gameId={id}/>
       <Box mb={3}/>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        Achievements
-      </Typography>
-      
+      <GameInfoBlockHeader headerText='Achievements'/>
       <GameAchievements gameId={id} />
       <Box mb={3}/>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        Where to buy
-      </Typography>
-      
+      <GameInfoBlockHeader headerText='Where to buy'/>
       <GameStores gameId={id} stores={stores}/>
       <Box mb={3}/>
       
-      <Typography variant="h5" component="h5" mb={1}>
-        System requirements
-      </Typography>
+      <GameInfoBlockHeader headerText='System requirements'/>
+      <Suspense>
+        <GameSystemRequirements platforms={platforms}/>
+      </Suspense>
+      <Box mb={3}/>
       
-      <GameSystemRequirements platforms={platforms}/>
+      <GameInfoBlockHeader headerText='Reddit comments'/>
+      <Suspense>
+        <GameComments gameId={id}/>
+      </Suspense>
+      <Box mb={3}/>
     </Stack>
   )
 }
