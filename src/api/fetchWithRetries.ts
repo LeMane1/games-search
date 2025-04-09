@@ -1,14 +1,15 @@
 import {MAX_RETRIES} from "@/api/constants";
-import {getData} from "@/api/getData";
+import {getData, IGetDataProps} from "@/api/getData";
 
-export const fetchWithRetries = async<T> (url: string): Promise<T | null> => {
+export const fetchWithRetries = async<T> ({url, searchParams}: IGetDataProps): Promise<T | null> => {
   const maxRetries = MAX_RETRIES;
   let attempt = 0;
   
   while (attempt < maxRetries) {
     try {
       const response = await getData<T>({
-        url: url
+        url,
+        searchParams,
       });
       
       if (response) return response
