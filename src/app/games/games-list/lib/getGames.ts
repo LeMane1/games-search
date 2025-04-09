@@ -1,7 +1,8 @@
 import {fetchWithRetries} from "@/api/fetchWithRetries";
 import {IGamesResponse} from "@/api/types";
+import type {searchParamsType} from "@/api/getData";
 
-export const getGames = async (searchParams: Record<string, string>) => {
+export const getGames = async (searchParams: searchParamsType) => {
   const gamesResponse = await fetchWithRetries<IGamesResponse>({
     url: '/games',
     searchParams,

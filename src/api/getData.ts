@@ -1,6 +1,8 @@
+export type searchParamsType = Record<string, string>
+
 export interface IGetDataProps{
   url: string;
-  searchParams?: Record<string, string>;
+  searchParams?: searchParamsType;
 }
 
 const defaultUrlBase: string ='https://api.rawg.io/api'
