@@ -1,4 +1,4 @@
-interface IGetDataProps{
+export interface IGetDataProps{
   url: string;
   searchParams?: Record<string, string>;
 }
