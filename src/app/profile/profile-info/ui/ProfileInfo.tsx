@@ -5,6 +5,14 @@ import {getUser} from "@/api/getUser";
 export default async function ProfileInfo() {
   const user = await getUser()
   
+  if (!user){
+    return (
+      <Typography variant="h6">
+        Profile is not available. Please try again later.
+      </Typography>
+    )
+  }
+  
   return (
     <Stack direction='column' spacing={3}>
       <Typography variant='h3' component='h3'>
