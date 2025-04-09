@@ -15,18 +15,16 @@ export default function ContainerLayout(
              justifyContent: 'space-between',
            }}
     >
-      <Suspense fallback={<HeaderSkeleton/>}>
-        <Header/>
-      </Suspense>
-      
       <Container
         maxWidth="lg"
         sx={{
           padding: 2,
         }}>
         <Stack>
-          
-          {/*<Box sx={{ height: 24 }} />*/}
+          <Suspense fallback={<HeaderSkeleton/>}>
+            <Header/>
+          </Suspense>
+          <Box sx={{ height: 24 }} />
           {children}
         </Stack>
       </Container>
