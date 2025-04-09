@@ -28,7 +28,7 @@ export default function GameComment({header, text, userName, createdAt, imageUrl
       
       {
         text &&
-        <Typography component='p' variant='body2' color='textSecondary' mb={2} whiteSpace={'break-spaces'}>
+        <Typography component='p' variant='body1' color='textSecondary' mb={2} whiteSpace={'break-spaces'}>
           {removeTagsFromString(text)}
         </Typography>
       }
