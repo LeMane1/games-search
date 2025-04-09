@@ -17,19 +17,51 @@ export default function MainPageSelectButton({buttonText, image, link}: IMainPag
         boxShadow={6}
         alignItems="end"
         sx={{
-          display: "flex",
-          width: '100%',
-          height: 220,
-          backgroundColor: '#252525',
-          backgroundImage: `url(${image})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: "center",
-          overflow: 'hidden',
-          opacity: 0.8,
-          '&:hover': {
+        position: 'relative',
+        display: "flex",
+        width: '100%',
+        height: 220,
+        backgroundColor: '#252525',
+        backgroundImage: `url(${image})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: "center",
+        overflow: 'hidden',
+        opacity: 0.8,
+        transition: 'opacity .3s ease-in-out',
+        '&:hover': {
+          opacity: 1,
+        },
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: '-75%',
+          width: '50%',
+          height: '100%',
+          background: 'linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)',
+          transform: 'skewX(-25deg)',
+          opacity: 1,
+          pointerEvents: 'none',
+          transition: 'all 0.5s ease-out',
+          transitionDelay: '0.4s',
+        },
+        '&:hover::before': {
+          animation: 'shine 0.6s ease-in-out 0.3s forwards',
+        },
+        '@keyframes shine': {
+          '0%': {
+            left: '-100%',
+            opacity: 0,
+          },
+          '30%': {
             opacity: 1,
+          },
+          '100%': {
+            left: '120%',
+            opacity: 0,
           }
+        }
       }}>
           <Box
             component='div'
