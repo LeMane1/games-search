@@ -1,41 +1,38 @@
-import {IGamePlatform, IGamePlatformsResponse} from "@/api/types";
-import {getData} from "@/api/getData";
+import {IGamePlatform} from "@/api/types";
 import {Grid} from "@mui/system";
-import {Suspense} from "react";
-import {CircularProgress, Stack} from "@mui/material";
-import DeveloperCard from "@/app/developers/developers-list/ui/DeveloperCard";
+import {Stack, Typography} from "@mui/material";
+import PlatformCard from "@/app/platforms/platforms-list/ui/PlatformCard";
 import {Pagination} from "@/components/pagination";
+import {getPlatforms} from "@/app/platforms/platforms-list/lib/getPlatforms";
 
 interface IPlatformsListProps {
   page: number;
 }
 
 export default async function PlatformsList({page}: IPlatformsListProps) {
-  const platformsResponse: IGamePlatformsResponse = await getData<IGamePlatformsResponse>({
-    url: '/platforms',
-    searchParams: {
-      page: page.toString()
-    },
+  const platforms = await getPlatforms({
+    page: page.toString()
   })
-  
-  const platforms: IGamePlatform[] = platformsResponse.results
   
   return (
     <Stack spacing={3}>
       <Grid container spacing={2} my={3}>
-        {platforms && platforms.map((platform: IGamePlatform) => (
+        {platforms && platforms.results.length > 0 ? platforms.results.map((platform: IGamePlatform) => (
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 6, xl: 4 }} key={platform.id}>
-            <Suspense fallback={<CircularProgress/>}>
-              <DeveloperCard
+              <PlatformCard
                 name={platform.name}
                 gamesCount={platform.games_count}
               />
-            </Suspense>
           </Grid>
-        ))}
+        ))
+          :
+          <Typography component="h6" variant="h6" color="textSecondary">
+            No platforms found
+          </Typography>
+        }
       </Grid>
       
-      <Pagination itemsCount={platformsResponse?.count} defaultPage={page}/>
+      <Pagination itemsCount={platforms?.count ?? 0} defaultPage={page}/>
     </Stack>
   )
 }

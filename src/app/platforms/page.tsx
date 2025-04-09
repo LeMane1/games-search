@@ -1,5 +1,6 @@
 import BgOverlay from "@/components/bg-overlay";
 import PlatformsList from "@/app/platforms/platforms-list";
+import {Suspense} from "react";
 
 export default async function PlatformsPage(props: {
   searchParams?: Promise<{
@@ -12,7 +13,9 @@ export default async function PlatformsPage(props: {
   return (
     <main style={{width: '100%'}}>
       <BgOverlay imageName={'/images/platforms_bg.webp'}/>
-      <PlatformsList page={currentPage}/>
+      <Suspense>
+        <PlatformsList page={currentPage}/>
+      </Suspense>
     </main>
   )
 }
