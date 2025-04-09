@@ -1,7 +1,6 @@
 import {IGameParameter} from "@/app/games/[id]/game-parameters/ui/GameParameters";
 import {IDeveloper, IPlatform, IPublisher} from "@/api/types";
-
-const Months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jan', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import {MONTH_NAMES} from "@/lib/constants";
 
 interface IGameParameters {
   developers?: IDeveloper[];
@@ -40,7 +39,7 @@ export const getParameters = (
   
   const releaseParameter: IGameParameter = {
     parameterType: 'Release Date',
-    parameterValue: `${date.getDate()} ${Months[date.getMonth()]} ${date.getFullYear()}`
+    parameterValue: `${date.getDate()} ${MONTH_NAMES[date.getMonth()]} ${date.getFullYear()}`
   }
   
   const esrbParameter: IGameParameter = {
