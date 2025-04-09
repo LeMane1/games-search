@@ -10,7 +10,7 @@ interface IGame {
   gameImage: string;
 }
 
-export async function getGamesCollection(): Promise<IGame[]> {
+export async function getGamesCollection(): Promise<IGame[] | null> {
   const supabase = await createClient()
   const user = await getUser()
   
@@ -21,9 +21,8 @@ export async function getGamesCollection(): Promise<IGame[]> {
       .eq('user_id', user.id)
     
     if (userGamesError) {
-      console.error('Error deleting game', userGamesError);
-      redirect('/error');
-      return [];
+      console.error('Error fetching game_id for selected user_id', userGamesError);
+      return null;
     }
     
     if (!userGames || userGames.length === 0) {
@@ -38,8 +37,8 @@ export async function getGamesCollection(): Promise<IGame[]> {
       .in('id', gameIds);
     
     if (gamesError) {
-      console.error('Error fetching games:', gamesError);
-      return [];
+      console.error('Error fetching rows with selected game_ids', gamesError);
+      return null;
     }
     
     const games: IGame[] = gamesData.map(game => ({
@@ -51,5 +50,5 @@ export async function getGamesCollection(): Promise<IGame[]> {
     return games
   }
   
-  return [];
+  return null;
 }
