@@ -6,7 +6,6 @@ import {getDateString} from "@/app/games/[id]/game-comments/lib/getDateString";
 interface IGameCommentProps {
   header: string,
   text?: string,
-  url?: string,
   imageUrl?: string,
   userName?: string,
   createdAt?: string,
