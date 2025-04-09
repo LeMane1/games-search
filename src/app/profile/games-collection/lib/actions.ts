@@ -2,7 +2,6 @@
 
 import {createClient} from "@/utils/supabase/server";
 import {getUser} from "@/api/getUser";
-import {redirect} from "next/navigation";
 
 interface IGame {
   gameId: number;
