@@ -1,17 +1,14 @@
-import {getData} from "@/api/getData";
-import {IGameMovie, IGameMoviesResponse} from "@/api/types";
+import {IGameMovie} from "@/api/types";
 import GameMovie from "./GameMovie";
 import {Stack, Typography} from "@mui/material";
+import {getMovies} from "@/app/games/[id]/game-movies/lib/getMovies";
 
 interface IGameMoviesProps {
   gameId: number;
 }
 
 export default async function GameMovies({gameId}: IGameMoviesProps) {
-  const moviesResponse = await getData<IGameMoviesResponse>({
-    url: `/games/${gameId}/movies`
-  })
-  const movies: IGameMovie[] = moviesResponse.results;
+  const movies = await getMovies(gameId);
   
   return(
     <Stack
