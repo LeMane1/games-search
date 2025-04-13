@@ -39,37 +39,37 @@ Supabase is used as storage for Users and User game collections.
 
 ### Home Page
 
-<img src="/screenshots/home.png" alt="Home Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/home.png" alt="Home Page" width="100%">
 
 ### Game Search Page
 
-<img src="/screenshots/game-search.png" alt="Game Search Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/game-search.png" alt="Game Search Page" width="100%">
 
 ### Platforms Page
 
-<img src="/screenshots/platforms-page.png" alt="Platforms Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/platforms-page.png" alt="Platforms Page" width="100%">
 
 ### Developers Page
 
-<img src="/screenshots/developers-page.png" alt="Developers Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/developers-page.png" alt="Developers Page" width="100%">
 
 ### Game Page
 
-<img src="/screenshots/game_page.png" alt="Game Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/game_page.png" alt="Game Page" width="100%">
 
 ### Game Screenshots, Trailers and Achievements
 
-<img src="/screenshots/game-screenshots.png" alt="Screenshots, Trailes and Achievements" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/game-screenshots.png" alt="Screenshots, Trailes and Achievements" width="100%">
 
 ### Profile Page
 
-<img src="/screenshots/profile.png" alt="Profile Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/profile.png" alt="Profile Page" width="100%">
 
 ### Login Page
 
-<img src="/screenshots/login_page.png" alt="Login Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/login_page.png" alt="Login Page" width="100%">
 
 ### Error Page
 
-<img src="/screenshots/error_page.png" alt="Error Page" width="100%" height="600" style="{{object-fit: cover}}">
+<img src="/screenshots/error_page.png" alt="Error Page" width="100%">
 
