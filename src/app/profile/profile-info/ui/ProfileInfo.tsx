@@ -38,7 +38,6 @@ export default async function ProfileInfo() {
               lg: 150,
               xl: 150,
             },
-            color: "white",
           }}
         />
         
