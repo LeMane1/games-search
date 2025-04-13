@@ -5,17 +5,17 @@ import {redirect} from "next/navigation";
 import {Provider} from "@supabase/auth-js";
 import sanitizeHtml from "sanitize-html";
 import {revalidatePath} from "next/cache";
+import type {LoginFormData, RegisterFormData} from '@/app/auth/lib/schema'
 
-export async function login(formData: FormData) {
+export async function login(formData: LoginFormData) {
   const supabase = await createClient()
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: sanitizeHtml(formData.get('email') as string),
-    password: sanitizeHtml(formData.get('password') as string),
+  const sanitizedFormData = {
+    email: sanitizeHtml(formData.email as string),
+    password: sanitizeHtml(formData.password as string),
   }
   
-  const { error } = await supabase.auth.signInWithPassword(data)
+  const { error } = await supabase.auth.signInWithPassword(sanitizedFormData)
+  
   if (error) {
     redirect('/error')
   }
@@ -23,21 +23,21 @@ export async function login(formData: FormData) {
   redirect('/')
 }
 
-export async function signup(formData: FormData) {
+export async function signup(formData: RegisterFormData) {
   const supabase = await createClient()
   
-  const data = {
-    email: sanitizeHtml(formData.get('email') as string),
-    password: sanitizeHtml(formData.get('password') as string),
+  const sanitizedFormData = {
+    email: sanitizeHtml(formData.email as string),
+    password: sanitizeHtml(formData.password as string),
     options: {
       data: {
-        user_name: sanitizeHtml(formData.get('name') as string),
-        email: sanitizeHtml(formData.get('email') as string),
+        user_name: sanitizeHtml(formData.userName as string),
+        email: sanitizeHtml(formData.email as string),
       }
     }
   }
   
-  const { error } = await supabase.auth.signUp(data)
+  const { error } = await supabase.auth.signUp(sanitizedFormData)
   
   if (error) {
     redirect('/error')

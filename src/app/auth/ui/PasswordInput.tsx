@@ -1,10 +1,16 @@
 'use client'
 
-import {FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput} from "@mui/material";
+import {FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography} from "@mui/material";
 import {VisibilityOff, Visibility} from "@mui/icons-material";
 import {useState} from "react";
+import {FieldError, FieldValues, Path, UseFormRegister} from "react-hook-form";
 
-export default function PasswordInput(){
+interface IPasswordInputProps<T extends FieldValues> {
+  register: UseFormRegister<T>;
+  error?: FieldError;
+}
+
+export default function PasswordInput<T extends FieldValues>({ register, error}: IPasswordInputProps<T>){
   const [showPassword, setShowPassword] = useState<boolean>(false);
   
   return (
@@ -12,7 +18,6 @@ export default function PasswordInput(){
       <InputLabel htmlFor="password">Password</InputLabel>
       <OutlinedInput
         type={showPassword ? 'text' : 'password'}
-        name="password"
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -24,7 +29,13 @@ export default function PasswordInput(){
           </InputAdornment>
         }
         label="Password"
+        {...register("password" as Path<T>)}
       />
+      {error && (
+        <Typography color="error" variant="caption" mt={1}>
+          {error.message}
+        </Typography>
+      )}
     </FormControl>
   )
 }
