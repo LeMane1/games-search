@@ -33,7 +33,6 @@ export default function UserLabel({user, isExpanded = true}:IUserLabelProps){
             bgcolor: 'primary.main',
             width: 30,
             height: 30,
-            color: "white",
           }}
         />
         
